@@ -19,10 +19,10 @@ jobs:
           HYPEX_RSS_URLS: ${{ vars.HYPEX_RSS_URLS }}
       - name: Запази новините
         run: |
-          if ! git diff --quiet -- data/news.json; then
+          if [ -f news.json ] && [ -n "$(git status --porcelain -- news.json)" ]; then
             git config user.name 'github-actions[bot]'
             git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git add data/news.json
+            git add news.json
             git commit -m 'Update Fortnite news'
             git push
           fi
