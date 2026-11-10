@@ -4,8 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="VANKATA GAMING — Fortnite новини на български, игри и гейминг общност.">
-<title>VANKATA GAMING | Fortnite новини</title>
+<meta name="description" content="VANKATA GAMING - Fortnite новини и Item Shop.">
+<title>VANKATA GAMING | Fortnite</title>
 <style>
 :root {
   --bg:#090b17;
@@ -15,20 +15,20 @@
   --text:#f6f6ff;
   --muted:#b2b7cc;
 }
-* { box-sizing:border-box; }
-html { scroll-behavior:smooth; }
+* {box-sizing:border-box}
+html {scroll-behavior:smooth}
 body {
   margin:0;
   background:var(--bg);
   color:var(--text);
   font-family:Arial,Helvetica,sans-serif;
 }
-a { color:inherit; text-decoration:none; }
+a {color:inherit;text-decoration:none}
 header {
   position:sticky;
   top:0;
   z-index:5;
-  background:#090b17ed;
+  background:#090b17f5;
   border-bottom:1px solid #30334c;
 }
 nav {
@@ -45,13 +45,18 @@ nav {
   letter-spacing:1px;
   font-size:21px;
 }
-.logo span { color:var(--cyan); }
+.logo span {color:var(--cyan)}
 .links {
   display:flex;
-  gap:24px;
+  gap:20px;
   color:var(--muted);
+  flex-wrap:wrap;
 }
-.links a:hover { color:var(--cyan); }
+.links a:hover {color:var(--cyan)}
+.links .shop-link {
+  color:var(--cyan);
+  font-weight:bold;
+}
 .hero {
   min-height:520px;
   display:grid;
@@ -88,7 +93,7 @@ nav {
 }
 .btn {
   display:inline-block;
-  margin-top:22px;
+  margin:12px 7px;
   background:linear-gradient(120deg,var(--purple),#5c56fa);
   padding:15px 27px;
   border-radius:12px;
@@ -96,13 +101,16 @@ nav {
   box-shadow:0 9px 35px #8254ff45;
   transition:transform .2s;
 }
-.btn:hover { transform:translateY(-3px); }
+.btn:hover {transform:translateY(-3px)}
+.btn-shop {
+  background:linear-gradient(120deg,#13b9d6,#3465ed);
+}
 section {
   max-width:1120px;
   margin:0 auto;
   padding:68px 20px;
 }
-h2 { font-size:34px; margin:0 0 12px; }
+h2 {font-size:34px;margin:0 0 12px}
 .subtitle {
   color:var(--muted);
   margin-bottom:30px;
@@ -125,9 +133,9 @@ h2 { font-size:34px; margin:0 0 12px; }
   transform:translateY(-6px);
   border-color:var(--purple);
 }
-.card .emoji { font-size:43px; }
-.card h3 { font-size:23px; margin:22px 0 10px; }
-.card p { color:var(--muted); line-height:1.6; }
+.card .emoji {font-size:43px}
+.card h3 {font-size:23px;margin:22px 0 10px}
+.card p {color:var(--muted);line-height:1.6}
 .tag {
   color:var(--cyan);
   font-size:13px;
@@ -145,7 +153,7 @@ h2 { font-size:34px; margin:0 0 12px; }
   display:block;
   background:#222a43;
 }
-.news-content { padding:22px; }
+.news-content {padding:22px}
 .news-content h3 {
   font-size:21px;
   line-height:1.35;
@@ -163,12 +171,19 @@ h2 { font-size:34px; margin:0 0 12px; }
   font-weight:bold;
   margin-top:12px;
 }
-.news-link:hover { text-decoration:underline; }
+.news-link:hover {text-decoration:underline}
 #news-status {
   color:var(--muted);
   margin-bottom:24px;
 }
-.source-link { color:var(--cyan); }
+.shop-banner {
+  background:linear-gradient(125deg,#30205c,#122b51);
+  border:1px solid #7553d4;
+  border-radius:24px;
+  text-align:center;
+  padding:55px 24px;
+}
+.shop-banner p {color:#d1cdec;line-height:1.6}
 .contact {
   background:#12172b;
   border:1px solid #303654;
@@ -176,7 +191,7 @@ h2 { font-size:34px; margin:0 0 12px; }
   text-align:center;
   padding:55px 24px;
 }
-.contact p { color:var(--muted); }
+.contact p {color:var(--muted)}
 footer {
   text-align:center;
   color:#8389a5;
@@ -184,15 +199,15 @@ footer {
   border-top:1px solid #292e43;
 }
 @media(max-width:900px) {
-  .grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .grid {grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:700px) {
-  .grid { grid-template-columns:1fr; }
-  .links { gap:12px; font-size:13px; }
-  .logo { font-size:16px; }
-  nav { padding:17px 12px; }
-  .hero { min-height:450px; }
-  section { padding:48px 18px; }
+  .grid {grid-template-columns:1fr}
+  nav {padding:17px 12px;flex-wrap:wrap}
+  .links {gap:12px;font-size:13px}
+  .logo {font-size:16px}
+  .hero {min-height:450px}
+  section {padding:48px 18px}
 }
 </style>
 </head>
@@ -200,84 +215,106 @@ footer {
 
 <header>
   <nav>
-    <a href="#home" class="logo">⚡ VANKATA <span>GAMING</span></a>
+    <a href="#home" class="logo">
+      ⚡ VANKATA <span>GAMING</span>
+    </a>
     <div class="links">
       <a href="#games">Игри</a>
       <a href="#news">Новини</a>
+      <a href="shop.html" class="shop-link">🛒 Item Shop</a>
       <a href="#contact">Контакти</a>
     </div>
   </nav>
 </header>
 
 <main>
-  <div class="hero" id="home">
-    <div>
-      <div class="eyebrow">WELCOME TO THE GAME</div>
-      <h1>LEVEL UP<br>YOUR GAME.</h1>
-      <p>
-        Твоето място за гейминг, любими заглавия,
-        Fortnite новини и общност.
-        Играта започва тук.
-      </p>
-      <a class="btn" href="#news">Виж Fortnite новините →</a>
-    </div>
+
+<div class="hero" id="home">
+  <div>
+    <div class="eyebrow">WELCOME TO THE GAME</div>
+    <h1>LEVEL UP<br>YOUR GAME.</h1>
+    <p>
+      Твоето място за Fortnite новини,
+      актуалния Item Shop и гейминг общност.
+      Играта започва тук.
+    </p>
+    <a class="btn" href="#news">📰 Fortnite новини</a>
+    <a class="btn btn-shop" href="shop.html">🛒 Отвори Item Shop</a>
   </div>
+</div>
 
-  <section id="games">
-    <h2>🎮 Популярни игри</h2>
-    <p class="subtitle">Игри, които следим и обичаме.</p>
-    <div class="grid">
-      <article class="card">
-        <div class="emoji">🏆</div>
-        <h3>Fortnite</h3>
-        <p>Битки, сезони, предизвикателства и събития.</p>
-      </article>
-      <article class="card">
-        <div class="emoji">🏎️</div>
-        <h3>Forza Horizon</h3>
-        <p>Скорост, автомобили и свободно шофиране.</p>
-      </article>
-      <article class="card">
-        <div class="emoji">🌊</div>
-        <h3>Subnautica</h3>
-        <p>Подводни приключения, изследване и оцеляване.</p>
-      </article>
-    </div>
-  </section>
+<section id="games">
+  <h2>🎮 Популярни игри</h2>
+  <p class="subtitle">Игри, които следим и обичаме.</p>
+  <div class="grid">
+    <article class="card">
+      <div class="emoji">🏆</div>
+      <h3>Fortnite</h3>
+      <p>Битки, сезони, предизвикателства и събития.</p>
+    </article>
+    <article class="card">
+      <div class="emoji">🏎️</div>
+      <h3>Forza Horizon</h3>
+      <p>Скорост, автомобили и свободно шофиране.</p>
+    </article>
+    <article class="card">
+      <div class="emoji">🌊</div>
+      <h3>Subnautica</h3>
+      <p>Подводни приключения, изследване и оцеляване.</p>
+    </article>
+  </div>
+</section>
 
-  <section id="news">
-    <h2>📰 Последни Fortnite новини</h2>
-    <p class="subtitle">
-      Автоматично събирани новини от Fortnite,
-      преведени на български.
+<section id="shop">
+  <div class="shop-banner">
+    <h2>🛒 FORTNITE ITEM SHOP</h2>
+    <p>
+      Разгледай актуалните скинове, емоути,
+      кирки и пакети с цени във V-Bucks.
     </p>
-    <p id="news-status" aria-live="polite">
-      Зареждане на новини...
-    </p>
-    <div class="grid" id="news-grid"></div>
-    <p style="margin-top:24px">
-      Източник:
-      <a class="source-link"
-         href="https://www.fortnite.com/news"
-         target="_blank"
-         rel="noopener noreferrer">
-        Fortnite / Epic Games ↗
-      </a>
-    </p>
-  </section>
+    <a class="btn btn-shop" href="shop.html">
+      Виж магазина →
+    </a>
+  </div>
+</section>
 
-  <section id="contact">
-    <div class="contact">
-      <h2>🚀 Присъедини се към общността</h2>
-      <p>
-        Скоро тук ще добавим Discord,
-        YouTube и социални мрежи.
-      </p>
-      <a class="btn" href="#contact" id="contactButton">
-        Свържи се с нас
-      </a>
-    </div>
-  </section>
+<section id="news">
+  <h2>📰 Последни Fortnite новини</h2>
+  <p class="subtitle">
+    Автоматично събирани Fortnite новини
+    на български език.
+  </p>
+
+  <p id="news-status" aria-live="polite">
+    Зареждане на новини...
+  </p>
+
+  <div class="grid" id="news-grid"></div>
+
+  <p style="margin-top:24px">
+    Източник:
+    <a href="https://www.fortnite.com/news"
+       target="_blank"
+       rel="noopener noreferrer"
+       style="color:var(--cyan)">
+      Fortnite / Epic Games ↗
+    </a>
+  </p>
+</section>
+
+<section id="contact">
+  <div class="contact">
+    <h2>🚀 Присъедини се към общността</h2>
+    <p>
+      Скоро тук ще добавим Discord,
+      YouTube и социални мрежи.
+    </p>
+    <a class="btn" href="#contact" id="contactButton">
+      Свържи се с нас
+    </a>
+  </div>
+</section>
+
 </main>
 
 <footer>
@@ -302,7 +339,7 @@ async function loadNews() {
   try {
     const response = await fetch(
       './news.json?ts=' + Date.now(),
-      { cache: 'no-store' }
+      {cache:'no-store'}
     );
 
     if (!response.ok) {
@@ -359,8 +396,7 @@ async function loadNews() {
       : 'Все още няма публикувани новини.';
 
   } catch (error) {
-    status.textContent =
-      'Новините временно не са достъпни.';
+    status.textContent = 'Новините временно не са достъпни.';
     console.error('Грешка при зареждане:', error);
   }
 }
