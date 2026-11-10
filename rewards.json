@@ -1,1 +1,39 @@
 
+{
+  "updated_at": null,
+  "current_week": 2,
+  "weeks": [
+    {
+      "week": 1,
+      "name": "Седмица 1",
+      "status": "archive",
+      "rewards": [
+        {
+          "name": "Golden Skin",
+          "category": "Скин",
+          "chance": null,
+          "verified": false
+        },
+        {
+          "name": "Pirate Shop Access",
+          "category": "Специална награда",
+          "chance": null,
+          "verified": false
+        },
+        {
+          "name": "G-Class",
+          "category": "Автомобил",
+          "chance": null,
+          "verified": false
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "name": "Седмица 2",
+      "status": "current",
+      "rewards": []
+    }
+  ]
+}
+
