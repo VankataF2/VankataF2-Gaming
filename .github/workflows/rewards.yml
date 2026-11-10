@@ -29,12 +29,15 @@ jobs:
       - name: Fetch Fortnite leaks
         run: python scripts/update_rewards.py
 
-      - name: Save leaks.json
+      - name: Find reward images
+        run: python scripts/update_reward_images.py
+
+      - name: Save updates
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add leaks.json
+          git add leaks.json rewards.json
           if ! git diff --cached --quiet; then
-            git commit -m "Auto-update Fortnite leaks"
+            git commit -m "Update Fortnite leaks and reward images"
             git push
           fi
