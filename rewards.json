@@ -1,29 +1,92 @@
+
 {
   "updated_at": "2026-11-10",
   "current_week": 2,
   "weeks": [
-    
-{
-  "week": 1,
-  "name": "Седмица 1",
-  "status": "archive",
-  "rewards": [
-    {"name":"Solid Gold Rugahand","category":"Скин","chance":1562500,"verified":true},
-    {"name":"Solid Gold Gauntlets","category":"Кирка","chance":568,"verified":true},
-    {"name":"Mercedes-AMG G 63","category":"Автомобил","chance":7813,"verified":true},
-    {"name":"Golden Llama Crew","category":"Декал за автомобил","chance":7813,"verified":true},
-    {"name":"No Trespassing","category":"Jam Track","chance":391,"verified":true},
-    {"name":"Plunder in Paradise","category":"Loading Screen","chance":272,"verified":true},
-    {"name":"Pirate Shop Access 2026","category":"Специална награда","chance":137500,"verified":true},
-    {"name":"Pirate Shop Access 2027","category":"Специална награда","chance":137500,"verified":true},
-    {"name":"Extraction Accelerator","category":"Gizmo","chance":127,"verified":true},
-    {"name":"Portable Extractor","category":"Gizmo","chance":127,"verified":true},
-    {"name":"Golden Firework","category":"Gizmo","chance":127,"verified":true},
-    {"name":"Sprite Locator","category":"Gizmo","chance":127,"verified":true},
-    {"name":"Lucky Locator","category":"Gizmo","chance":127,"verified":true}
-  ]
-}
-
+    {
+      "week": 1,
+      "name": "Седмица 1",
+      "status": "archive",
+      "rewards": [
+        {
+          "name": "Solid Gold Rugahand",
+          "category": "Скин",
+          "chance": 1562500,
+          "verified": true
+        },
+        {
+          "name": "Solid Gold Gauntlets",
+          "category": "Кирка",
+          "chance": 568,
+          "verified": true
+        },
+        {
+          "name": "Mercedes-AMG G 63",
+          "category": "Автомобил",
+          "chance": 7813,
+          "verified": true
+        },
+        {
+          "name": "Golden Llama Crew",
+          "category": "Декал за автомобил",
+          "chance": 7813,
+          "verified": true
+        },
+        {
+          "name": "No Trespassing",
+          "category": "Jam Track",
+          "chance": 391,
+          "verified": true
+        },
+        {
+          "name": "Plunder in Paradise",
+          "category": "Loading Screen",
+          "chance": 272,
+          "verified": true
+        },
+        {
+          "name": "Pirate Shop Access 2026",
+          "category": "Специална награда",
+          "chance": 137500,
+          "verified": true
+        },
+        {
+          "name": "Pirate Shop Access 2027",
+          "category": "Специална награда",
+          "chance": 137500,
+          "verified": true
+        },
+        {
+          "name": "Extraction Accelerator",
+          "category": "Gizmo",
+          "chance": 127,
+          "verified": true
+        },
+        {
+          "name": "Portable Extractor",
+          "category": "Gizmo",
+          "chance": 127,
+          "verified": true
+        },
+        {
+          "name": "Golden Firework",
+          "category": "Gizmo",
+          "chance": 127,
+          "verified": true
+        },
+        {
+          "name": "Sprite Locator",
+          "category": "Gizmo",
+          "chance": 127,
+          "verified": true
+        },
+        {
+          "name": "Lucky Locator",
+          "category": "Gizmo",
+          "chance": 127,
+          "verified": true
+        }
+      ]
     },
     {
       "week": 2,
