@@ -1,1 +1,312 @@
 
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly Rewards | VANKATA GAMING</title>
+<style>
+:root {
+  --bg:#090b17;
+  --panel:#171d33;
+  --cyan:#29e0e7;
+  --purple:#9560ff;
+  --muted:#b2b7cc;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  background:var(--bg);
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+}
+a {color:inherit;text-decoration:none}
+header {
+  background:#111529;
+  border-bottom:1px solid #343852;
+  padding:20px;
+}
+nav {
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:15px;
+}
+.logo {font-weight:900;font-size:21px}
+.logo span {color:var(--cyan)}
+nav a:hover {color:var(--cyan)}
+.hero {
+  padding:65px 20px;
+  text-align:center;
+  background:radial-gradient(ellipse,#36216c,#090b17 72%);
+}
+.hero h1 {
+  font-size:clamp(32px,6vw,60px);
+  margin:10px 0;
+}
+.hero p {color:var(--muted);line-height:1.6}
+main {
+  max-width:1200px;
+  margin:auto;
+  padding:25px 18px 70px;
+}
+.notice {
+  padding:15px;
+  border:1px solid #66559c;
+  border-radius:12px;
+  background:#201a39;
+  color:#dcd3ff;
+  margin-bottom:25px;
+}
+.tabs {
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin:25px 0;
+}
+.tab {
+  background:#1d2540;
+  border:1px solid #444c70;
+  color:white;
+  padding:13px 20px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:bold;
+}
+.tab.active {
+  background:linear-gradient(120deg,#9560ff,#5459e9);
+  border-color:#b69aff;
+}
+h2 {margin:30px 0 12px}
+.subtitle {color:var(--muted);line-height:1.6}
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:18px;
+  margin-top:25px;
+}
+.card {
+  background:linear-gradient(145deg,#202743,#111629);
+  border:1px solid #343c60;
+  border-radius:18px;
+  overflow:hidden;
+}
+.card:hover {border-color:var(--purple)}
+.card-image {
+  height:170px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(145deg,#34225d,#162c52);
+  font-size:65px;
+}
+.info {padding:20px}
+.info h3 {font-size:19px;margin:8px 0}
+.category {
+  color:var(--cyan);
+  font-size:12px;
+  font-weight:bold;
+  text-transform:uppercase;
+}
+.chance {
+  margin-top:15px;
+  padding:12px;
+  border-radius:10px;
+  background:#10182c;
+}
+.chance strong {
+  color:#ffdc75;
+  font-size:20px;
+}
+.chance small {
+  display:block;
+  margin-top:5px;
+  color:var(--muted);
+}
+footer {
+  text-align:center;
+  border-top:1px solid #30354b;
+  padding:30px;
+  color:var(--muted);
+}
+footer a {color:var(--cyan)}
+@media(max-width:500px) {
+  .grid {grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .info {padding:12px}
+  .info h3 {font-size:15px}
+  .card-image {height:125px;font-size:45px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<nav>
+<a class="logo" href="index.html">
+⚡ VANKATA <span>GAMING</span>
+</a>
+<div>
+<a href="index.html">Начало</a> |
+<a href="shop.html">Item Shop</a> |
+<a href="rewards.html">🎁 Rewards</a>
+</div>
+</nav>
+</header>
+
+<div class="hero">
+<h1>🎁 FORTNITE WEEKLY REWARDS</h1>
+<p>
+Следи редките награди, седмичните ротации
+и шансовете за получаване.
+</p>
+</div>
+
+<main>
+<div class="notice">
+ℹ️ Показаните награди са демонстрационни.
+Шансовете и наличността трябва да бъдат
+потвърдени от официални източници.
+</div>
+
+<div class="tabs" id="tabs"></div>
+
+<h2 id="week-title"></h2>
+<p class="subtitle" id="week-description"></p>
+
+<div class="grid" id="rewards-grid"></div>
+</main>
+
+<footer>
+VANKATA GAMING · Weekly Rewards
+<p>
+Неофициален фен сайт, несвързан с Epic Games.
+</p>
+<a href="https://www.fortnite.com/news"
+target="_blank" rel="noopener noreferrer">
+Официални Fortnite новини
+</a>
+</footer>
+
+<script>
+const weeks = [
+  {
+    name:"Седмица 1",
+    description:"Примерни награди от първата ротация.",
+    rewards:[
+      {
+        name:"Golden Skin",
+        category:"Скин",
+        icon:"🥇",
+        chance:null
+      },
+      {
+        name:"Pirate Shop Access",
+        category:"Специална награда",
+        icon:"🏴‍☠️",
+        chance:null
+      },
+      {
+        name:"G-Class",
+        category:"Автомобил",
+        icon:"🚙",
+        chance:null
+      }
+    ]
+  },
+  {
+    name:"Седмица 2",
+    description:"Примерни награди от втората ротация.",
+    rewards:[
+      {
+        name:"Golden Skin — Week 2",
+        category:"Скин",
+        icon:"✨",
+        chance:null
+      },
+      {
+        name:"Car Reward — Week 2",
+        category:"Автомобил",
+        icon:"🏎️",
+        chance:null
+      },
+      {
+        name:"Special Reward",
+        category:"Специална награда",
+        icon:"🎁",
+        chance:null
+      }
+    ]
+  }
+];
+
+const tabs = document.getElementById("tabs");
+const grid = document.getElementById("rewards-grid");
+
+function showWeek(index) {
+  const week = weeks[index];
+
+  document.getElementById("week-title").textContent =
+    week.name;
+
+  document.getElementById("week-description").textContent =
+    week.description;
+
+  document.querySelectorAll(".tab").forEach((button,i)=>{
+    button.classList.toggle("active",i===index);
+  });
+
+  grid.replaceChildren();
+
+  week.rewards.forEach(reward=>{
+    const card=document.createElement("article");
+    card.className="card";
+
+    const image=document.createElement("div");
+    image.className="card-image";
+    image.textContent=reward.icon;
+
+    const info=document.createElement("div");
+    info.className="info";
+
+    const category=document.createElement("div");
+    category.className="category";
+    category.textContent=reward.category;
+
+    const title=document.createElement("h3");
+    title.textContent=reward.name;
+
+    const chance=document.createElement("div");
+    chance.className="chance";
+
+    const value=document.createElement("strong");
+    value.textContent=reward.chance===null
+      ?"Непотвърден шанс"
+      :(100/reward.chance).toFixed(5)+"%";
+
+    const detail=document.createElement("small");
+    detail.textContent=reward.chance===null
+      ?"Очаква се проверена информация"
+      :"Приблизително 1 на "+reward.chance.toLocaleString("bg-BG");
+
+    chance.append(value,detail);
+    info.append(category,title,chance);
+    card.append(image,info);
+    grid.appendChild(card);
+  });
+}
+
+weeks.forEach((week,index)=>{
+  const button=document.createElement("button");
+  button.className="tab";
+  button.textContent=week.name;
+  button.addEventListener("click",()=>showWeek(index));
+  tabs.appendChild(button);
+});
+
+showWeek(weeks.length-1);
+</script>
+</body>
+</html>
+
