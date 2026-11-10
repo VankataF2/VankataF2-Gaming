@@ -1,1 +1,36 @@
 
+name: Обновяване на Fortnite награди
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/30 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-rewards:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Изтегляне на файловете
+        uses: actions/checkout@v4
+
+      - name: Настройка на Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Проверка на наградите
+        run: python scripts/update_rewards.py
+
+      - name: Запазване на промените
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add rewards.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update Fortnite rewards"
+            git push
+          fi
