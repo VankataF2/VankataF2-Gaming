@@ -3,30 +3,30 @@
 <html lang="bg">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Weekly Rewards | VANKATA GAMING</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fortnite Weekly Rewards | VANKATA GAMING</title>
 <style>
-:root {
+:root{
   --bg:#090b17;
   --panel:#171d33;
   --cyan:#29e0e7;
   --purple:#9560ff;
   --muted:#b2b7cc;
 }
-* {box-sizing:border-box}
-body {
+*{box-sizing:border-box}
+body{
   margin:0;
   background:var(--bg);
-  color:#fff;
+  color:white;
   font-family:Arial,Helvetica,sans-serif;
 }
-a {color:inherit;text-decoration:none}
-header {
+a{color:inherit;text-decoration:none}
+header{
   background:#111529;
   border-bottom:1px solid #343852;
   padding:20px;
 }
-nav {
+nav{
   max-width:1200px;
   margin:auto;
   display:flex;
@@ -35,39 +35,43 @@ nav {
   flex-wrap:wrap;
   gap:15px;
 }
-.logo {font-weight:900;font-size:21px}
-.logo span {color:var(--cyan)}
-nav a:hover {color:var(--cyan)}
-.hero {
+.logo{font-weight:900;font-size:21px}
+.logo span{color:var(--cyan)}
+nav a:hover{color:var(--cyan)}
+.hero{
   padding:65px 20px;
   text-align:center;
   background:radial-gradient(ellipse,#36216c,#090b17 72%);
 }
-.hero h1 {
+.hero h1{
   font-size:clamp(32px,6vw,60px);
   margin:10px 0;
 }
-.hero p {color:var(--muted);line-height:1.6}
-main {
+.hero p{
+  color:var(--muted);
+  line-height:1.6;
+}
+main{
   max-width:1200px;
   margin:auto;
   padding:25px 18px 70px;
 }
-.notice {
+.notice{
   padding:15px;
   border:1px solid #66559c;
   border-radius:12px;
   background:#201a39;
   color:#dcd3ff;
   margin-bottom:25px;
+  line-height:1.6;
 }
-.tabs {
+.tabs{
   display:flex;
   gap:12px;
   flex-wrap:wrap;
   margin:25px 0;
 }
-.tab {
+.tab{
   background:#1d2540;
   border:1px solid #444c70;
   color:white;
@@ -76,67 +80,91 @@ main {
   cursor:pointer;
   font-weight:bold;
 }
-.tab.active {
+.tab.active{
   background:linear-gradient(120deg,#9560ff,#5459e9);
   border-color:#b69aff;
 }
-h2 {margin:30px 0 12px}
-.subtitle {color:var(--muted);line-height:1.6}
-.grid {
+h2{margin:30px 0 12px}
+.subtitle{
+  color:var(--muted);
+  line-height:1.6;
+}
+.grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
   gap:18px;
   margin-top:25px;
 }
-.card {
+.card{
   background:linear-gradient(145deg,#202743,#111629);
   border:1px solid #343c60;
   border-radius:18px;
   overflow:hidden;
 }
-.card:hover {border-color:var(--purple)}
-.card-image {
+.card:hover{border-color:var(--purple)}
+.card-image{
   height:170px;
   display:grid;
   place-items:center;
   background:linear-gradient(145deg,#34225d,#162c52);
   font-size:65px;
 }
-.info {padding:20px}
-.info h3 {font-size:19px;margin:8px 0}
-.category {
+.card-image img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+.info{padding:20px}
+.info h3{font-size:19px;margin:8px 0}
+.category{
   color:var(--cyan);
   font-size:12px;
   font-weight:bold;
   text-transform:uppercase;
 }
-.chance {
+.chance{
   margin-top:15px;
   padding:12px;
   border-radius:10px;
   background:#10182c;
 }
-.chance strong {
+.chance strong{
   color:#ffdc75;
   font-size:20px;
 }
-.chance small {
+.chance small{
   display:block;
   margin-top:5px;
   color:var(--muted);
 }
-footer {
+.status{
+  color:var(--muted);
+  margin:20px 0;
+}
+.current{
+  display:inline-block;
+  background:#236d53;
+  color:#b8ffe3;
+  padding:5px 9px;
+  border-radius:7px;
+  font-size:12px;
+  margin-left:8px;
+}
+footer{
   text-align:center;
   border-top:1px solid #30354b;
   padding:30px;
   color:var(--muted);
 }
-footer a {color:var(--cyan)}
-@media(max-width:500px) {
-  .grid {grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-  .info {padding:12px}
-  .info h3 {font-size:15px}
-  .card-image {height:125px;font-size:45px}
+footer a{color:var(--cyan)}
+@media(max-width:500px){
+  .grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+  }
+  .info{padding:12px}
+  .info h3{font-size:15px}
+  .card-image{height:125px;font-size:45px}
 }
 </style>
 </head>
@@ -158,17 +186,22 @@ footer a {color:var(--cyan)}
 <div class="hero">
 <h1>🎁 FORTNITE WEEKLY REWARDS</h1>
 <p>
-Следи редките награди, седмичните ротации
-и шансовете за получаване.
+Всички седмични награди, редки предмети
+и шансове за получаване.
 </p>
 </div>
 
 <main>
+
 <div class="notice">
-ℹ️ Показаните награди са демонстрационни.
-Шансовете и наличността трябва да бъдат
-потвърдени от официални източници.
+🎮 Следим седмичните ротации на Fortnite.
+Показваме шансове само когато има проверени данни.
+Непотвърдените награди са обозначени.
 </div>
+
+<p class="status" id="status">
+Зареждане на седмичните награди...
+</p>
 
 <div class="tabs" id="tabs"></div>
 
@@ -176,13 +209,12 @@ footer a {color:var(--cyan)}
 <p class="subtitle" id="week-description"></p>
 
 <div class="grid" id="rewards-grid"></div>
+
 </main>
 
 <footer>
 VANKATA GAMING · Weekly Rewards
-<p>
-Неофициален фен сайт, несвързан с Epic Games.
-</p>
+<p>Неофициален фен сайт, несвързан с Epic Games.</p>
 <a href="https://www.fortnite.com/news"
 target="_blank" rel="noopener noreferrer">
 Официални Fortnite новини
@@ -190,68 +222,36 @@ target="_blank" rel="noopener noreferrer">
 </footer>
 
 <script>
-const weeks = [
-  {
-    name:"Седмица 1",
-    description:"Примерни награди от първата ротация.",
-    rewards:[
-      {
-        name:"Golden Skin",
-        category:"Скин",
-        icon:"🥇",
-        chance:null
-      },
-      {
-        name:"Pirate Shop Access",
-        category:"Специална награда",
-        icon:"🏴‍☠️",
-        chance:null
-      },
-      {
-        name:"G-Class",
-        category:"Автомобил",
-        icon:"🚙",
-        chance:null
-      }
-    ]
-  },
-  {
-    name:"Седмица 2",
-    description:"Примерни награди от втората ротация.",
-    rewards:[
-      {
-        name:"Golden Skin — Week 2",
-        category:"Скин",
-        icon:"✨",
-        chance:null
-      },
-      {
-        name:"Car Reward — Week 2",
-        category:"Автомобил",
-        icon:"🏎️",
-        chance:null
-      },
-      {
-        name:"Special Reward",
-        category:"Специална награда",
-        icon:"🎁",
-        chance:null
-      }
-    ]
-  }
-];
+let weeks=[];
+let currentWeek=null;
+let selectedWeek=null;
 
-const tabs = document.getElementById("tabs");
-const grid = document.getElementById("rewards-grid");
+const tabs=document.getElementById("tabs");
+const grid=document.getElementById("rewards-grid");
+const status=document.getElementById("status");
 
-function showWeek(index) {
-  const week = weeks[index];
+function getIcon(category){
+  const text=(category||"").toLowerCase();
+  if(text.includes("скин"))return "🥇";
+  if(text.includes("автомобил"))return "🚘";
+  if(text.includes("кирка"))return "⛏️";
+  if(text.includes("музика"))return "🎵";
+  return "🎁";
+}
 
-  document.getElementById("week-title").textContent =
-    week.name;
+function showWeek(index){
+  const week=weeks[index];
+  if(!week)return;
 
-  document.getElementById("week-description").textContent =
-    week.description;
+  selectedWeek=week.week;
+
+  document.getElementById("week-title").textContent=
+    week.name||"Седмица "+week.week;
+
+  document.getElementById("week-description").textContent=
+    week.status==="current"
+      ?"Текуща седмица — наличните данни се обновяват."
+      :"Архив на предишна седмица.";
 
   document.querySelectorAll(".tab").forEach((button,i)=>{
     button.classList.toggle("active",i===index);
@@ -259,54 +259,153 @@ function showWeek(index) {
 
   grid.replaceChildren();
 
+  if(!Array.isArray(week.rewards)||week.rewards.length===0){
+    const message=document.createElement("p");
+    message.textContent=
+      "Все още няма потвърдени награди за тази седмица.";
+    grid.appendChild(message);
+    return;
+  }
+
   week.rewards.forEach(reward=>{
     const card=document.createElement("article");
     card.className="card";
 
     const image=document.createElement("div");
     image.className="card-image";
-    image.textContent=reward.icon;
+
+    if(reward.image){
+      const img=document.createElement("img");
+      img.src=reward.image;
+      img.alt=reward.name||"Fortnite награда";
+      img.loading="lazy";
+      image.appendChild(img);
+    }else{
+      image.textContent=getIcon(reward.category);
+    }
 
     const info=document.createElement("div");
     info.className="info";
 
     const category=document.createElement("div");
     category.className="category";
-    category.textContent=reward.category;
+    category.textContent=reward.category||"Награда";
 
     const title=document.createElement("h3");
-    title.textContent=reward.name;
+    title.textContent=reward.name||"Неизвестна награда";
 
     const chance=document.createElement("div");
     chance.className="chance";
 
     const value=document.createElement("strong");
-    value.textContent=reward.chance===null
-      ?"Непотвърден шанс"
-      :(100/reward.chance).toFixed(5)+"%";
-
     const detail=document.createElement("small");
-    detail.textContent=reward.chance===null
-      ?"Очаква се проверена информация"
-      :"Приблизително 1 на "+reward.chance.toLocaleString("bg-BG");
+
+    const denominator=Number(reward.chance);
+
+    if(reward.verified===true &&
+       reward.chance!==null &&
+       Number.isFinite(denominator) &&
+       denominator>0){
+
+      value.textContent=
+        (100/denominator).toFixed(5)+"%";
+
+      detail.textContent=
+        "Приблизително 1 на "+
+        denominator.toLocaleString("bg-BG");
+
+    }else{
+      value.textContent="Непотвърден шанс";
+      detail.textContent=
+        "Няма проверена информация";
+    }
 
     chance.append(value,detail);
     info.append(category,title,chance);
+
+    if(reward.verified!==true){
+      const note=document.createElement("small");
+      note.style.color="#b2b7cc";
+      note.textContent="⚠️ Непотвърдена награда";
+      info.appendChild(note);
+    }
+
     card.append(image,info);
     grid.appendChild(card);
   });
 }
 
-weeks.forEach((week,index)=>{
-  const button=document.createElement("button");
-  button.className="tab";
-  button.textContent=week.name;
-  button.addEventListener("click",()=>showWeek(index));
-  tabs.appendChild(button);
-});
+function buildTabs(){
+  tabs.replaceChildren();
 
-showWeek(weeks.length-1);
+  weeks.forEach((week,index)=>{
+    const button=document.createElement("button");
+    button.className="tab";
+
+    button.textContent=week.name||"Седмица "+week.week;
+
+    if(week.week===currentWeek){
+      button.textContent+=" ⭐";
+    }
+
+    button.addEventListener("click",()=>showWeek(index));
+    tabs.appendChild(button);
+  });
+}
+
+async function loadRewards(){
+  try{
+    const response=await fetch(
+      "./rewards.json?ts="+Date.now(),
+      {cache:"no-store"}
+    );
+
+    if(!response.ok){
+      throw new Error("HTTP "+response.status);
+    }
+
+    const data=await response.json();
+
+    if(!Array.isArray(data.weeks)){
+      throw new Error("Невалиден rewards.json");
+    }
+
+    weeks=data.weeks;
+    currentWeek=data.current_week;
+
+    buildTabs();
+
+    const selectedIndex=weeks.findIndex(
+      week=>week.week===selectedWeek
+    );
+
+    const currentIndex=weeks.findIndex(
+      week=>week.week===currentWeek
+    );
+
+    const index=selectedIndex>=0
+      ?selectedIndex
+      :currentIndex>=0
+        ?currentIndex
+        :weeks.length-1;
+
+    showWeek(index);
+
+    status.textContent=
+      "🎁 Заредени седмици: "+weeks.length+
+      (data.updated_at
+        ?" · Последно обновяване: "+data.updated_at
+        :"");
+
+  }catch(error){
+    status.textContent=
+      "❌ Неуспешно зареждане на rewards.json.";
+    console.error(error);
+  }
+}
+
+loadRewards();
+setInterval(loadRewards,5*60*1000);
 </script>
 </body>
 </html>
-
