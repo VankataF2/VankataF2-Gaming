@@ -7,42 +7,79 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 FILE = ROOT / "rewards.json"
 
-HEADERS = {
-    "User-Agent": "VankataGaming/1.0"
+API = "https://fortnite-api.com/v2/cosmetics/br/search"
+
+# Алтернативни имена само когато са известни.
+# Не използваме приблизителни съвпадения.
+ALIASES = {
+    "London": ["London"],
+    "Cadillac CT5-V Blackwing": [
+        "Cadillac CT5-V Blackwing"
+    ],
+    "Pirate Shop Access": [
+        "Pirate Shop Access"
+    ],
+    "Extraction Accelerator": [
+        "Extraction Accelerator"
+    ],
+    "Portable Extractor": [
+        "Portable Extractor"
+    ],
+    "Golden Firework": [
+        "Golden Firework"
+    ],
+    "Sprite Locator": [
+        "Sprite Locator"
+    ],
+    "Lucky Locator": [
+        "Lucky Locator"
+    ]
 }
 
+
 def find_image(name):
-    query = urllib.parse.urlencode({
-        "name": name,
-        "matchMethod": "full"
-    })
+    names = ALIASES.get(name, [name])
 
-    url = (
-        "https://fortnite-api.com/v2/"
-        "cosmetics/br/search?" + query
-    )
+    for search_name in names:
+        params = urllib.parse.urlencode({
+            "name": search_name,
+            "matchMethod": "full"
+        })
 
-    request = urllib.request.Request(
-        url, headers=HEADERS
-    )
-
-    try:
-        with urllib.request.urlopen(
-            request, timeout=15
-        ) as response:
-            result = json.load(response)
-
-        item = result.get("data", {})
-        images = item.get("images", {})
-
-        return (
-            images.get("featured")
-            or images.get("icon")
+        request = urllib.request.Request(
+            API + "?" + params,
+            headers={
+                "User-Agent": "VankataGaming/1.0"
+            }
         )
 
-    except Exception as error:
-        print("Няма снимка за:", name, error)
-        return None
+        try:
+            with urllib.request.urlopen(
+                request, timeout=15
+            ) as response:
+                result = json.load(response)
+
+            item = result.get("data", {})
+
+            if item.get("name", "").casefold() != (
+                search_name.casefold()
+            ):
+                continue
+
+            images = item.get("images") or {}
+
+            image = (
+                images.get("featured")
+                or images.get("icon")
+            )
+
+            if image and image.startswith("https://"):
+                return image
+
+        except Exception as error:
+            print("Не е намерено:", search_name, error)
+
+    return None
 
 
 def main():
@@ -50,18 +87,23 @@ def main():
         FILE.read_text(encoding="utf-8")
     )
 
+    added = 0
+    missing = []
+
     for week in data.get("weeks", []):
         for reward in week.get("rewards", []):
-            name = reward.get("name", "")
-
             if reward.get("image"):
                 continue
 
+            name = reward.get("name", "")
             image = find_image(name)
 
             if image:
                 reward["image"] = image
-                print("Добавена снимка:", name)
+                added += 1
+                print("Снимка:", name)
+            else:
+                missing.append(name)
 
     FILE.write_text(
         json.dumps(
@@ -72,7 +114,13 @@ def main():
         encoding="utf-8"
     )
 
+    print("Добавени снимки:", added)
+
+    if missing:
+        print("Все още без снимки:")
+        for name in missing:
+            print("-", name)
+
 
 if __name__ == "__main__":
     main()
-
