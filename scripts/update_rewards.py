@@ -1,83 +1,159 @@
 
 import json
+import hashlib
+import urllib.request
+import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-REWARDS_FILE = ROOT / "rewards.json"
+OUTPUT = ROOT / "leaks.json"
 
-# Потвърдени базови шансове за нормален мач.
-# Това са шансове по КАТЕГОРИИ, не за произволен скин.
-ODDS = {
-    "gold_outfit": 1562500,
-    "pirate_shop": 137500,
-    "vehicle": 7813,
-    "pickaxe_backbling": 568,
-    "jam_track": 391,
-    "loading_screen": 272,
-    "gizmo": 127
-}
+SOURCES = [
+    {
+        "name": "Fortnite News",
+        "url": "https://fortnitenews.com/rss/",
+        "type": "news"
+    },
+    {
+        "name": "Fortnite Datamining",
+        "url": (
+            "https://raw.githubusercontent.com/"
+            "Fortnite-Datamining/Fortnite-Datamining/"
+            "main/feed.xml"
+        ),
+        "type": "datamining"
+    }
+]
 
-# Категориите не се сменят автоматично по календар.
-# Новите конкретни награди трябва първо да бъдат
-# потвърдени и добавени в rewards.json.
+KEYWORDS = (
+    "leak", "rumor", "rumour", "upcoming",
+    "unreleased", "datamin", "reward",
+    "skin", "cosmetic", "outfit", "gold",
+    "pirate", "weekly", "collab",
+    "new", "added", "coming"
+)
 
-def main():
-    if not REWARDS_FILE.exists():
-        raise FileNotFoundError(
-            "Липсва rewards.json в главната папка."
-        )
 
-    with REWARDS_FILE.open("r", encoding="utf-8") as file:
-        data = json.load(file)
-
-    if not isinstance(data.get("weeks"), list):
-        raise ValueError("Липсва списъкът weeks.")
-
-    current_week = data.get("current_week")
-
-    for week in data["weeks"]:
-        week["status"] = (
-            "current"
-            if week.get("week") == current_week
-            else "archive"
-        )
-
-        for reward in week.get("rewards", []):
-            # Попълваме шанс само при изрично
-            # зададена проверена категория.
-            category_key = reward.get("odds_category")
-
-            if category_key in ODDS:
-                reward["chance"] = ODDS[category_key]
-                reward["verified"] = True
-
-                reward.setdefault(
-                    "source",
-                    "https://x.com/FortniteStatus"
-                )
-
-            # Не превръщаме примерни награди
-            # в потвърдени автоматично.
-
-    data["updated_at"] = (
-        datetime.now(timezone.utc).isoformat()
+def fetch_feed(source):
+    request = urllib.request.Request(
+        source["url"],
+        headers={"User-Agent": "VankataGaming/1.0"}
     )
 
-    with REWARDS_FILE.open("w", encoding="utf-8") as file:
-        json.dump(
-            data,
-            file,
+    with urllib.request.urlopen(
+        request, timeout=20
+    ) as response:
+        xml_data = response.read()
+
+    root = ET.fromstring(xml_data)
+    results = []
+
+    for item in root.findall(".//channel/item"):
+        title = (item.findtext("title") or "").strip()
+        link = (item.findtext("link") or "").strip()
+        date = (item.findtext("pubDate") or "").strip()
+        guid = (item.findtext("guid") or link).strip()
+
+        if not title or not link.startswith("https://"):
+            continue
+
+        if source["type"] == "news":
+            if not any(
+                word in title.lower()
+                for word in KEYWORDS
+            ):
+                continue
+
+        # Datamining показва открити промени,
+        # а не непременно бъдещи награди.
+        label = (
+            "Открита промяна в играта"
+            if source["type"] == "datamining"
+            else "Неофициална публикация"
+        )
+
+        identifier = hashlib.sha256(
+            (source["name"] + guid).encode("utf-8")
+        ).hexdigest()[:16]
+
+        results.append({
+            "id": identifier,
+            "title": title,
+            "source": source["name"],
+            "url": link,
+            "date": date,
+            "type": source["type"],
+            "label": label,
+            "verified": False
+        })
+
+    return results
+
+
+def main():
+    old_items = []
+
+    if OUTPUT.exists():
+        try:
+            old_data = json.loads(
+                OUTPUT.read_text(encoding="utf-8")
+            )
+            old_items = old_data.get("items", [])
+        except (ValueError, OSError):
+            pass
+
+    collected = []
+    successful = 0
+
+    for source in SOURCES:
+        try:
+            items = fetch_feed(source)
+            collected.extend(items)
+            successful += 1
+            print(
+                source["name"],
+                "намерени:",
+                len(items)
+            )
+        except Exception as error:
+            print(
+                "Грешка при",
+                source["name"],
+                str(error)
+            )
+
+    if successful == 0:
+        raise RuntimeError(
+            "Нито един RSS източник не отговори."
+        )
+
+    # Запазваме и старите публикации.
+    unique = {}
+
+    for item in old_items + collected:
+        unique[item["id"]] = item
+
+    items = list(unique.values())[-200:]
+
+    output = {
+        "updated_at": datetime.now(
+            timezone.utc
+        ).isoformat(),
+        "items": items
+    }
+
+    OUTPUT.write_text(
+        json.dumps(
+            output,
             ensure_ascii=False,
             indent=2
-        )
-        file.write("\n")
+        ) + "\n",
+        encoding="utf-8"
+    )
 
-    print("Rewards JSON е проверен и обновен.")
-    print("Седмици:", len(data["weeks"]))
-    print("Текуща седмица:", current_week)
+    print("Общо запазени публикации:", len(items))
 
 
 if __name__ == "__main__":
     main()
-
