@@ -1,1 +1,167 @@
 
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fortnite Leaks | VANKATA GAMING</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #0b1020;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      background: #141d35;
+      padding: 25px 16px;
+      text-align: center;
+      border-bottom: 2px solid #8055ff;
+    }
+    h1 { margin: 0 0 12px; }
+    .back {
+      color: #b8a2ff;
+      text-decoration: none;
+    }
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 24px 16px;
+    }
+    .info { color: #b8c4dd; }
+    .grid {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(270px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .card {
+      background: #17223b;
+      border: 1px solid #344260;
+      border-radius: 16px;
+      padding: 20px;
+    }
+    .tag {
+      display: inline-block;
+      background: #49330c;
+      color: #ffdb7c;
+      padding: 7px 11px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .source {
+      color: #b8c4dd;
+      font-size: 14px;
+    }
+    .link {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 14px;
+      background: #7652e8;
+      color: white;
+      border-radius: 9px;
+      text-decoration: none;
+    }
+    .link:hover { background: #946fff; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔥 Fortnite Leaks</h1>
+    <p>Слухове, новини и открити промени</p>
+    <a class="back" href="./index.html">
+      ← Начална страница
+    </a>
+  </header>
+
+  <main>
+    <p class="info">
+      ⚠️ Публикациите може да съдържат
+      непотвърдена информация.
+    </p>
+
+    <p id="status">Зареждане на публикациите...</p>
+    <div id="grid" class="grid"></div>
+  </main>
+
+  <script>
+    const grid = document.getElementById("grid");
+    const status = document.getElementById("status");
+
+    async function loadLeaks() {
+      try {
+        const response = await fetch(
+          "./leaks.json?t=" + Date.now(),
+          { cache: "no-store" }
+        );
+
+        if (!response.ok) {
+          throw new Error("HTTP " + response.status);
+        }
+
+        const data = await response.json();
+        const items = Array.isArray(data.items)
+          ? [...data.items].reverse()
+          : [];
+
+        grid.replaceChildren();
+
+        if (items.length === 0) {
+          status.textContent =
+            "Все още няма намерени публикации.";
+          return;
+        }
+
+        status.textContent =
+          "Намерени публикации: " + items.length;
+
+        items.forEach(item => {
+          const card = document.createElement("article");
+          card.className = "card";
+
+          const tag = document.createElement("span");
+          tag.className = "tag";
+          tag.textContent = item.label ||
+            "Непотвърдена публикация";
+
+          const title = document.createElement("h2");
+          title.textContent = item.title || "Без заглавие";
+
+          const source = document.createElement("p");
+          source.className = "source";
+          source.textContent =
+            "Източник: " + (item.source || "Неизвестен");
+
+          card.append(tag, title, source);
+
+          if (
+            typeof item.url === "string" &&
+            item.url.startsWith("https://")
+          ) {
+            const link = document.createElement("a");
+            link.className = "link";
+            link.href = item.url;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            link.textContent = "Виж източника";
+            card.appendChild(link);
+          }
+
+          grid.appendChild(card);
+        });
+      } catch (error) {
+        status.textContent =
+          "❌ Неуспешно зареждане на leaks.json.";
+        console.error(error);
+      }
+    }
+
+    loadLeaks();
+    setInterval(loadLeaks, 5 * 60 * 1000);
+  </script>
+</body>
+</html>
+
