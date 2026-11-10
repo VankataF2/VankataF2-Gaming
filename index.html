@@ -1,28 +1,371 @@
+
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="VANKATA GAMING — игри, новини и гейминг общност.">
-<title>VANKATA GAMING</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="VANKATA GAMING — Fortnite новини на български, игри и гейминг общност.">
+<title>VANKATA GAMING | Fortnite новини</title>
 <style>
-:root{--bg:#090b17;--panel:#14192b;--purple:#9560ff;--cyan:#29e0e7;--text:#f6f6ff;--muted:#b2b7cc}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}a{color:inherit;text-decoration:none}header{position:sticky;top:0;z-index:5;background:#090b17ed;border-bottom:1px solid #30334c}nav{max-width:1120px;margin:auto;padding:20px;display:flex;align-items:center;justify-content:space-between;gap:20px}.logo{font-weight:900;letter-spacing:1px;font-size:21px}.logo span{color:var(--cyan)}.links{display:flex;gap:24px;color:var(--muted)}.links a:hover{color:var(--cyan)}.hero{min-height:520px;display:grid;place-items:center;text-align:center;padding:80px 20px;background:radial-gradient(ellipse at 50% 40%,#36216c 0%,#15132e 42%,#090b17 75%)}.eyebrow{color:var(--cyan);letter-spacing:4px;font-weight:bold}.hero h1{font-size:clamp(45px,8vw,88px);line-height:1.04;margin:20px 0;background:linear-gradient(90deg,#fff,#a37cff,#3be7e7);background-clip:text;color:transparent}.hero p{max-width:650px;color:var(--muted);font-size:19px;line-height:1.7}.btn{display:inline-block;margin-top:22px;background:linear-gradient(120deg,var(--purple),#5c56fa);padding:15px 27px;border-radius:12px;font-weight:bold;box-shadow:0 9px 35px #8254ff45;transition:transform .2s}.btn:hover{transform:translateY(-3px)}section{max-width:1120px;margin:0 auto;padding:68px 20px}h2{font-size:34px;margin:0 0 12px}.subtitle{color:var(--muted);margin-bottom:30px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.card{background:linear-gradient(145deg,#1b2038,#111627);border:1px solid #323652;border-radius:20px;padding:28px;min-height:210px;transition:transform .2s,border-color .2s}.card:hover{transform:translateY(-6px);border-color:var(--purple)}.card .emoji{font-size:43px}.card h3{font-size:23px;margin:22px 0 10px}.card p{color:var(--muted);line-height:1.6}.tag{color:var(--cyan);font-size:13px;font-weight:bold;letter-spacing:1px}.contact{background:#12172b;border:1px solid #303654;border-radius:24px;text-align:center;padding:55px 24px}.contact p{color:var(--muted)}footer{text-align:center;color:#8389a5;padding:32px;border-top:1px solid #292e43}@media(max-width:700px){.grid{grid-template-columns:1fr}.links{gap:12px;font-size:13px}.logo{font-size:16px}nav{padding:17px 12px}.hero{min-height:450px}section{padding:48px 18px}}
+:root {
+  --bg:#090b17;
+  --panel:#14192b;
+  --purple:#9560ff;
+  --cyan:#29e0e7;
+  --text:#f6f6ff;
+  --muted:#b2b7cc;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+}
+a { color:inherit; text-decoration:none; }
+header {
+  position:sticky;
+  top:0;
+  z-index:5;
+  background:#090b17ed;
+  border-bottom:1px solid #30334c;
+}
+nav {
+  max-width:1120px;
+  margin:auto;
+  padding:20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+.logo {
+  font-weight:900;
+  letter-spacing:1px;
+  font-size:21px;
+}
+.logo span { color:var(--cyan); }
+.links {
+  display:flex;
+  gap:24px;
+  color:var(--muted);
+}
+.links a:hover { color:var(--cyan); }
+.hero {
+  min-height:520px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:80px 20px;
+  background:radial-gradient(
+    ellipse at 50% 40%,
+    #36216c 0%,
+    #15132e 42%,
+    #090b17 75%
+  );
+}
+.eyebrow {
+  color:var(--cyan);
+  letter-spacing:4px;
+  font-weight:bold;
+}
+.hero h1 {
+  font-size:clamp(45px,8vw,88px);
+  line-height:1.04;
+  margin:20px 0;
+  background:linear-gradient(90deg,#fff,#a37cff,#3be7e7);
+  background-clip:text;
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.hero p {
+  max-width:650px;
+  margin:20px auto;
+  color:var(--muted);
+  font-size:19px;
+  line-height:1.7;
+}
+.btn {
+  display:inline-block;
+  margin-top:22px;
+  background:linear-gradient(120deg,var(--purple),#5c56fa);
+  padding:15px 27px;
+  border-radius:12px;
+  font-weight:bold;
+  box-shadow:0 9px 35px #8254ff45;
+  transition:transform .2s;
+}
+.btn:hover { transform:translateY(-3px); }
+section {
+  max-width:1120px;
+  margin:0 auto;
+  padding:68px 20px;
+}
+h2 { font-size:34px; margin:0 0 12px; }
+.subtitle {
+  color:var(--muted);
+  margin-bottom:30px;
+  line-height:1.6;
+}
+.grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:22px;
+}
+.card {
+  background:linear-gradient(145deg,#1b2038,#111627);
+  border:1px solid #323652;
+  border-radius:20px;
+  padding:28px;
+  min-height:210px;
+  transition:transform .2s,border-color .2s;
+}
+.card:hover {
+  transform:translateY(-6px);
+  border-color:var(--purple);
+}
+.card .emoji { font-size:43px; }
+.card h3 { font-size:23px; margin:22px 0 10px; }
+.card p { color:var(--muted); line-height:1.6; }
+.tag {
+  color:var(--cyan);
+  font-size:13px;
+  font-weight:bold;
+  letter-spacing:1px;
+}
+.news-card {
+  padding:0;
+  overflow:hidden;
+}
+.news-card img {
+  width:100%;
+  height:190px;
+  object-fit:cover;
+  display:block;
+  background:#222a43;
+}
+.news-content { padding:22px; }
+.news-content h3 {
+  font-size:21px;
+  line-height:1.35;
+  margin:12px 0;
+}
+.news-content p {
+  display:-webkit-box;
+  -webkit-line-clamp:4;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.news-link {
+  display:inline-block;
+  color:var(--cyan);
+  font-weight:bold;
+  margin-top:12px;
+}
+.news-link:hover { text-decoration:underline; }
+#news-status {
+  color:var(--muted);
+  margin-bottom:24px;
+}
+.source-link { color:var(--cyan); }
+.contact {
+  background:#12172b;
+  border:1px solid #303654;
+  border-radius:24px;
+  text-align:center;
+  padding:55px 24px;
+}
+.contact p { color:var(--muted); }
+footer {
+  text-align:center;
+  color:#8389a5;
+  padding:32px;
+  border-top:1px solid #292e43;
+}
+@media(max-width:900px) {
+  .grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:700px) {
+  .grid { grid-template-columns:1fr; }
+  .links { gap:12px; font-size:13px; }
+  .logo { font-size:16px; }
+  nav { padding:17px 12px; }
+  .hero { min-height:450px; }
+  section { padding:48px 18px; }
+}
 </style>
 </head>
 <body>
-<header><nav><a href="#home" class="logo">⚡ VANKATA <span>GAMING</span></a><div class="links"><a href="#games">Игри</a><a href="#news">Новини</a><a href="#contact">Контакти</a></div></nav></header>
+
+<header>
+  <nav>
+    <a href="#home" class="logo">⚡ VANKATA <span>GAMING</span></a>
+    <div class="links">
+      <a href="#games">Игри</a>
+      <a href="#news">Новини</a>
+      <a href="#contact">Контакти</a>
+    </div>
+  </nav>
+</header>
+
 <main>
-<div class="hero" id="home"><div><div class="eyebrow">WELCOME TO THE GAME</div><h1>LEVEL UP<br>YOUR GAME.</h1><p>Твоето място за гейминг, любими заглавия, новини и общност. Играта започва тук.</p><a class="btn" href="#games">Разгледай игрите →</a></div></div>
-<section id="games"><h2>🎮 Популярни игри</h2><p class="subtitle">Игри, които следим и обичаме.</p><div class="grid"><article class="card"><div class="emoji">🏆</div><h3>Fortnite</h3><p>Битки, сезони, предизвикателства и събития.</p></article><article class="card"><div class="emoji">🏎️</div><h3>Forza Horizon</h3><p>Скорост, автомобили и свободно шофиране.</p></article><article class="card"><div class="emoji">🌊</div><h3>Subnautica</h3><p>Подводни приключения, изследване и оцеляване.</p></article></div></section>
-<section id="news"><h2>📰 Fortnite новини от HYPEX</h2><p class="subtitle">Автоматично обновяване при наличен публичен RSS източник. Публикациите са непотвърдени, освен ако Epic Games не ги потвърди.</p><p id="news-status" aria-live="polite">Зареждане на новини...</p><div class="grid" id="news-grid"></div><p style="margin-top:18px"><a href="https://x.com/HYPEX" target="_blank" rel="noopener noreferrer">Виж оригиналния профил на HYPEX ↗</a></p></section>
-<section id="contact"><div class="contact"><h2>🚀 Присъедини се към общността</h2><p>Скоро тук ще добавим Discord, YouTube и социални мрежи.</p><a class="btn" href="mailto:gaming@example.com?subject=VANKATA%20GAMING" id="contactButton">Свържи се с нас</a></div></section>
-</main><footer>© <span id="year"></span> VANKATA GAMING. Made for gamers.</footer>
-<script>document.getElementById('year').textContent=new Date().getFullYear();document.getElementById('contactButton').addEventListener('click',function(e){e.preventDefault();alert('Скоро ще добавим истински имейл или Discord линк за контакт.');});
-(async function(){
- const grid=document.getElementById('news-grid'),status=document.getElementById('news-status');
- try {const r=await fetch('data/news.json?ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('Няма файл с новини');const d=await r.json();grid.replaceChildren();
- for(const n of (d.items||[])){const card=document.createElement('article');card.className='card';const tag=document.createElement('span');tag.className='tag';tag.textContent='HYPEX · Fortnite';const title=document.createElement('h3');title.textContent=n.title_bg||n.title;const desc=document.createElement('p');desc.textContent=n.summary_bg||n.summary||'';const link=document.createElement('a');link.href=n.url;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Оригинална публикация ↗';card.append(tag,title,desc,link);grid.append(card)}
- status.textContent=(d.items||[]).length?'Последна успешна проверка: '+(d.updated_at||'неизвестна'):'Все още няма извлечени новини. Източникът може да е временно недостъпен.';
- }catch(e){status.textContent='Все още няма публикувани автоматични новини. Стартирай GitHub Actions след качване на сайта.'}
-})();
+  <div class="hero" id="home">
+    <div>
+      <div class="eyebrow">WELCOME TO THE GAME</div>
+      <h1>LEVEL UP<br>YOUR GAME.</h1>
+      <p>
+        Твоето място за гейминг, любими заглавия,
+        Fortnite новини и общност.
+        Играта започва тук.
+      </p>
+      <a class="btn" href="#news">Виж Fortnite новините →</a>
+    </div>
+  </div>
+
+  <section id="games">
+    <h2>🎮 Популярни игри</h2>
+    <p class="subtitle">Игри, които следим и обичаме.</p>
+    <div class="grid">
+      <article class="card">
+        <div class="emoji">🏆</div>
+        <h3>Fortnite</h3>
+        <p>Битки, сезони, предизвикателства и събития.</p>
+      </article>
+      <article class="card">
+        <div class="emoji">🏎️</div>
+        <h3>Forza Horizon</h3>
+        <p>Скорост, автомобили и свободно шофиране.</p>
+      </article>
+      <article class="card">
+        <div class="emoji">🌊</div>
+        <h3>Subnautica</h3>
+        <p>Подводни приключения, изследване и оцеляване.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="news">
+    <h2>📰 Последни Fortnite новини</h2>
+    <p class="subtitle">
+      Автоматично събирани новини от Fortnite,
+      преведени на български.
+    </p>
+    <p id="news-status" aria-live="polite">
+      Зареждане на новини...
+    </p>
+    <div class="grid" id="news-grid"></div>
+    <p style="margin-top:24px">
+      Източник:
+      <a class="source-link"
+         href="https://www.fortnite.com/news"
+         target="_blank"
+         rel="noopener noreferrer">
+        Fortnite / Epic Games ↗
+      </a>
+    </p>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <h2>🚀 Присъедини се към общността</h2>
+      <p>
+        Скоро тук ще добавим Discord,
+        YouTube и социални мрежи.
+      </p>
+      <a class="btn" href="#contact" id="contactButton">
+        Свържи се с нас
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> VANKATA GAMING.
+  Made for gamers.
+</footer>
+
+<script>
+document.getElementById('year').textContent =
+  new Date().getFullYear();
+
+document.getElementById('contactButton')
+  .addEventListener('click', function(event) {
+    event.preventDefault();
+    alert('Скоро ще добавим Discord или имейл за контакт.');
+  });
+
+async function loadNews() {
+  const grid = document.getElementById('news-grid');
+  const status = document.getElementById('news-status');
+
+  try {
+    const response = await fetch(
+      './news.json?ts=' + Date.now(),
+      { cache: 'no-store' }
+    );
+
+    if (!response.ok) {
+      throw new Error('Файлът с новини не е достъпен');
+    }
+
+    const news = await response.json();
+
+    if (!Array.isArray(news)) {
+      throw new Error('Невалиден формат на новините');
+    }
+
+    grid.replaceChildren();
+
+    news.forEach(item => {
+      const card = document.createElement('article');
+      card.className = 'card news-card';
+
+      if (item.image) {
+        const img = document.createElement('img');
+        img.src = item.image;
+        img.alt = item.title || 'Fortnite новина';
+        img.loading = 'lazy';
+        card.appendChild(img);
+      }
+
+      const content = document.createElement('div');
+      content.className = 'news-content';
+
+      const tag = document.createElement('span');
+      tag.className = 'tag';
+      tag.textContent = 'FORTNITE NEWS';
+
+      const title = document.createElement('h3');
+      title.textContent = item.title || 'Fortnite новина';
+
+      const desc = document.createElement('p');
+      desc.textContent = item.description || '';
+
+      const link = document.createElement('a');
+      link.className = 'news-link';
+      link.href = item.url || 'https://www.fortnite.com/news';
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Виж източника ↗';
+
+      content.append(tag, title, desc, link);
+      card.appendChild(content);
+      grid.appendChild(card);
+    });
+
+    status.textContent = news.length
+      ? '🎮 Заредени Fortnite новини: ' + news.length
+      : 'Все още няма публикувани новини.';
+
+  } catch (error) {
+    status.textContent =
+      'Новините временно не са достъпни.';
+    console.error('Грешка при зареждане:', error);
+  }
+}
+
+loadNews();
 </script>
-</body></html>
+</body>
+</html>
