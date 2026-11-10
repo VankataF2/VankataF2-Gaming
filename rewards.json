@@ -1,5 +1,6 @@
+
 {
-  "updated_at": "2026-11-10T03:37:00.115572+00:00",
+  "updated_at": "2026-11-10",
   "current_week": 2,
   "weeks": [
     {
@@ -8,22 +9,16 @@
       "status": "archive",
       "rewards": [
         {
-          "name": "Golden Skin",
+          "name": "Solid Gold Rugahand",
           "category": "Скин",
-          "chance": null,
-          "verified": false
+          "chance": 1562500,
+          "verified": true
         },
         {
-          "name": "Pirate Shop Access",
-          "category": "Специална награда",
-          "chance": null,
-          "verified": false
-        },
-        {
-          "name": "G-Class",
+          "name": "Mercedes-AMG G 63",
           "category": "Автомобил",
-          "chance": null,
-          "verified": false
+          "chance": 7813,
+          "verified": true
         }
       ]
     },
@@ -31,7 +26,74 @@
       "week": 2,
       "name": "Седмица 2",
       "status": "current",
-      "rewards": []
+      "rewards": [
+        {
+          "name": "Solid Gold Lil Uzi Vert",
+          "category": "Скин",
+          "chance": 1562500,
+          "verified": true
+        },
+        {
+          "name": "Pirate Shop Access",
+          "category": "Специална награда",
+          "chance": 137500,
+          "verified": true
+        },
+        {
+          "name": "Cadillac CT5-V Blackwing",
+          "category": "Автомобил",
+          "chance": 7813,
+          "verified": true
+        },
+        {
+          "name": "Diamond and Gold",
+          "category": "Back Bling",
+          "chance": 568,
+          "verified": true
+        },
+        {
+          "name": "London",
+          "category": "Jam Track",
+          "chance": 391,
+          "verified": true
+        },
+        {
+          "name": "So Kawaii",
+          "category": "Loading Screen",
+          "chance": 272,
+          "verified": true
+        },
+        {
+          "name": "Extraction Accelerator",
+          "category": "Gizmo",
+          "chance": 127,
+          "verified": true
+        },
+        {
+          "name": "Portable Extractor",
+          "category": "Gizmo",
+          "chance": 127,
+          "verified": true
+        },
+        {
+          "name": "Golden Firework",
+          "category": "Gizmo",
+          "chance": 127,
+          "verified": true
+        },
+        {
+          "name": "Sprite Locator",
+          "category": "Gizmo",
+          "chance": 127,
+          "verified": true
+        },
+        {
+          "name": "Lucky Locator",
+          "category": "Gizmo",
+          "chance": 127,
+          "verified": true
+        }
+      ]
     }
   ]
 }
