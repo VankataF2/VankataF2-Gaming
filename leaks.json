@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-11T00:22:42.434191+00:00",
+  "updated_at": "2026-11-11T06:53:45.694412+00:00",
   "items": [
     {
       "id": "d25f273977ae0b99",
@@ -387,6 +387,16 @@
       "source": "Fortnite Datamining",
       "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
       "date": "Tue, 10 Nov 2026 23:52:00 GMT",
+      "type": "datamining",
+      "label": "Открита промяна в играта",
+      "verified": false
+    },
+    {
+      "id": "8aba7c81fd6b80b9",
+      "title": "Item Shop, Banners - +44 new (Caliper, Celebrate Me, J Balvin, Mega Man X, Magnus, +39 more) - -43 removed",
+      "source": "Fortnite Datamining",
+      "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
+      "date": "Wed, 11 Nov 2026 04:25:00 GMT",
       "type": "datamining",
       "label": "Открита промяна в играта",
       "verified": false
