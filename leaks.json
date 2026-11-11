@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-10T19:32:36.750815+00:00",
+  "updated_at": "2026-11-11T00:22:42.434191+00:00",
   "items": [
     {
       "id": "d25f273977ae0b99",
@@ -377,6 +377,16 @@
       "source": "Fortnite Datamining",
       "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
       "date": "Sun, 01 Nov 2026 04:04:00 GMT",
+      "type": "datamining",
+      "label": "Открита промяна в играта",
+      "verified": false
+    },
+    {
+      "id": "e4d4b8ced23a91d0",
+      "title": "Item Shop, Banners, Epic Content Pages",
+      "source": "Fortnite Datamining",
+      "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
+      "date": "Tue, 10 Nov 2026 23:52:00 GMT",
       "type": "datamining",
       "label": "Открита промяна в играта",
       "verified": false
