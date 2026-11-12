@@ -3,8 +3,8 @@
 <html lang="bg">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="VANKATA GAMING - Fortnite новини, магазин, статистики, награди и предизвикателства.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="VANKATA GAMING - Fortnite новини, статистики, награди и предизвикателства.">
 <title>VANKATA GAMING | Fortnite</title>
 
 <style>
@@ -16,7 +16,6 @@
   --text:#f6f6ff;
   --muted:#b2b7cc;
 }
-
 * {box-sizing:border-box}
 html {scroll-behavior:smooth}
 body {
@@ -37,25 +36,32 @@ header {
 nav {
   max-width:1120px;
   margin:auto;
-  padding:20px;
+  padding:18px 20px;
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:20px;
 }
 .logo {
+  font-size:21px;
   font-weight:900;
   letter-spacing:1px;
-  font-size:21px;
 }
 .logo span {color:var(--cyan)}
-.links {
-  display:flex;
-  gap:18px;
-  flex-wrap:wrap;
-  color:var(--muted);
+
+.sac-code {
+  font-size:clamp(20px,3vw,33px);
+  font-weight:900;
+  letter-spacing:2px;
+  text-align:center;
+  background:linear-gradient(90deg,#fff,#a67cff,#29e0e7);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  text-shadow:0 0 30px #9560ff45;
 }
-.links a:hover {color:var(--cyan)}
+
+/* НАЧАЛНА СТРАНИЦА */
 
 .hero {
   min-height:520px;
@@ -94,23 +100,17 @@ nav {
 .btn {
   display:inline-block;
   margin:12px 7px;
-  background:linear-gradient(120deg,var(--purple),#5c56fa);
   padding:15px 27px;
   border-radius:12px;
   font-weight:bold;
+  background:linear-gradient(120deg,var(--purple),#5c56fa);
   box-shadow:0 9px 35px #8254ff45;
   transition:transform .2s;
 }
 .btn:hover {transform:translateY(-3px)}
-.btn-shop {
-  background:linear-gradient(120deg,#13b9d6,#3465ed);
-}
-.btn-free {
-  background:linear-gradient(120deg,#16a879,#087e9d);
-}
-.btn-wheel {
-  background:linear-gradient(120deg,#ff9b35,#e34c8c,#8559f8);
-}
+.btn-shop {background:linear-gradient(120deg,#13b9d6,#3465ed)}
+.btn-free {background:linear-gradient(120deg,#16a879,#087e9d)}
+.btn-wheel {background:linear-gradient(120deg,#ff9b35,#e34c8c,#8559f8)}
 
 section {
   max-width:1120px;
@@ -145,7 +145,7 @@ h2 {font-size:34px;margin:0 0 12px}
 .card h3 {font-size:23px;margin:22px 0 10px}
 .card p {color:var(--muted);line-height:1.6}
 
-/* МАЛКАТА FORTNITE КАРТА */
+/* FORTNITE КАРТА */
 
 .fortnite-card {
   position:relative;
@@ -203,7 +203,7 @@ h2 {font-size:34px;margin:0 0 12px}
 }
 .explore-button:hover {filter:brightness(1.2)}
 
-/* РАЗГЪВАЩО СЕ FORTNITE МЕНЮ */
+/* FORTNITE МЕНЮ */
 
 .fortnite-menu {
   margin-top:22px;
@@ -218,14 +218,8 @@ h2 {font-size:34px;margin:0 0 12px}
   from {opacity:0;transform:translateY(-12px)}
   to {opacity:1;transform:translateY(0)}
 }
-.fortnite-menu h3 {
-  font-size:25px;
-  margin:0 0 8px;
-}
-.fortnite-menu > p {
-  color:var(--muted);
-  margin:0 0 22px;
-}
+.fortnite-menu h3 {font-size:25px;margin:0 0 8px}
+.fortnite-menu > p {color:var(--muted);margin:0 0 22px}
 .fortnite-options {
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
@@ -247,10 +241,7 @@ h2 {font-size:34px;margin:0 0 12px}
   background:#25254a;
 }
 .option-icon {font-size:27px}
-.option-title {
-  font-size:17px;
-  font-weight:bold;
-}
+.option-title {font-size:17px;font-weight:bold}
 .option-desc {
   color:var(--muted);
   font-size:13px;
@@ -310,16 +301,22 @@ footer {
   border-top:1px solid #292e43;
 }
 
+/* ТЕЛЕФОНИ */
+
 @media(max-width:900px) {
   .grid {grid-template-columns:repeat(2,minmax(0,1fr))}
   .fortnite-options {grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:700px) {
+  nav {
+    padding:17px 12px;
+    flex-direction:column;
+    text-align:center;
+  }
+  .logo {font-size:18px}
+  .sac-code {font-size:23px}
   .grid {grid-template-columns:1fr}
   .fortnite-options {grid-template-columns:1fr}
-  nav {padding:17px 12px;flex-wrap:wrap}
-  .links {gap:12px;font-size:13px}
-  .logo {font-size:16px}
   .hero {min-height:450px}
   section {padding:48px 18px}
   .fortnite-menu {padding:17px}
@@ -330,24 +327,15 @@ footer {
 <body>
 
 <header>
-<nav>
-  <a href="#home" class="logo">
-    ⚡ VANKATA <span>GAMING</span>
-  </a>
+  <nav>
+    <a href="#home" class="logo">
+      ⚡ VANKATA <span>GAMING</span>
+    </a>
 
-  <div class="links">
-    <a href="#games">🎮 Игри</a>
-    <a href="#news">📰 Новини</a>
-    <a href="shop.html">🛒 Item Shop</a>
-    <a href="items.html">🔍 Item Search</a>
-    <a href="stats.html">📊 Player Stats</a>
-    <a href="wheel.html">🎡 Challenge Wheel</a>
-    <a href="rewards.html">🎁 Rewards</a>
-    <a href="free-rewards.html">🎁 Free Rewards</a>
-    <a href="leaks.html">🔥 Leaks</a>
-    <a href="#contact">📩 Контакти</a>
-  </div>
-</nav>
+    <div class="sac-code">
+      SAC-IVAKA4323
+    </div>
+  </nav>
 </header>
 
 <main>
@@ -368,29 +356,12 @@ footer {
       Играта започва тук.
     </p>
 
-    <a class="btn" href="#news">
-      📰 Fortnite новини
-    </a>
-
-    <a class="btn btn-shop" href="shop.html">
-      🛒 Отвори Item Shop
-    </a>
-
-    <a class="btn" href="items.html">
-      🔍 Търси предмет
-    </a>
-
-    <a class="btn btn-free" href="free-rewards.html">
-      🎁 Free Rewards
-    </a>
-
-    <a class="btn btn-wheel" href="wheel.html">
-      🎡 Challenge Wheel
-    </a>
-
-    <a class="btn" href="stats.html">
-      📊 Player Stats
-    </a>
+    <a class="btn" href="#news">📰 Fortnite новини</a>
+    <a class="btn btn-shop" href="shop.html">🛒 Отвори Item Shop</a>
+    <a class="btn" href="items.html">🔍 Търси предмет</a>
+    <a class="btn btn-free" href="free-rewards.html">🎁 Free Rewards</a>
+    <a class="btn btn-wheel" href="wheel.html">🎡 Challenge Wheel</a>
+    <a class="btn" href="stats.html">📊 Player Stats</a>
   </div>
 </div>
 
@@ -398,19 +369,12 @@ footer {
 
 <section id="games">
   <h2>🎮 Популярни игри</h2>
-
-  <p class="subtitle">
-    Игри, които следим и обичаме.
-  </p>
+  <p class="subtitle">Игри, които следим и обичаме.</p>
 
   <div class="grid">
 
     <article class="card fortnite-card">
-      <img
-        src="image.png"
-        alt="Fortnite Battle Royale"
-        loading="lazy"
-      >
+      <img src="image.png" alt="Fortnite Battle Royale" loading="lazy">
 
       <div class="fortnite-card-content">
         <h3>FORTNITE</h3>
@@ -435,97 +399,71 @@ footer {
     <article class="card">
       <div class="emoji">🏎️</div>
       <h3>Forza Horizon</h3>
-      <p>
-        Скорост, автомобили
-        и свободно шофиране.
-      </p>
+      <p>Скорост, автомобили и свободно шофиране.</p>
     </article>
 
     <article class="card">
       <div class="emoji">🌊</div>
       <h3>Subnautica</h3>
-      <p>
-        Подводни приключения,
-        изследване и оцеляване.
-      </p>
+      <p>Подводни приключения, изследване и оцеляване.</p>
     </article>
 
   </div>
 
-  <!-- FORTNITE МЕНЮ -->
+  <!-- РАЗГЪВАЩО СЕ МЕНЮ -->
 
   <div id="fortniteMenu" class="fortnite-menu" hidden>
-
     <h3>🎮 FORTNITE MENU</h3>
-
-    <p>
-      Избери какво искаш да разгледаш.
-    </p>
+    <p>Избери какво искаш да разгледаш.</p>
 
     <div class="fortnite-options">
 
       <a href="shop.html">
         <span class="option-icon">🛒</span>
         <span class="option-title">Item Shop</span>
-        <span class="option-desc">
-          Актуални скинове и цени във V-Bucks.
-        </span>
+        <span class="option-desc">Актуални скинове и цени във V-Bucks.</span>
       </a>
 
       <a href="items.html">
         <span class="option-icon">🔍</span>
         <span class="option-title">Item Search</span>
-        <span class="option-desc">
-          Търсене на Fortnite предмети.
-        </span>
+        <span class="option-desc">Търсене на Fortnite предмети.</span>
       </a>
 
       <a href="stats.html">
         <span class="option-icon">📊</span>
         <span class="option-title">Player Stats</span>
-        <span class="option-desc">
-          Победи, убийства, K/D и статистики.
-        </span>
+        <span class="option-desc">Победи, убийства, K/D и статистики.</span>
       </a>
 
       <a href="wheel.html">
         <span class="option-icon">🎡</span>
         <span class="option-title">Challenge Wheel</span>
-        <span class="option-desc">
-          Завърти колелата за предизвикателство.
-        </span>
+        <span class="option-desc">Завърти колелата за предизвикателство.</span>
       </a>
 
       <a href="rewards.html">
         <span class="option-icon">🏆</span>
         <span class="option-title">Weekly Rewards</span>
-        <span class="option-desc">
-          Седмични награди и шансове.
-        </span>
+        <span class="option-desc">Седмични награди и шансове.</span>
       </a>
 
       <a href="free-rewards.html">
         <span class="option-icon">🎁</span>
         <span class="option-title">Free Rewards</span>
-        <span class="option-desc">
-          Безплатни Fortnite награди.
-        </span>
+        <span class="option-desc">Безплатни Fortnite награди.</span>
       </a>
 
       <a href="leaks.html">
         <span class="option-icon">🔥</span>
         <span class="option-title">Fortnite Leaks</span>
-        <span class="option-desc">
-          Слухове и предстоящи предмети.
-        </span>
+        <span class="option-desc">Слухове и предстоящи предмети.</span>
       </a>
 
       <a href="#news">
         <span class="option-icon">📰</span>
         <span class="option-title">Fortnite News</span>
-        <span class="option-desc">
-          Последните Fortnite новини.
-        </span>
+        <span class="option-desc">Последните Fortnite новини.</span>
       </a>
 
     </div>
@@ -565,7 +503,6 @@ footer {
 
 <section id="contact">
   <div class="contact">
-
     <h2>🚀 Присъедини се към общността</h2>
 
     <p>
@@ -576,7 +513,6 @@ footer {
     <a class="btn" href="#contact" id="contactButton">
       Свържи се с нас
     </a>
-
   </div>
 </section>
 
@@ -590,16 +526,13 @@ footer {
 <script>
 'use strict';
 
+// ГОДИНА
 document.getElementById('year').textContent =
   new Date().getFullYear();
 
 // FORTNITE МЕНЮ
-
-const exploreButton =
-  document.getElementById('exploreFortnite');
-
-const fortniteMenu =
-  document.getElementById('fortniteMenu');
+const exploreButton = document.getElementById('exploreFortnite');
+const fortniteMenu = document.getElementById('fortniteMenu');
 
 exploreButton.addEventListener('click', () => {
   const willOpen = fortniteMenu.hidden;
@@ -624,15 +557,13 @@ exploreButton.addEventListener('click', () => {
 });
 
 // КОНТАКТИ
-
 document.getElementById('contactButton')
   .addEventListener('click', function(event) {
     event.preventDefault();
     alert('Скоро ще добавим Discord или имейл за контакт.');
   });
 
-// АВТОМАТИЧНИ FORTNITE НОВИНИ
-
+// FORTNITE НОВИНИ
 async function loadNews() {
   const grid = document.getElementById('news-grid');
   const status = document.getElementById('news-status');
@@ -697,9 +628,8 @@ async function loadNews() {
       : 'Все още няма публикувани новини.';
 
   } catch (error) {
-    status.textContent =
-      'Новините временно не са достъпни.';
-    console.error('Грешка при зареждане:', error);
+    status.textContent = 'Новините временно не са достъпни.';
+    console.error('Грешка при зареждане:',error);
   }
 }
 
