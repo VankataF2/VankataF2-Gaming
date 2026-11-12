@@ -1,1 +1,187 @@
 
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Rewards | VANKATA GAMING</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b1020;color:#fff;font-family:Arial,sans-serif}
+header{text-align:center;padding:35px 16px;background:#151d38;border-bottom:2px solid #8055ff}
+h1{margin:0 0 12px;font-size:32px}
+a{color:#b9a6ff}
+main{max-width:1150px;margin:auto;padding:25px 16px}
+.subtitle{color:#aebbd3}
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
+input,select{background:#1b2745;color:#fff;border:1px solid #425177;border-radius:10px;padding:12px;font-size:15px}
+input{flex:1;min-width:200px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:#17223b;border:1px solid #344260;border-radius:16px;padding:20px}
+.card h2{font-size:21px;margin:12px 0}
+.tag{display:inline-block;background:#194c39;color:#a7ffd4;padding:7px 10px;border-radius:8px;font-size:12px;font-weight:bold}
+.tag.paid{background:#553b20;color:#ffe1a4}
+.tag.expired{background:#542a36;color:#ffb9c6}
+.method{line-height:1.6;color:#d8e1f4}
+.meta{font-size:13px;color:#aebbd3}
+.source{display:inline-block;margin-top:12px;padding:11px 14px;background:#7652e8;border-radius:9px;color:white;text-decoration:none}
+.source:hover{background:#926dff}
+.note{font-size:13px;color:#aebbd3}
+</style>
+</head>
+<body>
+<header>
+  <h1>🎁 Fortnite Free Rewards</h1>
+  <p>Безплатни скинове, куестове и награди</p>
+  <a href="./index.html">← Начална страница</a>
+</header>
+
+<main>
+  <p class="subtitle">
+    Открий как да вземеш наградите и кога изтичат.
+    Наличността може да се променя.
+  </p>
+
+  <div class="controls">
+    <input id="search" placeholder="🔍 Търси награда...">
+    <select id="filter">
+      <option value="all">Всички награди</option>
+      <option value="active">Активни</option>
+      <option value="expired">Изтекли</option>
+      <option value="free">Без покупка</option>
+    </select>
+  </div>
+
+  <p id="status">Зареждане...</p>
+  <div id="grid" class="grid"></div>
+  <p class="note">
+    Данните са информационни и не гарантират,
+    че всяка оферта е налична за всеки акаунт.
+  </p>
+</main>
+
+<script>
+let rewards = [];
+const grid = document.getElementById("grid");
+const status = document.getElementById("status");
+const search = document.getElementById("search");
+const filter = document.getElementById("filter");
+
+function expired(reward) {
+  if (!reward.end_date) return false;
+  const end = new Date(reward.end_date + "T23:59:59");
+  return Date.now() > end.getTime();
+}
+
+function render() {
+  const term = search.value.toLocaleLowerCase("bg");
+  const mode = filter.value;
+  grid.replaceChildren();
+
+  const shown = rewards.filter(reward => {
+    const text = (
+      reward.name + " " +
+      reward.category + " " +
+      reward.method
+    ).toLocaleLowerCase("bg");
+
+    if (!text.includes(term)) return false;
+    if (mode === "active" && expired(reward)) return false;
+    if (mode === "expired" && !expired(reward)) return false;
+    if (mode === "free" && reward.cost !== "free") return false;
+    return true;
+  });
+
+  status.textContent = "Показани награди: " + shown.length;
+
+  if (!shown.length) {
+    const empty = document.createElement("p");
+    empty.textContent = "Няма намерени награди.";
+    grid.appendChild(empty);
+    return;
+  }
+
+  shown.forEach(reward => {
+    const card = document.createElement("article");
+    card.className = "card";
+
+    const tag = document.createElement("span");
+    tag.className = "tag";
+
+    if (expired(reward)) {
+      tag.classList.add("expired");
+      tag.textContent = "Изтекла";
+    } else if (reward.cost === "purchase") {
+      tag.classList.add("paid");
+      tag.textContent = "Изисква покупка";
+    } else {
+      tag.textContent = "Без покупка";
+    }
+
+    const title = document.createElement("h2");
+    title.textContent = reward.name;
+
+    const category = document.createElement("p");
+    category.className = "meta";
+    category.textContent = "Категория: " + reward.category;
+
+    const method = document.createElement("p");
+    method.className = "method";
+    method.textContent = reward.method;
+
+    const date = document.createElement("p");
+    date.className = "meta";
+    date.textContent = reward.end_date
+      ? "Край: " + new Date(
+          reward.end_date + "T12:00:00"
+        ).toLocaleDateString("bg-BG")
+      : "Край: не е обявен";
+
+    card.append(tag,title,category,method,date);
+
+    if (
+      typeof reward.source === "string" &&
+      reward.source.startsWith("https://")
+    ) {
+      const link = document.createElement("a");
+      link.className = "source";
+      link.href = reward.source;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = "🔗 Как се получава";
+      card.appendChild(link);
+    }
+
+    grid.appendChild(card);
+  });
+}
+
+async function loadRewards() {
+  try {
+    const response = await fetch(
+      "./free-rewards.json?t=" + Date.now(),
+      {cache:"no-store"}
+    );
+    if (!response.ok) throw new Error("HTTP " + response.status);
+
+    const data = await response.json();
+    if (!Array.isArray(data.rewards)) {
+      throw new Error("Невалиден JSON");
+    }
+
+    rewards = data.rewards;
+    render();
+  } catch(error) {
+    status.textContent = "❌ Грешка при зареждане.";
+    console.error(error);
+  }
+}
+
+search.addEventListener("input",render);
+filter.addEventListener("change",render);
+loadRewards();
+setInterval(loadRewards,5*60*1000);
+</script>
+</body>
+</html>
+
