@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="VANKATA GAMING - Fortnite новини, Item Shop, Item Search, Rewards, Leaks и Challenge Wheel.">
+<meta name="description" content="VANKATA GAMING - Fortnite новини, Item Shop, Player Stats, Challenge Wheel, Rewards и Leaks.">
 <title>VANKATA GAMING | Fortnite</title>
 
 <style>
@@ -17,9 +17,8 @@
   --muted:#b2b7cc;
 }
 
-* { box-sizing:border-box; }
-
-html { scroll-behavior:smooth; }
+* {box-sizing:border-box}
+html {scroll-behavior:smooth}
 
 body {
   margin:0;
@@ -28,10 +27,7 @@ body {
   font-family:Arial,Helvetica,sans-serif;
 }
 
-a {
-  color:inherit;
-  text-decoration:none;
-}
+a {color:inherit;text-decoration:none}
 
 header {
   position:sticky;
@@ -57,7 +53,7 @@ nav {
   font-size:21px;
 }
 
-.logo span { color:var(--cyan); }
+.logo span {color:var(--cyan)}
 
 .links {
   display:flex;
@@ -66,22 +62,10 @@ nav {
   flex-wrap:wrap;
 }
 
-.links a:hover { color:var(--cyan); }
-
-.links .shop-link {
-  color:var(--cyan);
-  font-weight:bold;
-}
-
-.links .search-link {
-  color:#c9b1ff;
-  font-weight:bold;
-}
-
-.links .wheel-link {
-  color:#ffe69b;
-  font-weight:bold;
-}
+.links a:hover {color:var(--cyan)}
+.links .shop-link {color:var(--cyan);font-weight:bold}
+.links .search-link {color:#c9b1ff;font-weight:bold}
+.links .wheel-link {color:#ffe69b;font-weight:bold}
 
 .hero {
   min-height:520px;
@@ -132,7 +116,7 @@ nav {
   transition:transform .2s;
 }
 
-.btn:hover { transform:translateY(-3px); }
+.btn:hover {transform:translateY(-3px)}
 
 .btn-shop {
   background:linear-gradient(120deg,#13b9d6,#3465ed);
@@ -153,10 +137,7 @@ section {
   padding:68px 20px;
 }
 
-h2 {
-  font-size:34px;
-  margin:0 0 12px;
-}
+h2 {font-size:34px;margin:0 0 12px}
 
 .subtitle {
   color:var(--muted);
@@ -184,17 +165,148 @@ h2 {
   border-color:var(--purple);
 }
 
-.card .emoji { font-size:43px; }
+.card .emoji {font-size:43px}
+.card h3 {font-size:23px;margin:22px 0 10px}
+.card p {color:var(--muted);line-height:1.6}
 
-.card h3 {
+/* FORTNITE КАРТА */
+
+.fortnite-card {
+  position:relative;
+  padding:0;
+  overflow:hidden;
+  min-height:210px;
+  isolation:isolate;
+  background:#14192b;
+}
+
+.fortnite-card img {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
+}
+
+.fortnite-card::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(4,7,19,.96) 0%,
+    rgba(4,7,19,.55) 48%,
+    rgba(4,7,19,.08) 100%
+  );
+  z-index:-1;
+}
+
+.fortnite-card-content {
+  min-height:210px;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:flex-end;
+}
+
+.fortnite-card h3 {
   font-size:23px;
-  margin:22px 0 10px;
+  margin:0 0 8px;
+  text-shadow:0 2px 8px #000;
 }
 
-.card p {
-  color:var(--muted);
-  line-height:1.6;
+.fortnite-card p {
+  color:#f0efff;
+  margin:0 0 14px;
+  font-size:14px;
+  text-shadow:0 2px 6px #000;
 }
+
+.explore-button {
+  border:0;
+  border-radius:11px;
+  padding:12px 22px;
+  color:white;
+  background:linear-gradient(120deg,#9560ff,#5555ee);
+  font-size:15px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 6px 20px #0007;
+  transition:transform .2s,filter .2s;
+}
+
+.explore-button:hover {
+  transform:translateY(-2px);
+  filter:brightness(1.15);
+}
+
+/* РАЗГЪВАЩО СЕ МЕНЮ */
+
+.fortnite-menu {
+  margin-top:22px;
+  padding:24px;
+  border:1px solid #7553d4;
+  border-radius:20px;
+  background:linear-gradient(145deg,#1d2040,#111627);
+  animation:menuAppear .25s ease-out;
+}
+
+.fortnite-menu[hidden] {display:none}
+
+@keyframes menuAppear {
+  from {opacity:0;transform:translateY(-12px)}
+  to {opacity:1;transform:translateY(0)}
+}
+
+.fortnite-menu h3 {
+  margin:0 0 8px;
+  font-size:25px;
+}
+
+.fortnite-menu > p {
+  margin:0 0 22px;
+  color:var(--muted);
+}
+
+.fortnite-options {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+
+.fortnite-options a {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  padding:20px;
+  background:#171d34;
+  border:1px solid #343b5c;
+  border-radius:14px;
+  transition:transform .2s,border-color .2s,background .2s;
+}
+
+.fortnite-options a:hover {
+  transform:translateY(-4px);
+  border-color:var(--cyan);
+  background:#25254a;
+}
+
+.option-icon {font-size:27px}
+
+.option-title {
+  font-size:17px;
+  font-weight:bold;
+}
+
+.option-desc {
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+}
+
+/* НОВИНИ */
 
 .tag {
   color:var(--cyan);
@@ -203,10 +315,7 @@ h2 {
   letter-spacing:1px;
 }
 
-.news-card {
-  padding:0;
-  overflow:hidden;
-}
+.news-card {padding:0;overflow:hidden}
 
 .news-card img {
   width:100%;
@@ -216,7 +325,7 @@ h2 {
   background:#222a43;
 }
 
-.news-content { padding:22px; }
+.news-content {padding:22px}
 
 .news-content h3 {
   font-size:21px;
@@ -238,12 +347,14 @@ h2 {
   margin-top:12px;
 }
 
-.news-link:hover { text-decoration:underline; }
+.news-link:hover {text-decoration:underline}
 
 #news-status {
   color:var(--muted);
   margin-bottom:24px;
 }
+
+/* ОСТАНАЛИ СЕКЦИИ */
 
 .shop-banner {
   background:linear-gradient(125deg,#30205c,#122b51);
@@ -263,26 +374,19 @@ h2 {
   border-color:#24c7a4;
 }
 
-.free-banner h2 { color:#b6ffe7; }
+.free-banner h2 {color:#b6ffe7}
 
 .search-banner {
   background:linear-gradient(125deg,#182b57,#30205c,#173c50);
   border-color:#29e0e7;
 }
 
-.search-banner h2 { color:#bcefff; }
-
-/* НОВО: FORTNITE CHALLENGE WHEEL */
+.search-banner h2 {color:#bcefff}
 
 .wheel-banner {
   position:relative;
   overflow:hidden;
-  background:linear-gradient(
-    125deg,
-    #42226b,
-    #25245d,
-    #183b56
-  );
+  background:linear-gradient(125deg,#42226b,#25245d,#183b56);
   border:2px solid #a57aff;
   border-radius:24px;
   text-align:center;
@@ -334,8 +438,6 @@ h2 {
   padding:18px 35px;
 }
 
-/* КОНТАКТИ */
-
 .contact {
   background:#12172b;
   border:1px solid #303654;
@@ -344,7 +446,7 @@ h2 {
   padding:55px 24px;
 }
 
-.contact p { color:var(--muted); }
+.contact p {color:var(--muted)}
 
 footer {
   text-align:center;
@@ -354,19 +456,21 @@ footer {
 }
 
 @media(max-width:900px) {
-  .grid {
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
+  .grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fortnite-options {grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
 @media(max-width:700px) {
-  .grid { grid-template-columns:1fr; }
-  nav { padding:17px 12px; flex-wrap:wrap; }
-  .links { gap:12px; font-size:13px; }
-  .logo { font-size:16px; }
-  .hero { min-height:450px; }
-  section { padding:48px 18px; }
-  .wheel-banner { padding:45px 18px; }
+  .grid {grid-template-columns:1fr}
+  .fortnite-options {grid-template-columns:1fr}
+  nav {padding:17px 12px;flex-wrap:wrap}
+  .links {gap:12px;font-size:13px}
+  .logo {font-size:16px}
+  .hero {min-height:450px}
+  section {padding:48px 18px}
+  .wheel-banner {padding:45px 18px}
+  .fortnite-menu {padding:17px}
+  .fortnite-card {min-height:210px}
 }
 </style>
 </head>
@@ -384,6 +488,7 @@ footer {
     <a href="#news">📰 Новини</a>
     <a href="shop.html" class="shop-link">🛒 Item Shop</a>
     <a href="items.html" class="search-link">🔍 Item Search</a>
+    <a href="stats.html" class="search-link">📊 Player Stats</a>
     <a href="wheel.html" class="wheel-link">🎡 Challenge Wheel</a>
     <a href="rewards.html">🎁 Rewards</a>
     <a href="free-rewards.html">🎁 Free Rewards</a>
@@ -406,8 +511,8 @@ footer {
     <p>
       Твоето място за Fortnite новини,
       актуалния Item Shop, търсене на предмети,
-      безплатни награди, предизвикателства
-      и гейминг общност.
+      безплатни награди, предизвикателства,
+      статистики и гейминг общност.
       Играта започва тук.
     </p>
 
@@ -430,10 +535,14 @@ footer {
     <a class="btn btn-wheel" href="wheel.html">
       🎡 Challenge Wheel
     </a>
+
+    <a class="btn" href="stats.html">
+      📊 Player Stats
+    </a>
   </div>
 </div>
 
-<!-- ИГРИ -->
+<!-- ПОПУЛЯРНИ ИГРИ -->
 
 <section id="games">
   <h2>🎮 Популярни игри</h2>
@@ -444,14 +553,36 @@ footer {
 
   <div class="grid">
 
-    <article class="card">
-      <div class="emoji">🏆</div>
-      <h3>Fortnite</h3>
-      <p>
-        Битки, сезони, предизвикателства
-        и събития.
-      </p>
+    <!-- FORTNITE: СЪЩИЯТ РАЗМЕР КАТО ДРУГИТЕ КАРТИ -->
+
+    <article class="card fortnite-card">
+      <img
+        src="fortnite.jpg"
+        alt="Fortnite Battle Royale"
+        loading="lazy"
+      >
+
+      <div class="fortnite-card-content">
+        <h3>FORTNITE</h3>
+
+        <p>
+          Battle Royale, статистики,
+          награди и предизвикателства.
+        </p>
+
+        <button
+          class="explore-button"
+          id="exploreFortnite"
+          type="button"
+          aria-expanded="false"
+          aria-controls="fortniteMenu"
+        >
+          🎮 РАЗГЛЕДАЙ
+        </button>
+      </div>
     </article>
+
+    <!-- FORZA HORIZON -->
 
     <article class="card">
       <div class="emoji">🏎️</div>
@@ -461,6 +592,8 @@ footer {
         и свободно шофиране.
       </p>
     </article>
+
+    <!-- SUBNAUTICA -->
 
     <article class="card">
       <div class="emoji">🌊</div>
@@ -472,9 +605,87 @@ footer {
     </article>
 
   </div>
+
+  <!-- МЕНЮТО СЕ ПОЯВЯВА ПОД ТРИТЕ КАРТИ -->
+
+  <div id="fortniteMenu" class="fortnite-menu" hidden>
+
+    <h3>🎮 FORTNITE MENU</h3>
+    <p>
+      Избери какво искаш да разгледаш.
+    </p>
+
+    <div class="fortnite-options">
+
+      <a href="shop.html">
+        <span class="option-icon">🛒</span>
+        <span class="option-title">Item Shop</span>
+        <span class="option-desc">
+          Актуални скинове и цени във V-Bucks.
+        </span>
+      </a>
+
+      <a href="items.html">
+        <span class="option-icon">🔍</span>
+        <span class="option-title">Item Search</span>
+        <span class="option-desc">
+          Търсене на Fortnite козметични предмети.
+        </span>
+      </a>
+
+      <a href="stats.html">
+        <span class="option-icon">📊</span>
+        <span class="option-title">Player Stats</span>
+        <span class="option-desc">
+          Победи, убийства, K/D и статистики по nickname.
+        </span>
+      </a>
+
+      <a href="wheel.html">
+        <span class="option-icon">🎡</span>
+        <span class="option-title">Challenge Wheel</span>
+        <span class="option-desc">
+          Завърти колелата за Fortnite предизвикателство.
+        </span>
+      </a>
+
+      <a href="rewards.html">
+        <span class="option-icon">🏆</span>
+        <span class="option-title">Weekly Rewards</span>
+        <span class="option-desc">
+          Седмични награди и известни шансове.
+        </span>
+      </a>
+
+      <a href="free-rewards.html">
+        <span class="option-icon">🎁</span>
+        <span class="option-title">Free Rewards</span>
+        <span class="option-desc">
+          Безплатни Fortnite награди.
+        </span>
+      </a>
+
+      <a href="leaks.html">
+        <span class="option-icon">🔥</span>
+        <span class="option-title">Fortnite Leaks</span>
+        <span class="option-desc">
+          Слухове и предстоящи предмети.
+        </span>
+      </a>
+
+      <a href="#news">
+        <span class="option-icon">📰</span>
+        <span class="option-title">Fortnite News</span>
+        <span class="option-desc">
+          Последните Fortnite новини.
+        </span>
+      </a>
+
+    </div>
+  </div>
 </section>
 
-<!-- НОВО: CHALLENGE WHEEL -->
+<!-- CHALLENGE WHEEL -->
 
 <section id="fortnite-wheel">
   <div class="wheel-banner">
@@ -660,10 +871,42 @@ footer {
 </footer>
 
 <script>
+'use strict';
+
 // ГОДИНА
 
 document.getElementById('year').textContent =
   new Date().getFullYear();
+
+// РАЗГЪВАНЕ НА FORTNITE МЕНЮТО
+
+const exploreButton =
+  document.getElementById('exploreFortnite');
+
+const fortniteMenu =
+  document.getElementById('fortniteMenu');
+
+exploreButton.addEventListener('click', () => {
+  const willOpen = fortniteMenu.hidden;
+
+  fortniteMenu.hidden = !willOpen;
+
+  exploreButton.setAttribute(
+    'aria-expanded',
+    String(willOpen)
+  );
+
+  exploreButton.textContent = willOpen
+    ? '✕ ЗАТВОРИ'
+    : '🎮 РАЗГЛЕДАЙ';
+
+  if (willOpen) {
+    fortniteMenu.scrollIntoView({
+      behavior:'smooth',
+      block:'nearest'
+    });
+  }
+});
 
 // КОНТАКТИ
 
