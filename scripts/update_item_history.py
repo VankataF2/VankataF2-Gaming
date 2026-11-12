@@ -12,6 +12,7 @@ KEY = os.environ.get("ITEMSHOP_API_KEY", "")
 if not KEY:
     raise RuntimeError("ITEMSHOP_API_KEY is missing")
 
+
 def get_json(path):
     url = BASE + path
     headers = {
@@ -25,6 +26,7 @@ def get_json(path):
             request = urllib.request.Request(
                 url, headers=headers
             )
+
             with urllib.request.urlopen(
                 request, timeout=40
             ) as response:
@@ -41,6 +43,27 @@ def get_json(path):
 
     raise RuntimeError("API request failed")
 
+
+def get_shop_date(data, shop, fallback):
+    return str(
+        data.get("shopDate")
+        or shop.get("shopDate")
+        or fallback
+    )
+
+
+def get_price(item):
+    price_data = item.get("price") or {}
+
+    if not isinstance(price_data, dict):
+        return None, None
+
+    return (
+        price_data.get("amount"),
+        price_data.get("currency")
+    )
+
+
 print("Loading Fortnite shop history...")
 
 history = get_json("/history/fortnite")
@@ -49,7 +72,8 @@ dates = history.get("data", [])
 if not isinstance(dates, list):
     raise RuntimeError("Invalid history response")
 
-# Last 90 recorded shop rotations
+# Запазваме обхвата от 90 ротации.
+# Това не е пълният архив за всички години.
 dates = dates[:90]
 
 items = {}
@@ -67,11 +91,7 @@ for number, day in enumerate(dates, 1):
     if not isinstance(shop, dict):
         continue
 
-    shop_date = (
-        data.get("shopDate")
-        or shop.get("shopDate")
-        or day
-    )
+    shop_date = get_shop_date(data, shop, day)
 
     for section in shop.get("sections", []):
         if section.get("upcoming"):
@@ -79,12 +99,11 @@ for number, day in enumerate(dates, 1):
 
         for item in section.get("items", []):
             key = item.get("itemKey")
+
             if not key:
                 continue
 
-            price_data = item.get("price") or {}
-            amount = price_data.get("amount")
-            currency = price_data.get("currency")
+            price, currency = get_price(item)
 
             record = items.setdefault(key, {
                 "name": item.get("name", ""),
@@ -92,20 +111,46 @@ for number, day in enumerate(dates, 1):
                 "lastAppearance": None,
                 "price": None,
                 "currency": None,
+                "appearances": [],
                 "source": "itemshop.gg"
             })
 
-            current_date = record["lastAppearance"]
+            # Не дублираме появите в един и същи ден.
+            existing = next(
+                (
+                    appearance
+                    for appearance in record["appearances"]
+                    if appearance["date"] == shop_date
+                ),
+                None
+            )
 
-            if (
-                current_date is None
-                or shop_date > current_date
-            ):
-                record["lastAppearance"] = shop_date
-                record["price"] = amount
-                record["currency"] = currency
+            if existing is None:
+                record["appearances"].append({
+                    "date": shop_date,
+                    "price": price,
+                    "currency": currency
+                })
+            elif existing["price"] is None and price is not None:
+                existing["price"] = price
+                existing["currency"] = currency
 
     time.sleep(0.15)
+
+
+for record in items.values():
+    record["appearances"].sort(
+        key=lambda appearance: appearance["date"],
+        reverse=True
+    )
+
+    if record["appearances"]:
+        latest = record["appearances"][0]
+
+        record["lastAppearance"] = latest["date"]
+        record["price"] = latest["price"]
+        record["currency"] = latest["currency"]
+
 
 output = {
     "updatedAt": datetime.now(
@@ -117,7 +162,9 @@ output = {
 }
 
 with open(
-    "item-history.json", "w", encoding="utf-8"
+    "item-history.json",
+    "w",
+    encoding="utf-8"
 ) as file:
     json.dump(
         output,
@@ -127,4 +174,10 @@ with open(
     )
 
 print(f"Saved {len(items)} item records.")
-
+print(
+    "Saved appearances:",
+    sum(
+        len(item["appearances"])
+        for item in items.values()
+    )
+)
