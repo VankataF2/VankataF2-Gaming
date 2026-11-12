@@ -1,1 +1,487 @@
 
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Fortnite Player Stats - VANKATA GAMING">
+<title>Fortnite Player Stats | VANKATA GAMING</title>
+<style>
+:root {
+  color-scheme:dark;
+  --bg:#090b17;
+  --panel:#171e35;
+  --border:#394164;
+  --cyan:#29e0e7;
+  --purple:#9560ff;
+  --muted:#b8c3d7;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  background:radial-gradient(circle at top,#27214d,#090b17 65%);
+  color:white;
+  font-family:Arial,Helvetica,sans-serif;
+}
+header {
+  text-align:center;
+  background:#141a30;
+  padding:28px 16px;
+  border-bottom:1px solid var(--border);
+}
+header h1 {
+  font-size:clamp(27px,5vw,46px);
+  margin:15px 0;
+}
+header p {color:var(--muted)}
+a {color:var(--cyan);text-decoration:none}
+main {max-width:1120px;margin:auto;padding:30px 16px 70px}
+.search-panel {
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:28px;
+}
+.search-panel h2 {margin-top:0}
+.search-panel p {color:var(--muted)}
+.search-form {
+  display:grid;
+  grid-template-columns:minmax(0,2fr) 1fr 1fr auto;
+  gap:12px;
+  margin-top:22px;
+}
+input,select,button {
+  font:inherit;
+  border-radius:12px;
+  padding:14px;
+}
+input,select {
+  min-width:0;
+  background:#0c1224;
+  border:1px solid #445073;
+  color:white;
+}
+input:focus,select:focus {
+  outline:2px solid var(--cyan);
+}
+button {
+  border:0;
+  background:linear-gradient(120deg,#9560ff,#5555ee);
+  color:white;
+  font-weight:800;
+  cursor:pointer;
+}
+button:hover {filter:brightness(1.12)}
+button:disabled {opacity:.6;cursor:wait}
+#status {
+  min-height:25px;
+  margin-top:18px;
+  color:var(--muted);
+}
+#status.error {color:#ff9999}
+#status.success {color:#74e9bc}
+.profile {
+  margin-top:24px;
+  background:linear-gradient(120deg,#30205c,#17344d);
+  border:1px solid #7553d4;
+  border-radius:20px;
+  padding:26px;
+}
+.profile h2 {
+  margin:8px 0;
+  overflow-wrap:anywhere;
+}
+.profile p {color:#d1cdec}
+.tag {
+  color:var(--cyan);
+  font-size:12px;
+  letter-spacing:2px;
+  font-weight:bold;
+}
+.stats-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+.stat-card {
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:23px;
+  text-align:center;
+}
+.stat-icon {font-size:30px}
+.stat-value {
+  font-size:clamp(24px,4vw,38px);
+  font-weight:900;
+  color:var(--cyan);
+  margin:12px 0;
+  overflow-wrap:anywhere;
+}
+.stat-name {color:var(--muted);font-size:14px}
+.modes {
+  margin-top:28px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:24px;
+}
+.modes h2 {margin-top:0}
+.table-wrap {overflow-x:auto}
+table {
+  width:100%;
+  border-collapse:collapse;
+  min-width:530px;
+}
+th,td {
+  padding:14px 10px;
+  border-bottom:1px solid var(--border);
+  text-align:left;
+}
+th {color:var(--cyan)}
+td {color:#e2e6f5}
+.note {
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+  margin-top:20px;
+}
+footer {
+  text-align:center;
+  padding:28px;
+  color:#aeb8cc;
+}
+[hidden] {display:none!important}
+@media(max-width:800px) {
+  .search-form {grid-template-columns:1fr 1fr}
+  .search-form input {grid-column:1/-1}
+  .search-form button {grid-column:1/-1}
+  .stats-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:450px) {
+  .stats-grid {grid-template-columns:1fr 1fr;gap:10px}
+  .stat-card {padding:16px 8px}
+  .stat-value {font-size:25px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🎮 FORTNITE PLAYER STATS</h1>
+  <p>Провери статистиките на Fortnite играч по nickname</p>
+  <a href="./index.html">← VANKATA GAMING</a>
+</header>
+
+<main>
+  <section class="search-panel">
+    <h2>🔍 Намери играч</h2>
+    <p>Въведи Epic Games nickname и избери период.</p>
+
+    <form id="searchForm" class="search-form">
+      <input
+        id="nickname"
+        type="text"
+        placeholder="Epic Games nickname"
+        maxlength="32"
+        autocomplete="off"
+        required
+        aria-label="Epic Games nickname"
+      >
+
+      <select id="platform" aria-label="Платформа">
+        <option value="epic">Epic Games</option>
+        <option value="psn">PlayStation</option>
+        <option value="xbl">Xbox</option>
+      </select>
+
+      <select id="period" aria-label="Период">
+        <option value="lifetime">Всички сезони</option>
+        <option value="season">Текущ сезон</option>
+      </select>
+
+      <button id="searchButton" type="submit">
+        🔍 Търси
+      </button>
+    </form>
+
+    <p id="status" role="status" aria-live="polite">
+      Въведи nickname, за да започнеш.
+    </p>
+  </section>
+
+  <div id="results" hidden>
+    <section class="profile">
+      <span class="tag">FORTNITE BATTLE ROYALE</span>
+      <h2 id="playerName">—</h2>
+      <p id="playerInfo">—</p>
+    </section>
+
+    <div class="stats-grid">
+      <article class="stat-card">
+        <div class="stat-icon">🏆</div>
+        <div class="stat-value" id="wins">—</div>
+        <div class="stat-name">Победи</div>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-icon">🎯</div>
+        <div class="stat-value" id="kills">—</div>
+        <div class="stat-name">Убийства</div>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-icon">📊</div>
+        <div class="stat-value" id="kd">—</div>
+        <div class="stat-name">K/D</div>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-icon">🎮</div>
+        <div class="stat-value" id="matches">—</div>
+        <div class="stat-name">Изиграни мачове</div>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-icon">👑</div>
+        <div class="stat-value" id="winRate">—</div>
+        <div class="stat-name">Win Rate</div>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-icon">⏱️</div>
+        <div class="stat-value" id="playTime">—</div>
+        <div class="stat-name">Време в игра</div>
+      </article>
+    </div>
+
+    <section class="modes">
+      <h2>🎮 Статистики по режими</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Режим</th>
+              <th>Победи</th>
+              <th>Убийства</th>
+              <th>Мачове</th>
+              <th>K/D</th>
+              <th>Win Rate</th>
+            </tr>
+          </thead>
+          <tbody id="modesBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <p class="note">
+      Статистиките се предоставят от Fortnite-API.com.
+      Частни профили и някои режими може да нямат
+      достъпни данни. Това е неофициален фен сайт.
+    </p>
+  </div>
+</main>
+
+<footer>
+  VANKATA GAMING · Fortnite Player Stats
+</footer>
+
+<script>
+'use strict';
+
+// ПОСТАВИ ТУК ПУБЛИЧНИЯ URL НА CLOUDFLARE WORKER.
+// НЕ ПОСТАВЯЙ API КЛЮЧ ТУК!
+const WORKER_URL = 'PASTE_YOUR_WORKER_URL_HERE';
+
+const form = document.getElementById('searchForm');
+const statusEl = document.getElementById('status');
+const resultsEl = document.getElementById('results');
+const button = document.getElementById('searchButton');
+
+const formatter = new Intl.NumberFormat('bg-BG');
+
+function formatNumber(value) {
+  const n = Number(value);
+  return value === null ||
+    value === undefined ||
+    value === '' ||
+    !Number.isFinite(n)
+    ? '—'
+    : formatter.format(n);
+}
+
+function formatDecimal(value) {
+  const n = Number(value);
+  return value === null ||
+    value === undefined ||
+    value === '' ||
+    !Number.isFinite(n)
+    ? '—'
+    : n.toFixed(2);
+}
+
+function formatPercent(value) {
+  const formatted = formatDecimal(value);
+  return formatted === '—' ? '—' : formatted + '%';
+}
+
+function setText(id, value) {
+  document.getElementById(id).textContent = value;
+}
+
+function setStatus(message, type = '') {
+  statusEl.textContent = message;
+  statusEl.className = type;
+}
+
+function showMode(label, stats) {
+  const row = document.createElement('tr');
+  const values = [
+    label,
+    formatNumber(stats?.wins),
+    formatNumber(stats?.kills),
+    formatNumber(stats?.matches),
+    formatDecimal(stats?.kd),
+    formatPercent(stats?.winRate)
+  ];
+
+  for (const value of values) {
+    const cell = document.createElement('td');
+    cell.textContent = value;
+    row.appendChild(cell);
+  }
+
+  document.getElementById('modesBody').appendChild(row);
+}
+
+function displayStats(data, requestedName, period) {
+  const account = data.account || {};
+  const stats = data.stats || {};
+
+  // Fortnite-API BR v2: stats.all.overall
+  const all = stats.all || {};
+  const overall = all.overall || {};
+
+  const solo = all.solo || {};
+  const duo = all.duo || {};
+  const squad = all.squad || {};
+
+  setText('playerName', account.name || requestedName);
+
+  setText(
+    'playerInfo',
+    (period === 'season' ? 'Текущ сезон' : 'Всички сезони') +
+    ' · ' +
+    (account.name || requestedName)
+  );
+
+  setText('wins', formatNumber(overall.wins));
+  setText('kills', formatNumber(overall.kills));
+  setText('kd', formatDecimal(overall.kd));
+  setText('matches', formatNumber(overall.matches));
+  setText('winRate', formatPercent(overall.winRate));
+
+  const minutes = Number(overall.minutesPlayed);
+
+  setText(
+    'playTime',
+    Number.isFinite(minutes) &&
+    overall.minutesPlayed != null
+      ? formatNumber(Math.round(minutes / 60)) + ' ч.'
+      : '—'
+  );
+
+  const tbody = document.getElementById('modesBody');
+  tbody.replaceChildren();
+
+  showMode('Solo', solo);
+  showMode('Duo', duo);
+  showMode('Squad', squad);
+
+  resultsEl.hidden = false;
+}
+
+form.addEventListener('submit', async event => {
+  event.preventDefault();
+
+  const name = document.getElementById('nickname').value.trim();
+  const platform = document.getElementById('platform').value;
+  const period = document.getElementById('period').value;
+
+  if (!name) return;
+
+  resultsEl.hidden = true;
+
+  if (WORKER_URL.includes('PASTE_YOUR_WORKER_URL')) {
+    setStatus(
+      '⚠️ Първо настрой Cloudflare Worker URL в кода.',
+      'error'
+    );
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent = '⏳ Зареждане...';
+  setStatus('Търсене на ' + name + '...');
+
+  try {
+    const url = new URL(WORKER_URL);
+    url.searchParams.set('name', name);
+    url.searchParams.set('accountType', platform);
+    url.searchParams.set('timeWindow', period);
+
+    const response = await fetch(url.toString());
+
+    let result;
+
+    try {
+      result = await response.json();
+    } catch {
+      throw new Error('Невалиден отговор от сървъра.');
+    }
+
+    if (!response.ok || result.status !== 200) {
+      if (response.status === 404 || result.status === 404) {
+        throw new Error('Играчът не е намерен.');
+      }
+
+      if (response.status === 403 || result.status === 403) {
+        throw new Error(
+          'Статистиките са частни или достъпът е отказан.'
+        );
+      }
+
+      if (response.status === 429) {
+        throw new Error(
+          'Твърде много заявки. Опитай след малко.'
+        );
+      }
+
+      throw new Error(
+        result.error || 'Грешка при зареждане на статистиките.'
+      );
+    }
+
+    if (!result.data || !result.data.stats) {
+      throw new Error(
+        'Няма достъпни Battle Royale статистики за този играч.'
+      );
+    }
+
+    displayStats(result.data, name, period);
+    setStatus('✅ Статистиките са заредени.', 'success');
+
+  } catch (error) {
+    setStatus('❌ ' + error.message, 'error');
+
+  } finally {
+    button.disabled = false;
+    button.textContent = '🔍 Търси';
+  }
+});
+</script>
+
+</body>
+</html>
+
