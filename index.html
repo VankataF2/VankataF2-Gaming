@@ -4,8 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="VANKATA GAMING - Fortnite новини, Item Shop, Item Search, Free Rewards, Weekly Rewards и Leaks.">
+<meta name="description" content="VANKATA GAMING - Fortnite новини, Item Shop, Item Search, Rewards, Leaks и Challenge Wheel.">
 <title>VANKATA GAMING | Fortnite</title>
+
 <style>
 :root {
   --bg:#090b17;
@@ -15,15 +16,23 @@
   --text:#f6f6ff;
   --muted:#b2b7cc;
 }
-* {box-sizing:border-box}
-html {scroll-behavior:smooth}
+
+* { box-sizing:border-box; }
+
+html { scroll-behavior:smooth; }
+
 body {
   margin:0;
   background:var(--bg);
   color:var(--text);
   font-family:Arial,Helvetica,sans-serif;
 }
-a {color:inherit;text-decoration:none}
+
+a {
+  color:inherit;
+  text-decoration:none;
+}
+
 header {
   position:sticky;
   top:0;
@@ -31,6 +40,7 @@ header {
   background:#090b17f5;
   border-bottom:1px solid #30334c;
 }
+
 nav {
   max-width:1120px;
   margin:auto;
@@ -40,27 +50,39 @@ nav {
   justify-content:space-between;
   gap:20px;
 }
+
 .logo {
   font-weight:900;
   letter-spacing:1px;
   font-size:21px;
 }
-.logo span {color:var(--cyan)}
+
+.logo span { color:var(--cyan); }
+
 .links {
   display:flex;
   gap:20px;
   color:var(--muted);
   flex-wrap:wrap;
 }
-.links a:hover {color:var(--cyan)}
+
+.links a:hover { color:var(--cyan); }
+
 .links .shop-link {
   color:var(--cyan);
   font-weight:bold;
 }
+
 .links .search-link {
   color:#c9b1ff;
   font-weight:bold;
 }
+
+.links .wheel-link {
+  color:#ffe69b;
+  font-weight:bold;
+}
+
 .hero {
   min-height:520px;
   display:grid;
@@ -74,11 +96,13 @@ nav {
     #090b17 75%
   );
 }
+
 .eyebrow {
   color:var(--cyan);
   letter-spacing:4px;
   font-weight:bold;
 }
+
 .hero h1 {
   font-size:clamp(45px,8vw,88px);
   line-height:1.04;
@@ -88,6 +112,7 @@ nav {
   -webkit-background-clip:text;
   color:transparent;
 }
+
 .hero p {
   max-width:650px;
   margin:20px auto;
@@ -95,6 +120,7 @@ nav {
   font-size:19px;
   line-height:1.7;
 }
+
 .btn {
   display:inline-block;
   margin:12px 7px;
@@ -105,29 +131,45 @@ nav {
   box-shadow:0 9px 35px #8254ff45;
   transition:transform .2s;
 }
-.btn:hover {transform:translateY(-3px)}
+
+.btn:hover { transform:translateY(-3px); }
+
 .btn-shop {
   background:linear-gradient(120deg,#13b9d6,#3465ed);
 }
+
 .btn-free {
   background:linear-gradient(120deg,#16a879,#087e9d);
 }
+
+.btn-wheel {
+  background:linear-gradient(120deg,#ff9b35,#e34c8c,#8559f8);
+  box-shadow:0 9px 35px #e34c8c55;
+}
+
 section {
   max-width:1120px;
   margin:0 auto;
   padding:68px 20px;
 }
-h2 {font-size:34px;margin:0 0 12px}
+
+h2 {
+  font-size:34px;
+  margin:0 0 12px;
+}
+
 .subtitle {
   color:var(--muted);
   margin-bottom:30px;
   line-height:1.6;
 }
+
 .grid {
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:22px;
 }
+
 .card {
   background:linear-gradient(145deg,#1b2038,#111627);
   border:1px solid #323652;
@@ -136,23 +178,36 @@ h2 {font-size:34px;margin:0 0 12px}
   min-height:210px;
   transition:transform .2s,border-color .2s;
 }
+
 .card:hover {
   transform:translateY(-6px);
   border-color:var(--purple);
 }
-.card .emoji {font-size:43px}
-.card h3 {font-size:23px;margin:22px 0 10px}
-.card p {color:var(--muted);line-height:1.6}
+
+.card .emoji { font-size:43px; }
+
+.card h3 {
+  font-size:23px;
+  margin:22px 0 10px;
+}
+
+.card p {
+  color:var(--muted);
+  line-height:1.6;
+}
+
 .tag {
   color:var(--cyan);
   font-size:13px;
   font-weight:bold;
   letter-spacing:1px;
 }
+
 .news-card {
   padding:0;
   overflow:hidden;
 }
+
 .news-card img {
   width:100%;
   height:190px;
@@ -160,29 +215,36 @@ h2 {font-size:34px;margin:0 0 12px}
   display:block;
   background:#222a43;
 }
-.news-content {padding:22px}
+
+.news-content { padding:22px; }
+
 .news-content h3 {
   font-size:21px;
   line-height:1.35;
   margin:12px 0;
 }
+
 .news-content p {
   display:-webkit-box;
   -webkit-line-clamp:4;
   -webkit-box-orient:vertical;
   overflow:hidden;
 }
+
 .news-link {
   display:inline-block;
   color:var(--cyan);
   font-weight:bold;
   margin-top:12px;
 }
-.news-link:hover {text-decoration:underline}
+
+.news-link:hover { text-decoration:underline; }
+
 #news-status {
   color:var(--muted);
   margin-bottom:24px;
 }
+
 .shop-banner {
   background:linear-gradient(125deg,#30205c,#122b51);
   border:1px solid #7553d4;
@@ -190,20 +252,90 @@ h2 {font-size:34px;margin:0 0 12px}
   text-align:center;
   padding:55px 24px;
 }
+
 .shop-banner p {
   color:#d1cdec;
   line-height:1.6;
 }
+
 .free-banner {
   background:linear-gradient(125deg,#103d37,#123451,#29205d);
   border-color:#24c7a4;
 }
-.free-banner h2 {color:#b6ffe7}
+
+.free-banner h2 { color:#b6ffe7; }
+
 .search-banner {
   background:linear-gradient(125deg,#182b57,#30205c,#173c50);
   border-color:#29e0e7;
 }
-.search-banner h2 {color:#bcefff}
+
+.search-banner h2 { color:#bcefff; }
+
+/* НОВО: FORTNITE CHALLENGE WHEEL */
+
+.wheel-banner {
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(
+    125deg,
+    #42226b,
+    #25245d,
+    #183b56
+  );
+  border:2px solid #a57aff;
+  border-radius:24px;
+  text-align:center;
+  padding:65px 24px;
+  box-shadow:0 15px 50px #9560ff22;
+}
+
+.wheel-banner::before {
+  content:"🎡";
+  position:absolute;
+  font-size:200px;
+  opacity:.07;
+  right:-25px;
+  top:-35px;
+  pointer-events:none;
+}
+
+.wheel-banner h2 {
+  color:#fff;
+  font-size:clamp(27px,4vw,42px);
+}
+
+.wheel-banner p {
+  color:#ded8f6;
+  line-height:1.7;
+  max-width:700px;
+  margin:20px auto;
+  font-size:17px;
+}
+
+.wheel-features {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:25px 0;
+}
+
+.wheel-features span {
+  background:#ffffff12;
+  border:1px solid #ffffff30;
+  border-radius:30px;
+  padding:10px 16px;
+  font-size:14px;
+}
+
+.wheel-banner .btn-wheel {
+  font-size:20px;
+  padding:18px 35px;
+}
+
+/* КОНТАКТИ */
+
 .contact {
   background:#12172b;
   border:1px solid #303654;
@@ -211,28 +343,34 @@ h2 {font-size:34px;margin:0 0 12px}
   text-align:center;
   padding:55px 24px;
 }
-.contact p {color:var(--muted)}
+
+.contact p { color:var(--muted); }
+
 footer {
   text-align:center;
   color:#8389a5;
   padding:32px;
   border-top:1px solid #292e43;
 }
+
 @media(max-width:900px) {
   .grid {
     grid-template-columns:repeat(2,minmax(0,1fr));
   }
 }
+
 @media(max-width:700px) {
-  .grid {grid-template-columns:1fr}
-  nav {padding:17px 12px;flex-wrap:wrap}
-  .links {gap:12px;font-size:13px}
-  .logo {font-size:16px}
-  .hero {min-height:450px}
-  section {padding:48px 18px}
+  .grid { grid-template-columns:1fr; }
+  nav { padding:17px 12px; flex-wrap:wrap; }
+  .links { gap:12px; font-size:13px; }
+  .logo { font-size:16px; }
+  .hero { min-height:450px; }
+  section { padding:48px 18px; }
+  .wheel-banner { padding:45px 18px; }
 }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -246,6 +384,7 @@ footer {
     <a href="#news">📰 Новини</a>
     <a href="shop.html" class="shop-link">🛒 Item Shop</a>
     <a href="items.html" class="search-link">🔍 Item Search</a>
+    <a href="wheel.html" class="wheel-link">🎡 Challenge Wheel</a>
     <a href="rewards.html">🎁 Rewards</a>
     <a href="free-rewards.html">🎁 Free Rewards</a>
     <a href="leaks.html">🔥 Leaks</a>
@@ -256,38 +395,55 @@ footer {
 
 <main>
 
+<!-- НАЧАЛО -->
+
 <div class="hero" id="home">
   <div>
     <div class="eyebrow">WELCOME TO THE GAME</div>
+
     <h1>LEVEL UP<br>YOUR GAME.</h1>
+
     <p>
       Твоето място за Fortnite новини,
       актуалния Item Shop, търсене на предмети,
-      безплатни награди и гейминг общност.
+      безплатни награди, предизвикателства
+      и гейминг общност.
       Играта започва тук.
     </p>
+
     <a class="btn" href="#news">
       📰 Fortnite новини
     </a>
+
     <a class="btn btn-shop" href="shop.html">
       🛒 Отвори Item Shop
     </a>
+
     <a class="btn" href="items.html">
       🔍 Търси предмет
     </a>
+
     <a class="btn btn-free" href="free-rewards.html">
       🎁 Free Rewards
+    </a>
+
+    <a class="btn btn-wheel" href="wheel.html">
+      🎡 Challenge Wheel
     </a>
   </div>
 </div>
 
+<!-- ИГРИ -->
+
 <section id="games">
   <h2>🎮 Популярни игри</h2>
+
   <p class="subtitle">
     Игри, които следим и обичаме.
   </p>
 
   <div class="grid">
+
     <article class="card">
       <div class="emoji">🏆</div>
       <h3>Fortnite</h3>
@@ -314,26 +470,64 @@ footer {
         изследване и оцеляване.
       </p>
     </article>
+
   </div>
 </section>
 
+<!-- НОВО: CHALLENGE WHEEL -->
+
+<section id="fortnite-wheel">
+  <div class="wheel-banner">
+
+    <h2>🎡 FORTNITE CHALLENGE WHEEL</h2>
+
+    <p>
+      Готов ли си за истинско Fortnite предизвикателство?
+      Завърти трите колела и разбери с какви оръжия
+      можеш да играеш, какво лечение имаш право
+      да използваш и къде трябва да кацнеш!
+    </p>
+
+    <div class="wheel-features">
+      <span>🔫 Рядкост на оръжията</span>
+      <span>🩹 Лечение</span>
+      <span>📍 Начална локация</span>
+    </div>
+
+    <a class="btn btn-wheel" href="wheel.html">
+      🎡 ЗАВЪРТИ КОЛЕЛАТА
+    </a>
+
+  </div>
+</section>
+
+<!-- ITEM SHOP -->
+
 <section id="shop">
   <div class="shop-banner">
+
     <h2>🛒 FORTNITE ITEM SHOP</h2>
+
     <p>
       Разгледай актуалните скинове,
       емоути, кирки и пакети
       с цени във V-Bucks.
     </p>
+
     <a class="btn btn-shop" href="shop.html">
       Виж магазина →
     </a>
+
   </div>
 </section>
 
+<!-- ITEM SEARCH -->
+
 <section id="fortnite-item-search">
   <div class="shop-banner search-banner">
+
     <h2>🔍 FORTNITE ITEM SEARCH</h2>
+
     <p>
       Намери любимите си Fortnite скинове,
       кирки, емоути, раници, глайдери
@@ -341,57 +535,80 @@ footer {
       Разгледай снимки, рядкост,
       последна поява и налични цени.
     </p>
+
     <a class="btn" href="items.html">
       🔍 Търси Fortnite предмети →
     </a>
+
   </div>
 </section>
 
+<!-- WEEKLY REWARDS -->
+
 <section id="fortnite-rewards">
   <div class="shop-banner">
+
     <h2>🎁 FORTNITE WEEKLY REWARDS</h2>
+
     <p>
       Разгледай седмичните награди,
       редките скинове, автомобилите
       и известните шансове за получаване.
     </p>
+
     <a class="btn" href="rewards.html">
       🎁 Виж седмичните награди
     </a>
+
   </div>
 </section>
 
+<!-- FREE REWARDS -->
+
 <section id="fortnite-free-rewards">
   <div class="shop-banner free-banner">
+
     <h2>🎁 FORTNITE FREE REWARDS</h2>
+
     <p>
       Открий безплатни скинове, емоути,
       награди от куестове и специални събития.
       Виж как се получават и кога изтичат.
     </p>
+
     <a class="btn btn-free" href="free-rewards.html">
       🎁 Виж безплатните награди →
     </a>
+
   </div>
 </section>
 
+<!-- LEAKS -->
+
 <section id="fortnite-leaks">
   <div class="shop-banner">
+
     <h2>🔥 FORTNITE LEAKS</h2>
+
     <p>
       Автоматично събирани слухове,
       нови скинове, предстоящи предмети
       и открити промени във Fortnite.
       Част от информацията е непотвърдена.
     </p>
+
     <a class="btn" href="leaks.html">
       🔥 Виж Fortnite Leaks
     </a>
+
   </div>
 </section>
 
+<!-- НОВИНИ -->
+
 <section id="news">
   <h2>📰 Последни Fortnite новини</h2>
+
   <p class="subtitle">
     Автоматично събирани Fortnite новини
     на български език.
@@ -405,25 +622,33 @@ footer {
 
   <p style="margin-top:24px">
     Източник:
-    <a href="https://www.fortnite.com/news"
-       target="_blank"
-       rel="noopener noreferrer"
-       style="color:var(--cyan)">
+    <a
+      href="https://www.fortnite.com/news"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="color:var(--cyan)"
+    >
       Fortnite / Epic Games ↗
     </a>
   </p>
 </section>
 
+<!-- КОНТАКТИ -->
+
 <section id="contact">
   <div class="contact">
+
     <h2>🚀 Присъедини се към общността</h2>
+
     <p>
       Скоро тук ще добавим Discord,
       YouTube и социални мрежи.
     </p>
+
     <a class="btn" href="#contact" id="contactButton">
       Свържи се с нас
     </a>
+
   </div>
 </section>
 
@@ -435,16 +660,23 @@ footer {
 </footer>
 
 <script>
+// ГОДИНА
+
 document.getElementById('year').textContent =
   new Date().getFullYear();
+
+// КОНТАКТИ
 
 document.getElementById('contactButton')
   .addEventListener('click', function(event) {
     event.preventDefault();
+
     alert(
       'Скоро ще добавим Discord или имейл за контакт.'
     );
   });
+
+// АВТОМАТИЧНИ FORTNITE НОВИНИ
 
 async function loadNews() {
   const grid = document.getElementById('news-grid');
@@ -519,6 +751,7 @@ async function loadNews() {
   } catch (error) {
     status.textContent =
       'Новините временно не са достъпни.';
+
     console.error(
       'Грешка при зареждане:', error
     );
@@ -527,5 +760,6 @@ async function loadNews() {
 
 loadNews();
 </script>
+
 </body>
 </html>
