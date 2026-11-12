@@ -14,13 +14,21 @@
   --muted:#b2b7cc;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:white;font-family:Arial,sans-serif}
-header{text-align:center;padding:35px 16px;background:#141a30;border-bottom:1px solid #394164}
+body{
+  margin:0;background:var(--bg);color:white;
+  font-family:Arial,sans-serif
+}
+header{
+  text-align:center;padding:35px 16px;
+  background:#141a30;border-bottom:1px solid #394164
+}
 h1{font-size:clamp(27px,5vw,43px);margin:10px 0}
 header p,.note{color:var(--muted)}
 a{color:var(--cyan)}
 main{max-width:1200px;margin:auto;padding:28px 16px}
-.controls{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:25px}
+.controls{
+  display:flex;flex-wrap:wrap;gap:12px;margin-bottom:25px
+}
 input,select{
   background:#202943;color:white;border:1px solid #495377;
   padding:15px;border-radius:12px;font-size:16px
@@ -33,7 +41,10 @@ button{
   font-weight:bold;cursor:pointer
 }
 button:hover{filter:brightness(1.15)}
-#status{color:var(--muted);text-align:center;margin:22px}
+#status{
+  color:var(--muted);text-align:center;
+  margin:22px;line-height:1.6
+}
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
@@ -42,8 +53,7 @@ button:hover{filter:brightness(1.15)}
 .card{
   background:var(--panel);
   border:1px solid #37415d;
-  border-radius:17px;
-  overflow:hidden
+  border-radius:17px;overflow:hidden
 }
 .card img{
   display:block;width:100%;height:235px;object-fit:contain;
@@ -51,14 +61,23 @@ button:hover{filter:brightness(1.15)}
 }
 .info{padding:17px}
 .info h2{font-size:20px;margin:0 0 10px}
-.info p{font-size:14px;color:#c5cce0;line-height:1.5}
+.info p{
+  font-size:14px;color:#c5cce0;line-height:1.5
+}
 .type{color:var(--cyan)!important;font-weight:bold}
 .price{color:#ffe59a!important;font-weight:bold}
 .last{color:#a8ffcc!important;font-weight:bold}
-.note{text-align:center;font-size:13px;line-height:1.6;margin-top:30px}
+.warning{color:#ffbf8c!important}
+.note{
+  text-align:center;font-size:13px;
+  line-height:1.6;margin-top:30px
+}
 @media(max-width:550px){
   .controls{flex-direction:column}
-  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px
+  }
   .card img{height:170px}
   .info{padding:11px}
   .info h2{font-size:16px}
@@ -66,6 +85,7 @@ button:hover{filter:brightness(1.15)}
 </style>
 </head>
 <body>
+
 <header>
   <h1>🔍 FORTNITE ITEM SEARCH</h1>
   <p>Скинове, кирки, емоути, раници и още!</p>
@@ -73,32 +93,39 @@ button:hover{filter:brightness(1.15)}
 </header>
 
 <main>
-<form id="searchForm" class="controls">
-  <input id="itemName"
-         placeholder="Например: Midas, Aura, Star Wand..."
-         minlength="2" required>
-  <select id="category">
-    <option value="">🎮 Всички категории</option>
-    <option value="outfit">👕 Скинове</option>
-    <option value="pickaxe">⛏️ Кирки</option>
-    <option value="backbling">🎒 Раници</option>
-    <option value="emote">💃 Емоути</option>
-    <option value="glider">🪂 Глайдери</option>
-    <option value="wrap">🔫 Wraps</option>
-    <option value="music">🎵 Музика</option>
-  </select>
-  <button type="submit">🔍 Търси</button>
-</form>
+  <form id="searchForm" class="controls">
+    <input
+      id="itemName"
+      placeholder="Например: Star Wand, Web Slicer, Midas..."
+      minlength="2"
+      required
+    >
+    <select id="category">
+      <option value="">🎮 Всички категории</option>
+      <option value="outfit">👕 Скинове</option>
+      <option value="pickaxe">⛏️ Кирки</option>
+      <option value="backbling">🎒 Раници</option>
+      <option value="emote">💃 Емоути</option>
+      <option value="glider">🪂 Глайдери</option>
+      <option value="wrap">🔫 Wraps</option>
+      <option value="music">🎵 Музика</option>
+    </select>
+    <button type="submit">🔍 Търси</button>
+  </form>
 
-<p id="status" aria-live="polite">Въведи име на предмет.</p>
-<div id="results" class="grid"></div>
+  <p id="status" aria-live="polite">
+    Въведи име на предмет.
+  </p>
 
-<p class="note">
-  Данни от Fortnite-API и публичния архив Fortnite-Datamining.
-  Историческите цени може да са цени на оферти или пакети,
-  а не самостоятелна цена на предмета.
-  Непълните записи се обозначават.
-</p>
+  <div id="results" class="grid"></div>
+
+  <p class="note">
+    Историческите данни идват от item-history.json,
+    обновяван чрез GitHub Actions.
+    Последна записана поява не винаги означава
+    последната действителна поява.
+    Цените на пакети се обозначават отделно.
+  </p>
 </main>
 
 <script>
@@ -120,236 +147,155 @@ const typeNames={
   music:'Музика'
 };
 
-const registryUrl=
-  'https://raw.githubusercontent.com/Fortnite-Datamining/Fortnite-Datamining/main/data/items/registry.json';
-
 let controller=null;
-let shopPromise=null;
-let registryPromise=null;
+let historyPromise=null;
 
 function add(parent,tag,value,cls){
-  const el=document.createElement(tag);
-  el.textContent=value;
-  if(cls)el.className=cls;
-  parent.appendChild(el);
-  return el;
+  const element=document.createElement(tag);
+  element.textContent=value;
+  if(cls)element.className=cls;
+  parent.appendChild(element);
+  return element;
 }
 
-function dateOf(v){
-  if(v==null||v==='')return null;
+function normalize(value){
+  return String(value||'')
+    .trim()
+    .toLowerCase();
+}
 
-  if(typeof v==='object'){
-    return dateOf(
-      v.date??v.day??v.shopDate??
-      v.timestamp??v.time??v.appearanceDate
-    );
+function validPrice(value){
+  if(value===null||value===undefined||value===''){
+    return null;
   }
 
-  const n=typeof v==='number'
-    ?v
-    :(/^\d{10,13}$/.test(String(v))?Number(v):NaN);
-
-  const d=Number.isFinite(n)
-    ?new Date(n<1e11?n*1000:n)
-    :new Date(v);
-
-  return Number.isFinite(d.getTime())?d:null;
+  const n=Number(value);
+  return Number.isFinite(n)&&n>=0?n:null;
 }
 
-function money(v){
-  const n=Number(v);
-  return v!==null&&v!==undefined&&v!==''&&
-    Number.isFinite(n)&&n>=0?n:null;
+function parseDate(value){
+  if(!value)return null;
+
+  const date=new Date(value);
+
+  return Number.isNaN(date.getTime())
+    ?null
+    :date;
 }
 
-function priceOf(x){
-  if(!x||typeof x!=='object')return null;
-  return money(
-    x.finalPrice??x.price??x.vbucks??
-    x.vBucks??x.regularPrice??x.cost
-  );
+function formatDate(date){
+  return date.toLocaleDateString('bg-BG',{
+    timeZone:'UTC',
+    day:'2-digit',
+    month:'2-digit',
+    year:'numeric'
+  });
 }
 
-function getHistory(entry){
-  if(!entry||typeof entry!=='object')return [];
+function createHistoryIndex(data){
+  const byId=new Map();
+  const byName=new Map();
 
-  const candidates=[
-    entry.shopAppearances,
-    entry.shopHistory,
-    entry.appearances,
-    entry.history,
-    entry.shops,
-    entry.shop_history,
-    entry.shop_appearances
-  ];
+  const entries=Array.isArray(data.items)
+    ?data.items
+    :[];
 
-  const out=[];
+  for(const entry of entries){
+    if(!entry||!entry.itemKey)continue;
 
-  for(const candidate of candidates){
-    if(Array.isArray(candidate)){
-      out.push(...candidate);
-    }else if(candidate&&typeof candidate==='object'){
-      for(const [key,value] of Object.entries(candidate)){
-        if(dateOf(key)){
-          out.push(
-            typeof value==='object'&&value!==null
-              ?{date:key,...value}
-              :{date:key,price:value}
-          );
-        }
+    const key=String(entry.itemKey);
+
+    if(key.startsWith('fn:item:')){
+      const id=normalize(key.slice(8));
+      if(id)byId.set(id,entry);
+    }
+
+    const name=normalize(entry.name);
+
+    if(name){
+      if(!byName.has(name)){
+        byName.set(name,[]);
       }
+      byName.get(name).push(entry);
     }
   }
-  return out;
-}
-
-function registryRecord(registry,item){
-  if(!registry)return null;
-
-  const roots=[
-    registry,
-    registry.items,
-    registry.cosmetics,
-    registry.data,
-    registry.registry,
-    registry.entries
-  ].filter(Boolean);
-
-  const id=String(item.id||'').toLowerCase();
-
-  for(const root of roots){
-    if(Array.isArray(root)){
-      const match=root.find(x=>
-        x&&String(
-          x.id??x.itemId??x.cosmeticId??''
-        ).toLowerCase()===id
-      );
-      if(match)return match;
-    }else if(typeof root==='object'){
-      if(root[item.id])return root[item.id];
-
-      const key=Object.keys(root).find(
-        k=>k.toLowerCase()===id
-      );
-      if(key)return root[key];
-    }
-  }
-  return null;
-}
-
-function historicalInfo(item,registry){
-  const rec=registryRecord(registry,item);
-  const history=[
-    ...getHistory(rec),
-    ...getHistory(item)
-  ];
-
-  const appearances=[];
-
-  for(const h of history){
-    const date=dateOf(h);
-    if(date){
-      appearances.push({
-        date,
-        price:priceOf(h)
-      });
-    }
-  }
-
-  for(const v of [
-    item.lastAppearance,
-    rec?.lastAppearance,
-    rec?.lastSeenInShop,
-    rec?.lastShopAppearance,
-    rec?.last_shop_appearance
-  ]){
-    const date=dateOf(v);
-    if(date){
-      appearances.push({date,price:null});
-    }
-  }
-
-  appearances.sort((a,b)=>b.date-a.date);
-
-  const last=appearances[0]?.date||null;
-  const priced=appearances.find(x=>x.price!==null);
-
-  const standalone=money(
-    rec?.lastKnownPrice??
-    rec?.lastPrice??
-    rec?.shopPrice??
-    rec?.price
-  );
 
   return {
-    last,
-    price:priced?.price??standalone,
-    priceDate:priced?.date||null,
-    hasHistory:history.length>0
+    byId,
+    byName,
+    count:entries.length,
+    updatedAt:data.updatedAt||null,
+    scope:data.scope||null
   };
 }
 
-async function fetchJson(url,signal){
-  const r=await fetch(url,{signal});
-  if(!r.ok){
-    throw new Error('HTTP '+r.status+' '+url);
-  }
-  return r.json();
-}
-
-function getShop(){
-  if(!shopPromise){
-    shopPromise=fetchJson(
-      'https://fortnite-api.com/v2/shop'
-    ).then(j=>{
-      const map=new Map();
-
-      for(const e of j.data?.entries||[]){
-        const p=money(
-          e.finalPrice??e.regularPrice
+async function getHistory(){
+  if(!historyPromise){
+    historyPromise=fetch(
+      './item-history.json?v='+Date.now(),
+      {cache:'no-store'}
+    )
+    .then(response=>{
+      if(!response.ok){
+        throw new Error(
+          'History HTTP '+response.status
         );
-
-        for(const it of [
-          ...(e.brItems||[]),
-          ...(e.tracks||[]),
-          ...(e.instruments||[]),
-          ...(e.cars||[])
-        ]){
-          if(!it?.id||p===null)continue;
-
-          const prev=map.get(it.id);
-
-          if(!prev||p<prev.price){
-            map.set(it.id,{
-              price:p,
-              count:(e.brItems||[]).length
-            });
-          }
-        }
       }
-      return map;
-    }).catch(e=>{
-      console.warn('Shop:',e);
-      shopPromise=null;
-      return new Map();
+      return response.json();
+    })
+    .then(createHistoryIndex)
+    .catch(error=>{
+      console.error('History:',error);
+      historyPromise=null;
+      return null;
     });
   }
-  return shopPromise;
+
+  return historyPromise;
 }
 
-function getRegistry(){
-  if(!registryPromise){
-    registryPromise=fetchJson(registryUrl)
-      .catch(e=>{
-        console.warn('Registry:',e);
-        registryPromise=null;
-        return null;
-      });
+function findHistory(item,history){
+  if(!history)return null;
+
+  const id=normalize(item.id);
+
+  if(history.byId.has(id)){
+    return history.byId.get(id);
   }
-  return registryPromise;
+
+  // Резервно търсене по име само при
+  // един-единствен съвпадащ запис.
+  const name=normalize(item.name);
+  const matches=history.byName.get(name)||[];
+
+  if(matches.length===1){
+    return matches[0];
+  }
+
+  return null;
 }
 
-function renderItem(item,shop,registry){
+function cosmeticLastDate(item){
+  const dates=[];
+
+  if(item.lastAppearance){
+    const date=parseDate(item.lastAppearance);
+    if(date)dates.push(date);
+  }
+
+  if(Array.isArray(item.shopHistory)){
+    for(const value of item.shopHistory){
+      const date=parseDate(value);
+      if(date)dates.push(date);
+    }
+  }
+
+  dates.sort((a,b)=>b-a);
+
+  return dates[0]||null;
+}
+
+function renderItem(item,history){
   const card=add(results,'article','');
   card.className='card';
 
@@ -369,11 +315,12 @@ function renderItem(item,shop,registry){
   const info=add(card,'div','');
   info.className='info';
 
-  add(info,'h2',item.name||'Неизвестен предмет');
+  add(
+    info,'h2',
+    item.name||'Неизвестен предмет'
+  );
 
-  const type=String(
-    item.type?.value||''
-  ).toLowerCase();
+  const type=normalize(item.type?.value);
 
   add(
     info,'p',
@@ -398,58 +345,71 @@ function renderItem(item,shop,registry){
     add(info,'p',item.description);
   }
 
-  const offer=shop.get(item.id);
-  const hist=historicalInfo(item,registry);
+  const record=findHistory(item,history);
+  const price=validPrice(record?.price);
+  const currency=normalize(record?.currency);
+  const isBundle=String(
+    record?.itemKey||''
+  ).startsWith('fn:bundle:');
 
-  if(offer){
+  if(price!==null &&
+     (currency==='v-bucks'||currency==='vbucks')){
     add(
       info,'p',
-      '🪙 Текуща оферта: '+
-      offer.price.toLocaleString('en-US')+
-      ' V-Bucks'+(
-        offer.count>1?' (може да е пакет)':''
-      ),
+      '🪙 Последна записана цена: '+
+      price.toLocaleString('en-US')+
+      ' V-Bucks'+
+      (isBundle?' (пакет)':''),
       'price'
     );
-
-    add(
-      info,'p',
-      '🟢 В текущия Item Shop'
-    );
-
-  }else if(hist.price!==null){
-    add(
-      info,'p',
-      '🪙 Историческа цена на оферта: '+
-      hist.price.toLocaleString('en-US')+
-      ' V-Bucks (възможен пакет)',
-      'price'
-    );
-
   }else{
     add(
       info,'p',
-      '🪙 Цена: няма надеждни данни'
+      '🪙 Цена: няма записана цена',
+      'warning'
     );
   }
 
-  if(hist.last){
+  const historyDate=parseDate(
+    record?.lastAppearance
+  );
+
+  const cosmeticDate=cosmeticLastDate(item);
+
+  let last=null;
+  let source='';
+
+  if(historyDate&&cosmeticDate){
+    if(historyDate>=cosmeticDate){
+      last=historyDate;
+      source='архив';
+    }else{
+      last=cosmeticDate;
+      source='Fortnite-API';
+    }
+  }else if(historyDate){
+    last=historyDate;
+    source='архив';
+  }else if(cosmeticDate){
+    last=cosmeticDate;
+    source='Fortnite-API';
+  }
+
+  if(last){
     add(
       info,'p',
       '📅 Последна записана поява: '+
-      hist.last.toLocaleDateString(
-        'bg-BG',{
-          timeZone:'UTC',
-          day:'2-digit',
-          month:'2-digit',
-          year:'numeric'
-        }
-      ),
+      formatDate(last),
       'last'
     );
 
+    add(
+      info,'p',
+      'Източник: '+source
+    );
+
     const days=Math.floor(
-      (Date.now()-hist.last.getTime())/86400000
+      (Date.now()-last.getTime())/86400000
     );
 
     if(days>=0){
@@ -458,11 +418,11 @@ function renderItem(item,shop,registry){
         '⏳ Преди '+days+' дни'
       );
     }
-
   }else{
     add(
       info,'p',
-      '📅 Последна поява: няма данни'
+      '📅 Последна поява: няма запис',
+      'warning'
     );
   }
 
@@ -511,10 +471,10 @@ async function searchItems(query){
       );
     }
 
-    const j=await response.json();
+    const json=await response.json();
 
-    const items=Array.isArray(j.data)
-      ?j.data
+    const items=Array.isArray(json.data)
+      ?json.data
       :[];
 
     if(signal.aborted)return;
@@ -527,44 +487,63 @@ async function searchItems(query){
     statusEl.textContent=
       '⏳ Зареждане на история и цени...';
 
-    const [shop,registry]=await Promise.all([
-      getShop(),
-      getRegistry()
-    ]);
+    const history=await getHistory();
 
     if(signal.aborted)return;
 
     results.replaceChildren();
 
     items.slice(0,80).forEach(
-      item=>renderItem(item,shop,registry)
+      item=>renderItem(item,history)
     );
 
-    statusEl.textContent=
-      '🎮 Намерени предмети: '+items.length+
-      (items.length>80
-        ?' (показани първите 80)'
-        :'')+
-      (!registry
-        ?' · Историческият архив е недостъпен'
-        :'');
-  }catch(e){
-    if(e.name==='AbortError')return;
+    let message=
+      '🎮 Намерени предмети: '+items.length;
 
-    console.error(e);
+    if(items.length>80){
+      message+=' (показани първите 80)';
+    }
+
+    if(history){
+      message+=
+        ' · Исторически записи: '+
+        history.count;
+
+      if(history.updatedAt){
+        const updated=parseDate(
+          history.updatedAt
+        );
+
+        if(updated){
+          message+=
+            ' · Обновено: '+
+            formatDate(updated);
+        }
+      }
+    }else{
+      message+=
+        ' · ⚠️ item-history.json не е достъпен';
+    }
+
+    statusEl.textContent=message;
+
+  }catch(error){
+    if(error.name==='AbortError')return;
+
+    console.error(error);
 
     statusEl.textContent=
       '❌ Грешка при търсене. Опитай отново.';
   }
 }
 
-form.addEventListener('submit',e=>{
-  e.preventDefault();
+form.addEventListener('submit',event=>{
+  event.preventDefault();
 
-  const q=input.value.trim();
+  const query=input.value.trim();
 
-  if(q.length>=2){
-    searchItems(q);
+  if(query.length>=2){
+    searchItems(query);
   }
 });
 </script>
