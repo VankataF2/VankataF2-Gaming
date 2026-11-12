@@ -3,169 +3,239 @@
 <html lang="bg">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Fortnite Player Stats - VANKATA GAMING">
 <title>Fortnite Player Stats | VANKATA GAMING</title>
+
 <style>
 :root {
-  color-scheme:dark;
-  --bg:#090b17;
-  --panel:#171e35;
-  --border:#394164;
-  --cyan:#29e0e7;
-  --purple:#9560ff;
-  --muted:#b8c3d7;
+  color-scheme: dark;
+  --bg: #090b17;
+  --panel: #171e35;
+  --border: #394164;
+  --cyan: #29e0e7;
+  --purple: #9560ff;
+  --muted: #b8c3d7;
 }
-* {box-sizing:border-box}
+
+* { box-sizing: border-box; }
+
 body {
-  margin:0;
-  background:radial-gradient(circle at top,#27214d,#090b17 65%);
-  color:white;
-  font-family:Arial,Helvetica,sans-serif;
+  margin: 0;
+  background: radial-gradient(circle at top, #27214d, #090b17 65%);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
 }
+
 header {
-  text-align:center;
-  background:#141a30;
-  padding:28px 16px;
-  border-bottom:1px solid var(--border);
+  text-align: center;
+  background: #141a30;
+  padding: 28px 16px;
+  border-bottom: 1px solid var(--border);
 }
+
 header h1 {
-  font-size:clamp(27px,5vw,46px);
-  margin:15px 0;
+  font-size: clamp(27px, 5vw, 46px);
+  margin: 15px 0;
 }
-header p {color:var(--muted)}
-a {color:var(--cyan);text-decoration:none}
-main {max-width:1120px;margin:auto;padding:30px 16px 70px}
+
+header p { color: var(--muted); }
+
+a {
+  color: var(--cyan);
+  text-decoration: none;
+}
+
+main {
+  max-width: 1120px;
+  margin: auto;
+  padding: 30px 16px 70px;
+}
+
 .search-panel {
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:22px;
-  padding:28px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 28px;
 }
-.search-panel h2 {margin-top:0}
-.search-panel p {color:var(--muted)}
+
+.search-panel h2 { margin-top: 0; }
+
+.search-panel p { color: var(--muted); }
+
 .search-form {
-  display:grid;
-  grid-template-columns:minmax(0,2fr) 1fr 1fr auto;
-  gap:12px;
-  margin-top:22px;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) 1fr 1fr auto;
+  gap: 12px;
+  margin-top: 22px;
 }
-input,select,button {
-  font:inherit;
-  border-radius:12px;
-  padding:14px;
+
+input, select, button {
+  font: inherit;
+  border-radius: 12px;
+  padding: 14px;
 }
-input,select {
-  min-width:0;
-  background:#0c1224;
-  border:1px solid #445073;
-  color:white;
+
+input, select {
+  min-width: 0;
+  background: #0c1224;
+  border: 1px solid #445073;
+  color: white;
 }
-input:focus,select:focus {
-  outline:2px solid var(--cyan);
+
+input:focus, select:focus {
+  outline: 2px solid var(--cyan);
 }
+
 button {
-  border:0;
-  background:linear-gradient(120deg,#9560ff,#5555ee);
-  color:white;
-  font-weight:800;
-  cursor:pointer;
+  border: 0;
+  background: linear-gradient(120deg, #9560ff, #5555ee);
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
 }
-button:hover {filter:brightness(1.12)}
-button:disabled {opacity:.6;cursor:wait}
+
+button:hover { filter: brightness(1.12); }
+
+button:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
 #status {
-  min-height:25px;
-  margin-top:18px;
-  color:var(--muted);
+  min-height: 25px;
+  margin-top: 18px;
+  color: var(--muted);
 }
-#status.error {color:#ff9999}
-#status.success {color:#74e9bc}
+
+#status.error { color: #ff9999; }
+#status.success { color: #74e9bc; }
+
 .profile {
-  margin-top:24px;
-  background:linear-gradient(120deg,#30205c,#17344d);
-  border:1px solid #7553d4;
-  border-radius:20px;
-  padding:26px;
+  margin-top: 24px;
+  background: linear-gradient(120deg, #30205c, #17344d);
+  border: 1px solid #7553d4;
+  border-radius: 20px;
+  padding: 26px;
 }
+
 .profile h2 {
-  margin:8px 0;
-  overflow-wrap:anywhere;
+  margin: 8px 0;
+  overflow-wrap: anywhere;
 }
-.profile p {color:#d1cdec}
+
+.profile p { color: #d1cdec; }
+
 .tag {
-  color:var(--cyan);
-  font-size:12px;
-  letter-spacing:2px;
-  font-weight:bold;
+  color: var(--cyan);
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: bold;
 }
+
 .stats-grid {
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:16px;
-  margin-top:20px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 20px;
 }
+
 .stat-card {
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:23px;
-  text-align:center;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 23px;
+  text-align: center;
 }
-.stat-icon {font-size:30px}
+
+.stat-icon { font-size: 30px; }
+
 .stat-value {
-  font-size:clamp(24px,4vw,38px);
-  font-weight:900;
-  color:var(--cyan);
-  margin:12px 0;
-  overflow-wrap:anywhere;
+  font-size: clamp(24px, 4vw, 38px);
+  font-weight: 900;
+  color: var(--cyan);
+  margin: 12px 0;
+  overflow-wrap: anywhere;
 }
-.stat-name {color:var(--muted);font-size:14px}
+
+.stat-name {
+  color: var(--muted);
+  font-size: 14px;
+}
+
 .modes {
-  margin-top:28px;
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:24px;
+  margin-top: 28px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
 }
-.modes h2 {margin-top:0}
-.table-wrap {overflow-x:auto}
+
+.modes h2 { margin-top: 0; }
+
+.table-wrap { overflow-x: auto; }
+
 table {
-  width:100%;
-  border-collapse:collapse;
-  min-width:530px;
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 530px;
 }
-th,td {
-  padding:14px 10px;
-  border-bottom:1px solid var(--border);
-  text-align:left;
+
+th, td {
+  padding: 14px 10px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
 }
-th {color:var(--cyan)}
-td {color:#e2e6f5}
+
+th { color: var(--cyan); }
+td { color: #e2e6f5; }
+
 .note {
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.6;
-  margin-top:20px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 20px;
 }
+
 footer {
-  text-align:center;
-  padding:28px;
-  color:#aeb8cc;
+  text-align: center;
+  padding: 28px;
+  color: #aeb8cc;
 }
-[hidden] {display:none!important}
-@media(max-width:800px) {
-  .search-form {grid-template-columns:1fr 1fr}
-  .search-form input {grid-column:1/-1}
-  .search-form button {grid-column:1/-1}
-  .stats-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+
+[hidden] { display: none !important; }
+
+@media(max-width: 800px) {
+  .search-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .search-form input {
+    grid-column: 1 / -1;
+  }
+
+  .search-form button {
+    grid-column: 1 / -1;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
-@media(max-width:450px) {
-  .stats-grid {grid-template-columns:1fr 1fr;gap:10px}
-  .stat-card {padding:16px 8px}
-  .stat-value {font-size:25px}
+
+@media(max-width: 450px) {
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .stat-card { padding: 16px 8px; }
+  .stat-value { font-size: 25px; }
 }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -175,124 +245,138 @@ footer {
 </header>
 
 <main>
-  <section class="search-panel">
-    <h2>🔍 Намери играч</h2>
-    <p>Въведи Epic Games nickname и избери период.</p>
 
-    <form id="searchForm" class="search-form">
-      <input
-        id="nickname"
-        type="text"
-        placeholder="Epic Games nickname"
-        maxlength="32"
-        autocomplete="off"
-        required
-        aria-label="Epic Games nickname"
-      >
+<section class="search-panel">
+  <h2>🔍 Намери играч</h2>
+  <p>Въведи Epic Games nickname и избери период.</p>
 
-      <select id="platform" aria-label="Платформа">
-        <option value="epic">Epic Games</option>
-        <option value="psn">PlayStation</option>
-        <option value="xbl">Xbox</option>
-      </select>
+  <form id="searchForm" class="search-form">
 
-      <select id="period" aria-label="Период">
-        <option value="lifetime">Всички сезони</option>
-        <option value="season">Текущ сезон</option>
-      </select>
+    <input
+      id="nickname"
+      type="text"
+      placeholder="Epic Games nickname"
+      maxlength="32"
+      autocomplete="off"
+      required
+      aria-label="Epic Games nickname"
+    >
 
-      <button id="searchButton" type="submit">
-        🔍 Търси
-      </button>
-    </form>
+    <select id="platform" aria-label="Платформа">
+      <option value="epic">Epic Games</option>
+      <option value="psn">PlayStation</option>
+      <option value="xbl">Xbox</option>
+    </select>
 
-    <p id="status" role="status" aria-live="polite">
-      Въведи nickname, за да започнеш.
-    </p>
+    <select id="period" aria-label="Период">
+      <option value="lifetime">Всички сезони</option>
+      <option value="season">Текущ сезон</option>
+    </select>
+
+    <button id="searchButton" type="submit">
+      🔍 Търси
+    </button>
+
+  </form>
+
+  <p id="status" role="status" aria-live="polite">
+    Въведи nickname, за да започнеш.
+  </p>
+</section>
+
+<div id="results" hidden>
+
+  <section class="profile">
+    <span class="tag">FORTNITE BATTLE ROYALE</span>
+    <h2 id="playerName">—</h2>
+    <p id="playerInfo">—</p>
   </section>
 
-  <div id="results" hidden>
-    <section class="profile">
-      <span class="tag">FORTNITE BATTLE ROYALE</span>
-      <h2 id="playerName">—</h2>
-      <p id="playerInfo">—</p>
-    </section>
+  <div class="stats-grid">
 
-    <div class="stats-grid">
-      <article class="stat-card">
-        <div class="stat-icon">🏆</div>
-        <div class="stat-value" id="wins">—</div>
-        <div class="stat-name">Победи</div>
-      </article>
+    <article class="stat-card">
+      <div class="stat-icon">🏆</div>
+      <div class="stat-value" id="wins">—</div>
+      <div class="stat-name">Победи</div>
+    </article>
 
-      <article class="stat-card">
-        <div class="stat-icon">🎯</div>
-        <div class="stat-value" id="kills">—</div>
-        <div class="stat-name">Убийства</div>
-      </article>
+    <article class="stat-card">
+      <div class="stat-icon">🎯</div>
+      <div class="stat-value" id="kills">—</div>
+      <div class="stat-name">Убийства</div>
+    </article>
 
-      <article class="stat-card">
-        <div class="stat-icon">📊</div>
-        <div class="stat-value" id="kd">—</div>
-        <div class="stat-name">K/D</div>
-      </article>
+    <article class="stat-card">
+      <div class="stat-icon">📊</div>
+      <div class="stat-value" id="kd">—</div>
+      <div class="stat-name">K/D</div>
+    </article>
 
-      <article class="stat-card">
-        <div class="stat-icon">🎮</div>
-        <div class="stat-value" id="matches">—</div>
-        <div class="stat-name">Изиграни мачове</div>
-      </article>
+    <article class="stat-card">
+      <div class="stat-icon">🎮</div>
+      <div class="stat-value" id="matches">—</div>
+      <div class="stat-name">Изиграни мачове</div>
+    </article>
 
-      <article class="stat-card">
-        <div class="stat-icon">👑</div>
-        <div class="stat-value" id="winRate">—</div>
-        <div class="stat-name">Win Rate</div>
-      </article>
+    <article class="stat-card">
+      <div class="stat-icon">👑</div>
+      <div class="stat-value" id="winRate">—</div>
+      <div class="stat-name">Win Rate</div>
+    </article>
 
-      <article class="stat-card">
-        <div class="stat-icon">⏱️</div>
-        <div class="stat-value" id="playTime">—</div>
-        <div class="stat-name">Време в игра</div>
-      </article>
-    </div>
+    <article class="stat-card">
+      <div class="stat-icon">⏱️</div>
+      <div class="stat-value" id="playTime">—</div>
+      <div class="stat-name">Време в игра</div>
+    </article>
 
-    <section class="modes">
-      <h2>🎮 Статистики по режими</h2>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Режим</th>
-              <th>Победи</th>
-              <th>Убийства</th>
-              <th>Мачове</th>
-              <th>K/D</th>
-              <th>Win Rate</th>
-            </tr>
-          </thead>
-          <tbody id="modesBody"></tbody>
-        </table>
-      </div>
-    </section>
-
-    <p class="note">
-      Статистиките се предоставят от Fortnite-API.com.
-      Частни профили и някои режими може да нямат
-      достъпни данни. Това е неофициален фен сайт.
-    </p>
   </div>
+
+  <section class="modes">
+    <h2>🎮 Статистики по режими</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Режим</th>
+            <th>Победи</th>
+            <th>Убийства</th>
+            <th>Мачове</th>
+            <th>K/D</th>
+            <th>Win Rate</th>
+          </tr>
+        </thead>
+        <tbody id="modesBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <p class="note">
+    Статистиките се предоставят от Fortnite-API.com.
+    Частни профили и някои режими може да нямат
+    достъпни данни. Това е неофициален фен сайт.
+  </p>
+
+</div>
+
 </main>
 
 <footer>
-  VANKATA GAMING · Fortnite Player Stats
+  © <span id="year"></span> VANKATA GAMING · Fortnite Player Stats
 </footer>
 
 <script>
 'use strict';
 
-// ПОСТАВИ ТУК ПУБЛИЧНИЯ URL НА CLOUDFLARE WORKER.
-// НЕ ПОСТАВЯЙ API КЛЮЧ ТУК!
-const WORKER_URL = 'PASTE_YOUR_WORKER_URL_HERE';
+// ГОТОВ АДРЕС НА ТВОЯ CLOUDFLARE WORKER
+// API КЛЮЧЪТ СЕ ПАЗИ В CLOUDFLARE, НЕ ТУК!
+
+const WORKER_URL =
+  'https://vankata-fortnite-stats.ivanivanov5754.workers.dev';
+
+document.getElementById('year').textContent =
+  new Date().getFullYear();
 
 const form = document.getElementById('searchForm');
 const statusEl = document.getElementById('status');
@@ -302,28 +386,35 @@ const button = document.getElementById('searchButton');
 const formatter = new Intl.NumberFormat('bg-BG');
 
 function formatNumber(value) {
-  const n = Number(value);
-  return value === null ||
-    value === undefined ||
-    value === '' ||
-    !Number.isFinite(n)
-    ? '—'
-    : formatter.format(n);
+  if (value === null || value === undefined || value === '') {
+    return '—';
+  }
+
+  const number = Number(value);
+
+  return Number.isFinite(number)
+    ? formatter.format(number)
+    : '—';
 }
 
 function formatDecimal(value) {
-  const n = Number(value);
-  return value === null ||
-    value === undefined ||
-    value === '' ||
-    !Number.isFinite(n)
-    ? '—'
-    : n.toFixed(2);
+  if (value === null || value === undefined || value === '') {
+    return '—';
+  }
+
+  const number = Number(value);
+
+  return Number.isFinite(number)
+    ? number.toFixed(2)
+    : '—';
 }
 
 function formatPercent(value) {
   const formatted = formatDecimal(value);
-  return formatted === '—' ? '—' : formatted + '%';
+
+  return formatted === '—'
+    ? '—'
+    : formatted + '%';
 }
 
 function setText(id, value) {
@@ -337,6 +428,7 @@ function setStatus(message, type = '') {
 
 function showMode(label, stats) {
   const row = document.createElement('tr');
+
   const values = [
     label,
     formatNumber(stats?.wins),
@@ -357,15 +449,8 @@ function showMode(label, stats) {
 
 function displayStats(data, requestedName, period) {
   const account = data.account || {};
-  const stats = data.stats || {};
-
-  // Fortnite-API BR v2: stats.all.overall
-  const all = stats.all || {};
+  const all = data.stats?.all || {};
   const overall = all.overall || {};
-
-  const solo = all.solo || {};
-  const duo = all.duo || {};
-  const squad = all.squad || {};
 
   setText('playerName', account.name || requestedName);
 
@@ -386,8 +471,8 @@ function displayStats(data, requestedName, period) {
 
   setText(
     'playTime',
-    Number.isFinite(minutes) &&
-    overall.minutesPlayed != null
+    overall.minutesPlayed != null &&
+    Number.isFinite(minutes)
       ? formatNumber(Math.round(minutes / 60)) + ' ч.'
       : '—'
   );
@@ -395,9 +480,9 @@ function displayStats(data, requestedName, period) {
   const tbody = document.getElementById('modesBody');
   tbody.replaceChildren();
 
-  showMode('Solo', solo);
-  showMode('Duo', duo);
-  showMode('Squad', squad);
+  showMode('Solo', all.solo);
+  showMode('Duo', all.duo);
+  showMode('Squad', all.squad);
 
   resultsEl.hidden = false;
 }
@@ -413,20 +498,13 @@ form.addEventListener('submit', async event => {
 
   resultsEl.hidden = true;
 
-  if (WORKER_URL.includes('PASTE_YOUR_WORKER_URL')) {
-    setStatus(
-      '⚠️ Първо настрой Cloudflare Worker URL в кода.',
-      'error'
-    );
-    return;
-  }
-
   button.disabled = true;
   button.textContent = '⏳ Зареждане...';
   setStatus('Търсене на ' + name + '...');
 
   try {
     const url = new URL(WORKER_URL);
+
     url.searchParams.set('name', name);
     url.searchParams.set('accountType', platform);
     url.searchParams.set('timeWindow', period);
@@ -438,7 +516,9 @@ form.addEventListener('submit', async event => {
     try {
       result = await response.json();
     } catch {
-      throw new Error('Невалиден отговор от сървъра.');
+      throw new Error(
+        'Невалиден отговор от Cloudflare Worker.'
+      );
     }
 
     if (!response.ok || result.status !== 200) {
@@ -470,7 +550,11 @@ form.addEventListener('submit', async event => {
     }
 
     displayStats(result.data, name, period);
-    setStatus('✅ Статистиките са заредени.', 'success');
+
+    setStatus(
+      '✅ Статистиките са заредени успешно.',
+      'success'
+    );
 
   } catch (error) {
     setStatus('❌ ' + error.message, 'error');
@@ -484,4 +568,3 @@ form.addEventListener('submit', async event => {
 
 </body>
 </html>
-
