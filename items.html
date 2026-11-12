@@ -3,13 +3,15 @@
 <html lang="bg">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Fortnite Item Search | VANKATA GAMING</title>
 <style>
 :root{
-  --bg:#090b17;--panel:#171e35;
-  --cyan:#29e0e7;--purple:#9560ff;
-  --muted:#b2b7cc
+  --bg:#090b17;
+  --panel:#171e35;
+  --cyan:#29e0e7;
+  --purple:#9560ff;
+  --muted:#b2b7cc;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:white;font-family:Arial,sans-serif}
@@ -25,13 +27,24 @@ input,select{
 }
 input{flex:1;min-width:190px}
 button{
-  padding:15px 23px;background:linear-gradient(120deg,#9560ff,#5555ee);
-  color:white;border:0;border-radius:12px;font-weight:bold;cursor:pointer
+  padding:15px 23px;
+  background:linear-gradient(120deg,#9560ff,#5555ee);
+  color:white;border:0;border-radius:12px;
+  font-weight:bold;cursor:pointer
 }
 button:hover{filter:brightness(1.15)}
 #status{color:var(--muted);text-align:center;margin:22px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:19px}
-.card{background:var(--panel);border:1px solid #37415d;border-radius:17px;overflow:hidden}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:19px
+}
+.card{
+  background:var(--panel);
+  border:1px solid #37415d;
+  border-radius:17px;
+  overflow:hidden
+}
 .card img{
   display:block;width:100%;height:235px;object-fit:contain;
   background:radial-gradient(circle,#39305d,#14192b)
@@ -60,285 +73,499 @@ button:hover{filter:brightness(1.15)}
 </header>
 
 <main>
-  <form id="searchForm" class="controls">
-    <input id="itemName" placeholder="Например: Midas, Aura, Star Wand..." minlength="2" required>
-    <select id="category">
-      <option value="">🎮 Всички категории</option>
-      <option value="outfit">👕 Скинове</option>
-      <option value="pickaxe">⛏️ Кирки</option>
-      <option value="backbling">🎒 Раници</option>
-      <option value="emote">💃 Емоути</option>
-      <option value="glider">🪂 Глайдери</option>
-      <option value="wrap">🔫 Wraps</option>
-      <option value="music">🎵 Музика</option>
-    </select>
-    <button type="submit">🔍 Търси</button>
-  </form>
+<form id="searchForm" class="controls">
+  <input id="itemName"
+         placeholder="Например: Midas, Aura, Star Wand..."
+         minlength="2" required>
+  <select id="category">
+    <option value="">🎮 Всички категории</option>
+    <option value="outfit">👕 Скинове</option>
+    <option value="pickaxe">⛏️ Кирки</option>
+    <option value="backbling">🎒 Раници</option>
+    <option value="emote">💃 Емоути</option>
+    <option value="glider">🪂 Глайдери</option>
+    <option value="wrap">🔫 Wraps</option>
+    <option value="music">🎵 Музика</option>
+  </select>
+  <button type="submit">🔍 Търси</button>
+</form>
 
-  <p id="status">Въведи име на предмет.</p>
-  <div id="results" class="grid"></div>
-  <p class="note">
-    Данни от Fortnite-API. Цената се показва само
-    за текущи оферти. Последната поява се показва,
-    когато е налична в историята на предмета.
-  </p>
+<p id="status" aria-live="polite">Въведи име на предмет.</p>
+<div id="results" class="grid"></div>
+
+<p class="note">
+  Данни от Fortnite-API и публичния архив Fortnite-Datamining.
+  Историческите цени може да са цени на оферти или пакети,
+  а не самостоятелна цена на предмета.
+  Непълните записи се обозначават.
+</p>
 </main>
 
 <script>
-const form=document.getElementById("searchForm");
-const input=document.getElementById("itemName");
-const category=document.getElementById("category");
-const results=document.getElementById("results");
-const statusEl=document.getElementById("status");
+'use strict';
 
-let searchController=null;
-let shopPromise=null;
+const form=document.getElementById('searchForm');
+const input=document.getElementById('itemName');
+const category=document.getElementById('category');
+const results=document.getElementById('results');
+const statusEl=document.getElementById('status');
 
 const typeNames={
-  outfit:"Скин",pickaxe:"Кирка",backbling:"Раница",
-  emote:"Емоут",glider:"Глайдер",wrap:"Wrap",
-  music:"Музика",loadingscreen:"Loading Screen",
-  contrail:"Contrail",spray:"Spray"
+  outfit:'Скин',
+  pickaxe:'Кирка',
+  backbling:'Раница',
+  emote:'Емоут',
+  glider:'Глайдер',
+  wrap:'Wrap',
+  music:'Музика'
 };
 
-function text(parent,tag,value,cls){
+const registryUrl=
+  'https://raw.githubusercontent.com/Fortnite-Datamining/Fortnite-Datamining/main/data/items/registry.json';
+
+let controller=null;
+let shopPromise=null;
+let registryPromise=null;
+
+function add(parent,tag,value,cls){
   const el=document.createElement(tag);
   el.textContent=value;
   if(cls)el.className=cls;
   parent.appendChild(el);
+  return el;
 }
 
-function parseDate(value){
-  if(value===null || value===undefined || value==="")return null;
-  let d;
-  if(typeof value==="number"){
-    d=new Date(value<100000000000?value*1000:value);
-  }else if(/^\d+$/.test(String(value))){
-    const n=Number(value);
-    d=new Date(n<100000000000?n*1000:n);
-  }else{
-    d=new Date(value);
+function dateOf(v){
+  if(v==null||v==='')return null;
+
+  if(typeof v==='object'){
+    return dateOf(
+      v.date??v.day??v.shopDate??
+      v.timestamp??v.time??v.appearanceDate
+    );
   }
-  return Number.isNaN(d.getTime())?null:d;
+
+  const n=typeof v==='number'
+    ?v
+    :(/^\d{10,13}$/.test(String(v))?Number(v):NaN);
+
+  const d=Number.isFinite(n)
+    ?new Date(n<1e11?n*1000:n)
+    :new Date(v);
+
+  return Number.isFinite(d.getTime())?d:null;
 }
 
-function getLastAppearance(item){
-  const dates=[];
-
-  if(item.lastAppearance){
-    const date=parseDate(item.lastAppearance);
-    if(date)dates.push(date);
-  }
-
-  if(Array.isArray(item.shopHistory)){
-    for(const value of item.shopHistory){
-      const date=parseDate(value);
-      if(date)dates.push(date);
-    }
-  }
-
-  if(!dates.length)return null;
-  dates.sort((a,b)=>b.getTime()-a.getTime());
-  return dates[0];
+function money(v){
+  const n=Number(v);
+  return v!==null&&v!==undefined&&v!==''&&
+    Number.isFinite(n)&&n>=0?n:null;
 }
 
-function shopIndex(shop){
-  const map=new Map();
+function priceOf(x){
+  if(!x||typeof x!=='object')return null;
+  return money(
+    x.finalPrice??x.price??x.vbucks??
+    x.vBucks??x.regularPrice??x.cost
+  );
+}
 
-  for(const entry of shop.entries||[]){
-    const price=entry.finalPrice ?? entry.regularPrice;
-    for(const item of [
-      ...(entry.brItems||[]),
-      ...(entry.tracks||[]),
-      ...(entry.instruments||[]),
-      ...(entry.cars||[])
-    ]){
-      if(item && item.id){
-        const existing=map.get(item.id);
-        if(!existing || price<existing.price){
-          map.set(item.id,{price,entry});
+function getHistory(entry){
+  if(!entry||typeof entry!=='object')return [];
+
+  const candidates=[
+    entry.shopAppearances,
+    entry.shopHistory,
+    entry.appearances,
+    entry.history,
+    entry.shops,
+    entry.shop_history,
+    entry.shop_appearances
+  ];
+
+  const out=[];
+
+  for(const candidate of candidates){
+    if(Array.isArray(candidate)){
+      out.push(...candidate);
+    }else if(candidate&&typeof candidate==='object'){
+      for(const [key,value] of Object.entries(candidate)){
+        if(dateOf(key)){
+          out.push(
+            typeof value==='object'&&value!==null
+              ?{date:key,...value}
+              :{date:key,price:value}
+          );
         }
       }
     }
   }
-
-  return map;
+  return out;
 }
 
-async function getShop(){
-  if(!shopPromise){
-    shopPromise=fetch("https://fortnite-api.com/v2/shop")
-      .then(response=>{
-        if(!response.ok){
-          throw new Error("Shop HTTP "+response.status);
-        }
-        return response.json();
-      })
-      .then(json=>shopIndex(json.data||{}))
-      .catch(error=>{
-        console.warn("Shop unavailable:",error);
-        shopPromise=null;
-        return new Map();
+function registryRecord(registry,item){
+  if(!registry)return null;
+
+  const roots=[
+    registry,
+    registry.items,
+    registry.cosmetics,
+    registry.data,
+    registry.registry,
+    registry.entries
+  ].filter(Boolean);
+
+  const id=String(item.id||'').toLowerCase();
+
+  for(const root of roots){
+    if(Array.isArray(root)){
+      const match=root.find(x=>
+        x&&String(
+          x.id??x.itemId??x.cosmeticId??''
+        ).toLowerCase()===id
+      );
+      if(match)return match;
+    }else if(typeof root==='object'){
+      if(root[item.id])return root[item.id];
+
+      const key=Object.keys(root).find(
+        k=>k.toLowerCase()===id
+      );
+      if(key)return root[key];
+    }
+  }
+  return null;
+}
+
+function historicalInfo(item,registry){
+  const rec=registryRecord(registry,item);
+  const history=[
+    ...getHistory(rec),
+    ...getHistory(item)
+  ];
+
+  const appearances=[];
+
+  for(const h of history){
+    const date=dateOf(h);
+    if(date){
+      appearances.push({
+        date,
+        price:priceOf(h)
       });
+    }
+  }
+
+  for(const v of [
+    item.lastAppearance,
+    rec?.lastAppearance,
+    rec?.lastSeenInShop,
+    rec?.lastShopAppearance,
+    rec?.last_shop_appearance
+  ]){
+    const date=dateOf(v);
+    if(date){
+      appearances.push({date,price:null});
+    }
+  }
+
+  appearances.sort((a,b)=>b.date-a.date);
+
+  const last=appearances[0]?.date||null;
+  const priced=appearances.find(x=>x.price!==null);
+
+  const standalone=money(
+    rec?.lastKnownPrice??
+    rec?.lastPrice??
+    rec?.shopPrice??
+    rec?.price
+  );
+
+  return {
+    last,
+    price:priced?.price??standalone,
+    priceDate:priced?.date||null,
+    hasHistory:history.length>0
+  };
+}
+
+async function fetchJson(url,signal){
+  const r=await fetch(url,{signal});
+  if(!r.ok){
+    throw new Error('HTTP '+r.status+' '+url);
+  }
+  return r.json();
+}
+
+function getShop(){
+  if(!shopPromise){
+    shopPromise=fetchJson(
+      'https://fortnite-api.com/v2/shop'
+    ).then(j=>{
+      const map=new Map();
+
+      for(const e of j.data?.entries||[]){
+        const p=money(
+          e.finalPrice??e.regularPrice
+        );
+
+        for(const it of [
+          ...(e.brItems||[]),
+          ...(e.tracks||[]),
+          ...(e.instruments||[]),
+          ...(e.cars||[])
+        ]){
+          if(!it?.id||p===null)continue;
+
+          const prev=map.get(it.id);
+
+          if(!prev||p<prev.price){
+            map.set(it.id,{
+              price:p,
+              count:(e.brItems||[]).length
+            });
+          }
+        }
+      }
+      return map;
+    }).catch(e=>{
+      console.warn('Shop:',e);
+      shopPromise=null;
+      return new Map();
+    });
   }
   return shopPromise;
 }
 
-function showItem(item,shop){
-  const card=document.createElement("article");
-  card.className="card";
+function getRegistry(){
+  if(!registryPromise){
+    registryPromise=fetchJson(registryUrl)
+      .catch(e=>{
+        console.warn('Registry:',e);
+        registryPromise=null;
+        return null;
+      });
+  }
+  return registryPromise;
+}
 
-  const image=item.images?.featured||
-              item.images?.icon||
-              item.images?.smallIcon;
+function renderItem(item,shop,registry){
+  const card=add(results,'article','');
+  card.className='card';
+
+  const image=
+    item.images?.featured||
+    item.images?.icon||
+    item.images?.smallIcon;
 
   if(image){
-    const img=document.createElement("img");
+    const img=document.createElement('img');
     img.src=image;
-    img.alt=item.name||"Fortnite предмет";
-    img.loading="lazy";
+    img.alt=item.name||'Fortnite предмет';
+    img.loading='lazy';
     card.appendChild(img);
   }
 
-  const info=document.createElement("div");
-  info.className="info";
+  const info=add(card,'div','');
+  info.className='info';
 
-  text(info,"h2",item.name||"Неизвестен предмет");
+  add(info,'h2',item.name||'Неизвестен предмет');
 
-  const type=(item.type?.value||"").toLowerCase();
-  text(
-    info,"p",
-    "Категория: "+(
+  const type=String(
+    item.type?.value||''
+  ).toLowerCase();
+
+  add(
+    info,'p',
+    'Категория: '+(
       typeNames[type]||
       item.type?.displayValue||
-      "Друга"
+      'Друга'
     ),
-    "type"
+    'type'
   );
 
-  const rarity=item.series?.name||
-               item.rarity?.displayValue||
-               "Неизвестна";
-  text(info,"p","Рядкост: "+rarity);
+  add(
+    info,'p',
+    'Рядкост: '+(
+      item.series?.name||
+      item.rarity?.displayValue||
+      'Неизвестна'
+    )
+  );
 
   if(item.description){
-    text(info,"p",item.description);
+    add(info,'p',item.description);
   }
 
   const offer=shop.get(item.id);
+  const hist=historicalInfo(item,registry);
 
-  if(offer && Number.isFinite(Number(offer.price))){
-    text(
-      info,"p",
-      "🪙 Текуща оферта: "+
-      Number(offer.price).toLocaleString("en-US")+
-      " V-Bucks",
-      "price"
+  if(offer){
+    add(
+      info,'p',
+      '🪙 Текуща оферта: '+
+      offer.price.toLocaleString('en-US')+
+      ' V-Bucks'+(
+        offer.count>1?' (може да е пакет)':''
+      ),
+      'price'
     );
-    text(info,"p","🟢 В текущия Item Shop");
+
+    add(
+      info,'p',
+      '🟢 В текущия Item Shop'
+    );
+
+  }else if(hist.price!==null){
+    add(
+      info,'p',
+      '🪙 Историческа цена на оферта: '+
+      hist.price.toLocaleString('en-US')+
+      ' V-Bucks (възможен пакет)',
+      'price'
+    );
+
   }else{
-    text(info,"p","🪙 Цена: няма текуща оферта");
+    add(
+      info,'p',
+      '🪙 Цена: няма надеждни данни'
+    );
   }
 
-  const last=getLastAppearance(item);
-
-  if(last){
-    text(
-      info,"p",
-      "📅 Последна поява в Item Shop: "+
-      last.toLocaleDateString("bg-BG",{
-        timeZone:"UTC",
-        day:"2-digit",
-        month:"2-digit",
-        year:"numeric"
-      }),
-      "last"
+  if(hist.last){
+    add(
+      info,'p',
+      '📅 Последна записана поява: '+
+      hist.last.toLocaleDateString(
+        'bg-BG',{
+          timeZone:'UTC',
+          day:'2-digit',
+          month:'2-digit',
+          year:'numeric'
+        }
+      ),
+      'last'
     );
+
+    const days=Math.floor(
+      (Date.now()-hist.last.getTime())/86400000
+    );
+
+    if(days>=0){
+      add(
+        info,'p',
+        '⏳ Преди '+days+' дни'
+      );
+    }
+
   }else{
-    text(
-      info,"p",
-      "📅 Последна поява: няма данни"
+    add(
+      info,'p',
+      '📅 Последна поява: няма данни'
     );
   }
 
   if(item.introduction?.text){
-    text(info,"p",item.introduction.text);
+    add(
+      info,'p',
+      item.introduction.text
+    );
   }
-
-  card.appendChild(info);
-  results.appendChild(card);
 }
 
 async function searchItems(query){
-  if(searchController)searchController.abort();
-  searchController=new AbortController();
-  const signal=searchController.signal;
+  if(controller)controller.abort();
+
+  controller=new AbortController();
+  const signal=controller.signal;
 
   results.replaceChildren();
-  statusEl.textContent="⏳ Търсене на предмети...";
+  statusEl.textContent='⏳ Търсене...';
 
   const params=new URLSearchParams({
     name:query,
-    matchMethod:"contains",
-    language:"en",
-    searchLanguage:"en"
+    matchMethod:'contains',
+    language:'en',
+    searchLanguage:'en'
   });
 
   if(category.value){
-    params.set("type",category.value);
+    params.set('type',category.value);
   }
 
   try{
     const response=await fetch(
-      "https://fortnite-api.com/v2/cosmetics/br/search/all?"+params,
+      'https://fortnite-api.com/v2/cosmetics/br/search/all?'+params,
       {signal}
     );
 
     if(response.status===404){
-      statusEl.textContent="Няма намерени предмети.";
+      statusEl.textContent='Няма намерени предмети.';
       return;
     }
 
     if(!response.ok){
-      throw new Error("Search HTTP "+response.status);
+      throw new Error(
+        'Search HTTP '+response.status
+      );
     }
 
-    const json=await response.json();
-    const items=Array.isArray(json.data)?json.data:[];
+    const j=await response.json();
+
+    const items=Array.isArray(j.data)
+      ?j.data
+      :[];
 
     if(signal.aborted)return;
 
     if(!items.length){
-      statusEl.textContent="Няма намерени предмети.";
+      statusEl.textContent='Няма намерени предмети.';
       return;
     }
 
-    statusEl.textContent="⏳ Намерени "+items.length+
-      " предмета. Зареждане на цени...";
+    statusEl.textContent=
+      '⏳ Зареждане на история и цени...';
 
-    const shop=await getShop();
+    const [shop,registry]=await Promise.all([
+      getShop(),
+      getRegistry()
+    ]);
+
     if(signal.aborted)return;
 
     results.replaceChildren();
-    items.slice(0,80).forEach(item=>showItem(item,shop));
 
-    statusEl.textContent="🎮 Намерени предмети: "+items.length;
+    items.slice(0,80).forEach(
+      item=>renderItem(item,shop,registry)
+    );
 
-    if(items.length>80){
-      statusEl.textContent+=" (показани първите 80)";
-    }
-  }catch(error){
-    if(error.name==="AbortError")return;
-    console.error(error);
     statusEl.textContent=
-      "❌ Грешка при търсене. Опитай отново.";
+      '🎮 Намерени предмети: '+items.length+
+      (items.length>80
+        ?' (показани първите 80)'
+        :'')+
+      (!registry
+        ?' · Историческият архив е недостъпен'
+        :'');
+  }catch(e){
+    if(e.name==='AbortError')return;
+
+    console.error(e);
+
+    statusEl.textContent=
+      '❌ Грешка при търсене. Опитай отново.';
   }
 }
 
-form.addEventListener("submit",event=>{
-  event.preventDefault();
-  const query=input.value.trim();
-  if(query.length>=2)searchItems(query);
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+
+  const q=input.value.trim();
+
+  if(q.length>=2){
+    searchItems(q);
+  }
 });
 </script>
 </body>
