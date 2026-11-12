@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-12T02:38:36.011095+00:00",
+  "updated_at": "2026-11-12T10:31:28.662402+00:00",
   "items": [
     {
       "id": "d25f273977ae0b99",
@@ -407,6 +407,26 @@
       "source": "Fortnite Datamining",
       "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
       "date": "Thu, 12 Nov 2026 01:46:00 GMT",
+      "type": "datamining",
+      "label": "Открита промяна в играта",
+      "verified": false
+    },
+    {
+      "id": "4d92efa4bf1a4730",
+      "title": "Fortnite's Final Treasure Rewards Leaked",
+      "source": "Fortnite News",
+      "url": "https://fortnitenews.com/fortnites-final-treasure-rewards-leaked/",
+      "date": "Thu, 12 Nov 2026 09:49:58 GMT",
+      "type": "news",
+      "label": "Неофициална публикация",
+      "verified": false
+    },
+    {
+      "id": "f68920d6df52fe12",
+      "title": "Jam Tracks, Epic Content Pages - +4 new (Shut Up and Dance, BIRDBRAIN, Chronicles of Destiny, Sa-Sen!)",
+      "source": "Fortnite Datamining",
+      "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
+      "date": "Thu, 12 Nov 2026 09:10:00 GMT",
       "type": "datamining",
       "label": "Открита промяна в играта",
       "verified": false
