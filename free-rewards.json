@@ -1,1 +1,71 @@
 
+{
+  "updated_at": "2026-11-12",
+  "rewards": [
+    {
+      "name": "Solid Gold Lil Uzi Vert",
+      "category": "Скин",
+      "method": "Отваряй или чупи сандъци в Battle Royale. Наградата е много рядка.",
+      "end_date": "2026-11-15",
+      "cost": "free",
+      "source": "https://www.dexerto.com/fortnite/how-to-get-free-fortnite-skins-1735476/"
+    },
+    {
+      "name": "Yeddy",
+      "category": "Скин",
+      "method": "Изпълни мобилните мисии Invite a Friend и спечели едно ниво.",
+      "end_date": "2026-12-04",
+      "cost": "free",
+      "source": "https://fortnite.gg/free-cosmetics"
+    },
+    {
+      "name": "Explorer Emilie + Mr. Dappermint",
+      "category": "2 скина",
+      "method": "Свържи своя LEGO акаунт с Epic Games.",
+      "end_date": null,
+      "cost": "free",
+      "source": "https://fortnite.gg/free-cosmetics"
+    },
+    {
+      "name": "Trailblazer Tai",
+      "category": "Скин",
+      "method": "Вземи безплатния True Explorers Quest Pack и изпълни LEGO Fortnite куестовете.",
+      "end_date": null,
+      "cost": "free",
+      "source": "https://fortnite.gg/free-cosmetics"
+    },
+    {
+      "name": "Boogie Down",
+      "category": "Emote",
+      "method": "Включи двуфакторна автентикация (2FA) в Epic Games.",
+      "end_date": null,
+      "cost": "free",
+      "source": "https://www.epicgames.com/help/c-34254770/c-Trending_0/a11125386"
+    },
+    {
+      "name": "Safety in Numbers",
+      "category": "5 козметични награди",
+      "method": "Играй Horror Creator острови с приятел и печели XP за награди.",
+      "end_date": "2026-11-12",
+      "cost": "free",
+      "source": "https://fortnite.gg/free-cosmetics"
+    },
+    {
+      "name": "Sprite Mastery",
+      "category": "Back Bling",
+      "method": "Изпълнявай предизвикателствата за овладяване на Sprites.",
+      "end_date": "2026-12-04",
+      "cost": "free",
+      "source": "https://fortnite.gg/free-cosmetics"
+    },
+    {
+      "name": "GHOST Monks",
+      "category": "Скин",
+      "method": "Получи го при отговарящо на условията първо активиране на Fortnite Gift Card. Изисква покупка.",
+      "end_date": "2026-12-31",
+      "cost": "purchase",
+      "source": "https://www.dexerto.com/fortnite/how-to-get-free-fortnite-skins-1735476/"
+    }
+  ]
+}
+
