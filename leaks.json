@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-11T21:41:56.809665+00:00",
+  "updated_at": "2026-11-12T02:38:36.011095+00:00",
   "items": [
     {
       "id": "d25f273977ae0b99",
@@ -397,6 +397,16 @@
       "source": "Fortnite Datamining",
       "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
       "date": "Wed, 11 Nov 2026 04:25:00 GMT",
+      "type": "datamining",
+      "label": "Открита промяна в играта",
+      "verified": false
+    },
+    {
+      "id": "256138b9ab418d4d",
+      "title": "Item Shop, Epic Content Pages - +17 new (Spidey Landing, The Black Cat, Caper, Moonlit Blades, Web Slicer, +12 more) - -40 removed",
+      "source": "Fortnite Datamining",
+      "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
+      "date": "Thu, 12 Nov 2026 01:46:00 GMT",
       "type": "datamining",
       "label": "Открита промяна в играта",
       "verified": false
