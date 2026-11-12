@@ -3,7 +3,8 @@
 <html lang="bg">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Fortnite Challenge Wheel | VANKATA GAMING</title>
 
 <style>
@@ -12,16 +13,17 @@
   --bg: #090b17;
   --panel: #171e35;
   --cyan: #29e0e7;
-  --purple: #9560ff;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
-  background: radial-gradient(circle at top,#222044,#090b17 65%);
-  color: #fff;
-  font-family: Arial,sans-serif;
+  background: radial-gradient(circle at top, #222044, #090b17 65%);
+  color: white;
+  font-family: Arial, sans-serif;
 }
 
 header {
@@ -32,12 +34,17 @@ header {
 }
 
 header h1 {
-  font-size: clamp(26px,5vw,44px);
+  font-size: clamp(26px, 5vw, 44px);
   margin: 12px 0;
 }
 
-header p { color: #bec5d8; }
-a { color: var(--cyan); }
+header p {
+  color: #bec5d8;
+}
+
+a {
+  color: var(--cyan);
+}
 
 main {
   max-width: 1250px;
@@ -47,7 +54,7 @@ main {
 
 .wheels {
   display: grid;
-  grid-template-columns: repeat(3,minmax(0,1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
 }
 
@@ -95,7 +102,7 @@ main {
   height: 0;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
-  border-top: 30px solid #fff;
+  border-top: 30px solid white;
   filter: drop-shadow(0 2px 3px #000);
 }
 
@@ -103,15 +110,21 @@ button {
   border: 0;
   border-radius: 12px;
   padding: 13px 19px;
-  background: linear-gradient(115deg,#9560ff,#5555ee);
+  background: linear-gradient(115deg, #9560ff, #5555ee);
   color: white;
   font-weight: 800;
   cursor: pointer;
   font-size: 15px;
 }
 
-button:hover { filter: brightness(1.12); }
-button:disabled { opacity: .5; cursor: wait; }
+button:hover {
+  filter: brightness(1.12);
+}
+
+button:disabled {
+  opacity: .5;
+  cursor: wait;
+}
 
 .result {
   min-height: 47px;
@@ -142,59 +155,26 @@ button:disabled { opacity: .5; cursor: wait; }
   margin-top: 18px;
 }
 
-.summary h2 { margin-top: 0; }
-.summary p { line-height: 1.65; }
-.summary strong { color: #29e0e7; }
-.summary button { margin-top: 8px; }
+.summary h2 {
+  margin-top: 0;
+}
+
+.summary p {
+  line-height: 1.65;
+}
+
+.summary strong {
+  color: var(--cyan);
+}
+
+.summary button {
+  margin-top: 8px;
+}
 
 .small {
   color: #aeb8cc;
   font-size: 13px;
   line-height: 1.6;
-}
-
-.editor {
-  margin-top: 22px;
-  background: #151b30;
-  border: 1px solid #394164;
-  border-radius: 16px;
-  padding: 18px;
-}
-
-.editor summary {
-  cursor: pointer;
-  color: #29e0e7;
-  font-weight: 700;
-}
-
-.editor-grid {
-  display: grid;
-  grid-template-columns: repeat(3,minmax(0,1fr));
-  gap: 16px;
-  margin-top: 18px;
-}
-
-.editor label {
-  display: block;
-  margin-bottom: 7px;
-  font-weight: bold;
-}
-
-.editor textarea {
-  width: 100%;
-  min-height: 150px;
-  resize: vertical;
-  background: #0c1224;
-  color: white;
-  border: 1px solid #445073;
-  border-radius: 10px;
-  padding: 12px;
-  font: 14px Arial;
-}
-
-.editor p {
-  font-size: 12px;
-  color: #b8c3d7;
 }
 
 footer {
@@ -203,14 +183,18 @@ footer {
   color: #aeb8cc;
 }
 
-@media(max-width:900px) {
-  .wheels { grid-template-columns: 1fr; }
-  .wheel-wrap { max-width: 330px; }
-  .editor-grid { grid-template-columns: 1fr; }
-}
+@media (max-width: 900px) {
+  .wheels {
+    grid-template-columns: 1fr;
+  }
 
-@media(prefers-reduced-motion:reduce) {
-  * { scroll-behavior: auto !important; }
+  .wheel-wrap {
+    max-width: 330px;
+  }
+
+  .hint {
+    min-height: 0;
+  }
 }
 </style>
 </head>
@@ -229,45 +213,57 @@ footer {
 
   <section class="wheel-card">
     <h2>🔫 Рядкост на оръжията</h2>
+
     <div class="hint">
       Използвай само оръжия с избраната рядкост
     </div>
+
     <div class="wheel-wrap">
       <div class="pointer"></div>
       <canvas id="weaponCanvas" width="600" height="600"></canvas>
     </div>
+
     <button id="weaponSpin">Завърти</button>
-    <div class="result" id="weaponResult">
+
+    <div class="result" id="weaponResult" aria-live="polite">
       Очаква завъртане
     </div>
   </section>
 
   <section class="wheel-card">
     <h2>🩹 Лечение</h2>
+
     <div class="hint">
       Използвай само избрания тип лечение
     </div>
+
     <div class="wheel-wrap">
       <div class="pointer"></div>
       <canvas id="healCanvas" width="600" height="600"></canvas>
     </div>
+
     <button id="healSpin">Завърти</button>
-    <div class="result" id="healResult">
+
+    <div class="result" id="healResult" aria-live="polite">
       Очаква завъртане
     </div>
   </section>
 
   <section class="wheel-card">
     <h2>📍 Начална локация</h2>
+
     <div class="hint">
       Кацни на избраното място в началото на мача
     </div>
+
     <div class="wheel-wrap">
       <div class="pointer"></div>
       <canvas id="locationCanvas" width="600" height="600"></canvas>
     </div>
+
     <button id="locationSpin">Завърти</button>
-    <div class="result" id="locationResult">
+
+    <div class="result" id="locationResult" aria-live="polite">
       Очаква завъртане
     </div>
   </section>
@@ -290,44 +286,12 @@ footer {
   </button>
 
   <p class="small">
-    Локация без име означава, че можеш да кацнеш
+    „Локация без име“ означава, че можеш да кацнеш
     на което и да е място без официално име.
-    Ако избраната рядкост или предмет не е наличен
-    в режима, завърти съответното колело отново.
+    Ако избраната рядкост или предмет липсва в мача,
+    завърти съответното колело отново.
   </p>
 </section>
-
-<details class="editor">
-  <summary>⚙️ Редактирай опциите на колелата</summary>
-
-  <div class="editor-grid">
-
-    <div>
-      <label for="weaponOptions">Рядкости</label>
-      <textarea id="weaponOptions"></textarea>
-    </div>
-
-    <div>
-      <label for="healOptions">Лечение</label>
-      <textarea id="healOptions"></textarea>
-    </div>
-
-    <div>
-      <label for="locationOptions">Локации</label>
-      <textarea id="locationOptions"></textarea>
-    </div>
-
-  </div>
-
-  <button id="saveOptions">Приложи опциите</button>
-  <button id="resetOptions" style="background:#3b4668">
-    Върни стандартните
-  </button>
-
-  <p id="editMessage" aria-live="polite">
-    Промените важат за текущото отваряне на страницата.
-  </p>
-</details>
 
 </main>
 
@@ -338,7 +302,7 @@ footer {
 <script>
 'use strict';
 
-// НАСТРОЙКИ НА ТРИТЕ КОЛЕЛА
+// ОПЦИИ НА КОЛЕЛАТА
 
 const defaults = {
   weapon: [
@@ -412,15 +376,15 @@ const palettes = {
 const state = {};
 let busy = 0;
 
-// СЪЗДАВАНЕ НА КОЛЕЛО
+// СЪЗДАВАНЕ
 
 function makeWheel(key) {
   const canvas = document.getElementById(key + 'Canvas');
   const ctx = canvas.getContext('2d');
 
   state[key] = {
-    canvas,
-    ctx,
+    canvas: canvas,
+    ctx: ctx,
     items: [...defaults[key]],
     rotation: 0,
     spinning: false,
@@ -430,7 +394,7 @@ function makeWheel(key) {
   draw(key);
 }
 
-// РИСУВАНЕ НА КОЛЕЛОТО
+// РИСУВАНЕ
 
 function draw(key) {
   const s = state[key];
@@ -498,6 +462,7 @@ function draw(key) {
 
   ctx.beginPath();
   ctx.arc(cx, cy, 38, 0, Math.PI * 2);
+
   ctx.fillStyle = '#141a30';
   ctx.fill();
 
@@ -512,11 +477,13 @@ function draw(key) {
   ctx.fillText('V', cx, cy);
 }
 
+// ПЛАВНА АНИМАЦИЯ
+
 function ease(t) {
   return 1 - Math.pow(1 - t, 4);
 }
 
-// ЗАВЪРТАНЕ НА КОЛЕЛО
+// ЗАВЪРТАНЕ
 
 function spin(key) {
   const s = state[key];
@@ -592,6 +559,8 @@ function spin(key) {
   });
 }
 
+// БУТОНИ
+
 function updateButtons() {
   document.getElementById('spinAll').disabled = busy > 0;
 
@@ -600,17 +569,9 @@ function updateButtons() {
       key + 'Spin'
     ).disabled = busy > 0;
   }
-
-  document.getElementById(
-    'saveOptions'
-  ).disabled = busy > 0;
-
-  document.getElementById(
-    'resetOptions'
-  ).disabled = busy > 0;
 }
 
-// СТАРТИРАНЕ НА ТРИТЕ КОЛЕЛА
+// ИНИЦИАЛИЗАЦИЯ
 
 for (const key of ['weapon', 'heal', 'location']) {
   makeWheel(key);
@@ -618,11 +579,9 @@ for (const key of ['weapon', 'heal', 'location']) {
   document.getElementById(
     key + 'Spin'
   ).addEventListener('click', () => spin(key));
-
-  document.getElementById(
-    key + 'Options'
-  ).value = defaults[key].join('\n');
 }
+
+// ЗАВЪРТИ ВСИЧКИ
 
 document.getElementById('spinAll')
   .addEventListener('click', () => {
@@ -631,7 +590,7 @@ document.getElementById('spinAll')
     );
   });
 
-// КОПИРАНЕ НА ПРЕДИЗВИКАТЕЛСТВОТО
+// КОПИРАЙ ПРЕДИЗВИКАТЕЛСТВОТО
 
 document.getElementById('copyChallenge')
   .addEventListener('click', async () => {
@@ -662,65 +621,6 @@ document.getElementById('copyChallenge')
       window.prompt('Копирай текста:', message);
     }
   });
-
-// РЕДАКТИРАНЕ НА ОПЦИИТЕ
-
-function setOptions(useDefaults) {
-  const next = {};
-
-  for (const key of Object.keys(state)) {
-    const list = useDefaults
-      ? [...defaults[key]]
-      : document.getElementById(
-          key + 'Options'
-        ).value
-          .split('\n')
-          .map(x => x.trim())
-          .filter(Boolean);
-
-    if (list.length < 2 || list.length > 24) {
-      document.getElementById(
-        'editMessage'
-      ).textContent =
-        '⚠️ За всяко колело въведи между 2 и 24 опции.';
-      return;
-    }
-
-    next[key] = list;
-  }
-
-  for (const key of Object.keys(state)) {
-    state[key].items = next[key];
-    state[key].rotation = 0;
-    state[key].result = null;
-
-    document.getElementById(
-      key + 'Options'
-    ).value = next[key].join('\n');
-
-    document.getElementById(
-      key + 'Result'
-    ).textContent = 'Очаква завъртане';
-
-    document.getElementById(
-      'sum' +
-      key.charAt(0).toUpperCase() +
-      key.slice(1)
-    ).textContent = '—';
-
-    draw(key);
-  }
-
-  document.getElementById(
-    'editMessage'
-  ).textContent = '✅ Опциите са приложени.';
-}
-
-document.getElementById('saveOptions')
-  .addEventListener('click', () => setOptions(false));
-
-document.getElementById('resetOptions')
-  .addEventListener('click', () => setOptions(true));
 </script>
 
 </body>
