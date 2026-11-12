@@ -41,6 +41,7 @@ button:hover{filter:brightness(1.15)}
 .info p{font-size:14px;color:#c5cce0;line-height:1.5}
 .type{color:var(--cyan)!important;font-weight:bold}
 .price{color:#ffe59a!important;font-weight:bold}
+.last{color:#a8ffcc!important;font-weight:bold}
 .note{text-align:center;font-size:13px;line-height:1.6;margin-top:30px}
 @media(max-width:550px){
   .controls{flex-direction:column}
@@ -77,9 +78,9 @@ button:hover{filter:brightness(1.15)}
   <p id="status">Въведи име на предмет.</p>
   <div id="results" class="grid"></div>
   <p class="note">
-    Данни от Fortnite-API. Показаната цена е от
-    текущия магазин, когато е налична.
-    Липсата на цена не означава, че предметът е безплатен.
+    Данни от Fortnite-API. Цената се показва само
+    за текущи оферти. Последната поява се показва,
+    когато е налична в историята на предмета.
   </p>
 </main>
 
@@ -107,15 +108,43 @@ function text(parent,tag,value,cls){
   parent.appendChild(el);
 }
 
-function dateBG(value){
-  if(!value)return null;
-  const d=new Date(value);
-  if(Number.isNaN(d.getTime()))return null;
-  return d.toLocaleDateString("bg-BG");
+function parseDate(value){
+  if(value===null || value===undefined || value==="")return null;
+  let d;
+  if(typeof value==="number"){
+    d=new Date(value<100000000000?value*1000:value);
+  }else if(/^\d+$/.test(String(value))){
+    const n=Number(value);
+    d=new Date(n<100000000000?n*1000:n);
+  }else{
+    d=new Date(value);
+  }
+  return Number.isNaN(d.getTime())?null:d;
+}
+
+function getLastAppearance(item){
+  const dates=[];
+
+  if(item.lastAppearance){
+    const date=parseDate(item.lastAppearance);
+    if(date)dates.push(date);
+  }
+
+  if(Array.isArray(item.shopHistory)){
+    for(const value of item.shopHistory){
+      const date=parseDate(value);
+      if(date)dates.push(date);
+    }
+  }
+
+  if(!dates.length)return null;
+  dates.sort((a,b)=>b.getTime()-a.getTime());
+  return dates[0];
 }
 
 function shopIndex(shop){
   const map=new Map();
+
   for(const entry of shop.entries||[]){
     const price=entry.finalPrice ?? entry.regularPrice;
     for(const item of [
@@ -125,24 +154,30 @@ function shopIndex(shop){
       ...(entry.cars||[])
     ]){
       if(item && item.id){
-        map.set(item.id,{price,entry});
+        const existing=map.get(item.id);
+        if(!existing || price<existing.price){
+          map.set(item.id,{price,entry});
+        }
       }
     }
   }
+
   return map;
 }
 
-async function getShop(signal){
+async function getShop(){
   if(!shopPromise){
     shopPromise=fetch("https://fortnite-api.com/v2/shop")
-      .then(r=>{
-        if(!r.ok)throw new Error("Shop HTTP "+r.status);
-        return r.json();
+      .then(response=>{
+        if(!response.ok){
+          throw new Error("Shop HTTP "+response.status);
+        }
+        return response.json();
       })
       .then(json=>shopIndex(json.data||{}))
       .catch(error=>{
+        console.warn("Shop unavailable:",error);
         shopPromise=null;
-        console.warn("Shop unavailable",error);
         return new Map();
       });
   }
@@ -170,11 +205,14 @@ function showItem(item,shop){
 
   text(info,"h2",item.name||"Неизвестен предмет");
 
-  const type=item.type?.value||"";
+  const type=(item.type?.value||"").toLowerCase();
   text(
     info,"p",
-    "Категория: "+(typeNames[type.toLowerCase()]||
-      item.type?.displayValue||"Друга"),
+    "Категория: "+(
+      typeNames[type]||
+      item.type?.displayValue||
+      "Друга"
+    ),
     "type"
   );
 
@@ -188,35 +226,39 @@ function showItem(item,shop){
   }
 
   const offer=shop.get(item.id);
-  if(offer && Number.isFinite(offer.price)){
+
+  if(offer && Number.isFinite(Number(offer.price))){
     text(
       info,"p",
-      "🪙 Цена в магазина: "+
-      offer.price.toLocaleString("en-US")+
+      "🪙 Текуща оферта: "+
+      Number(offer.price).toLocaleString("en-US")+
       " V-Bucks",
       "price"
     );
     text(info,"p","🟢 В текущия Item Shop");
   }else{
-    text(info,"p","Цена: няма текуща оферта");
+    text(info,"p","🪙 Цена: няма текуща оферта");
   }
 
-  const history=Array.isArray(item.shopHistory)
-    ?item.shopHistory:[];
-  if(history.length){
-    const latest=history
-      .map(x=>new Date(x))
-      .filter(d=>!Number.isNaN(d.getTime()))
-      .sort((a,b)=>b-a)[0];
-    if(latest){
-      text(
-        info,"p",
-        "📅 Последна поява: "+
-        latest.toLocaleDateString("bg-BG")
-      );
-    }
+  const last=getLastAppearance(item);
+
+  if(last){
+    text(
+      info,"p",
+      "📅 Последна поява в Item Shop: "+
+      last.toLocaleDateString("bg-BG",{
+        timeZone:"UTC",
+        day:"2-digit",
+        month:"2-digit",
+        year:"numeric"
+      }),
+      "last"
+    );
   }else{
-    text(info,"p","📅 Последна поява: няма данни");
+    text(
+      info,"p",
+      "📅 Последна поява: няма данни"
+    );
   }
 
   if(item.introduction?.text){
@@ -256,6 +298,7 @@ async function searchItems(query){
       statusEl.textContent="Няма намерени предмети.";
       return;
     }
+
     if(!response.ok){
       throw new Error("Search HTTP "+response.status);
     }
@@ -273,13 +316,14 @@ async function searchItems(query){
     statusEl.textContent="⏳ Намерени "+items.length+
       " предмета. Зареждане на цени...";
 
-    const shop=await getShop(signal);
+    const shop=await getShop();
     if(signal.aborted)return;
 
     results.replaceChildren();
     items.slice(0,80).forEach(item=>showItem(item,shop));
 
     statusEl.textContent="🎮 Намерени предмети: "+items.length;
+
     if(items.length>80){
       statusEl.textContent+=" (показани първите 80)";
     }
@@ -299,4 +343,3 @@ form.addEventListener("submit",event=>{
 </script>
 </body>
 </html>
-
