@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="VANKATA GAMING - Fortnite новини, Item Shop, Player Stats, Challenge Wheel, Rewards и Leaks.">
+<meta name="description" content="VANKATA GAMING - Fortnite новини, магазин, статистики, награди и предизвикателства.">
 <title>VANKATA GAMING | Fortnite</title>
 
 <style>
@@ -19,24 +19,21 @@
 
 * {box-sizing:border-box}
 html {scroll-behavior:smooth}
-
 body {
   margin:0;
   background:var(--bg);
   color:var(--text);
   font-family:Arial,Helvetica,sans-serif;
 }
-
 a {color:inherit;text-decoration:none}
 
 header {
   position:sticky;
   top:0;
-  z-index:5;
+  z-index:10;
   background:#090b17f5;
   border-bottom:1px solid #30334c;
 }
-
 nav {
   max-width:1120px;
   margin:auto;
@@ -46,26 +43,19 @@ nav {
   justify-content:space-between;
   gap:20px;
 }
-
 .logo {
   font-weight:900;
   letter-spacing:1px;
   font-size:21px;
 }
-
 .logo span {color:var(--cyan)}
-
 .links {
   display:flex;
-  gap:20px;
-  color:var(--muted);
+  gap:18px;
   flex-wrap:wrap;
+  color:var(--muted);
 }
-
 .links a:hover {color:var(--cyan)}
-.links .shop-link {color:var(--cyan);font-weight:bold}
-.links .search-link {color:#c9b1ff;font-weight:bold}
-.links .wheel-link {color:#ffe69b;font-weight:bold}
 
 .hero {
   min-height:520px;
@@ -80,13 +70,11 @@ nav {
     #090b17 75%
   );
 }
-
 .eyebrow {
   color:var(--cyan);
   letter-spacing:4px;
   font-weight:bold;
 }
-
 .hero h1 {
   font-size:clamp(45px,8vw,88px);
   line-height:1.04;
@@ -96,7 +84,6 @@ nav {
   -webkit-background-clip:text;
   color:transparent;
 }
-
 .hero p {
   max-width:650px;
   margin:20px auto;
@@ -104,7 +91,6 @@ nav {
   font-size:19px;
   line-height:1.7;
 }
-
 .btn {
   display:inline-block;
   margin:12px 7px;
@@ -115,42 +101,34 @@ nav {
   box-shadow:0 9px 35px #8254ff45;
   transition:transform .2s;
 }
-
 .btn:hover {transform:translateY(-3px)}
-
 .btn-shop {
   background:linear-gradient(120deg,#13b9d6,#3465ed);
 }
-
 .btn-free {
   background:linear-gradient(120deg,#16a879,#087e9d);
 }
-
 .btn-wheel {
   background:linear-gradient(120deg,#ff9b35,#e34c8c,#8559f8);
-  box-shadow:0 9px 35px #e34c8c55;
 }
 
 section {
   max-width:1120px;
   margin:0 auto;
   padding:68px 20px;
+  scroll-margin-top:100px;
 }
-
 h2 {font-size:34px;margin:0 0 12px}
-
 .subtitle {
   color:var(--muted);
   margin-bottom:30px;
   line-height:1.6;
 }
-
 .grid {
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:22px;
 }
-
 .card {
   background:linear-gradient(145deg,#1b2038,#111627);
   border:1px solid #323652;
@@ -159,27 +137,23 @@ h2 {font-size:34px;margin:0 0 12px}
   min-height:210px;
   transition:transform .2s,border-color .2s;
 }
-
 .card:hover {
   transform:translateY(-6px);
   border-color:var(--purple);
 }
-
 .card .emoji {font-size:43px}
 .card h3 {font-size:23px;margin:22px 0 10px}
 .card p {color:var(--muted);line-height:1.6}
 
-/* FORTNITE КАРТА */
+/* МАЛКАТА FORTNITE КАРТА */
 
 .fortnite-card {
   position:relative;
   padding:0;
   overflow:hidden;
-  min-height:210px;
   isolation:isolate;
   background:#14192b;
 }
-
 .fortnite-card img {
   position:absolute;
   inset:0;
@@ -188,42 +162,35 @@ h2 {font-size:34px;margin:0 0 12px}
   object-fit:cover;
   z-index:-2;
 }
-
 .fortnite-card::after {
   content:"";
   position:absolute;
   inset:0;
   background:linear-gradient(
     to top,
-    rgba(4,7,19,.96) 0%,
-    rgba(4,7,19,.55) 48%,
-    rgba(4,7,19,.08) 100%
+    rgba(4,7,19,.96),
+    rgba(4,7,19,.55) 55%,
+    rgba(4,7,19,.08)
   );
   z-index:-1;
 }
-
 .fortnite-card-content {
   min-height:210px;
   padding:20px;
   display:flex;
   flex-direction:column;
-  align-items:flex-start;
   justify-content:flex-end;
+  align-items:flex-start;
 }
-
 .fortnite-card h3 {
-  font-size:23px;
   margin:0 0 8px;
   text-shadow:0 2px 8px #000;
 }
-
 .fortnite-card p {
-  color:#f0efff;
-  margin:0 0 14px;
+  color:white;
   font-size:14px;
-  text-shadow:0 2px 6px #000;
+  margin:0 0 14px;
 }
-
 .explore-button {
   border:0;
   border-radius:11px;
@@ -233,16 +200,10 @@ h2 {font-size:34px;margin:0 0 12px}
   font-size:15px;
   font-weight:900;
   cursor:pointer;
-  box-shadow:0 6px 20px #0007;
-  transition:transform .2s,filter .2s;
 }
+.explore-button:hover {filter:brightness(1.2)}
 
-.explore-button:hover {
-  transform:translateY(-2px);
-  filter:brightness(1.15);
-}
-
-/* РАЗГЪВАЩО СЕ МЕНЮ */
+/* РАЗГЪВАЩО СЕ FORTNITE МЕНЮ */
 
 .fortnite-menu {
   margin-top:22px;
@@ -250,32 +211,26 @@ h2 {font-size:34px;margin:0 0 12px}
   border:1px solid #7553d4;
   border-radius:20px;
   background:linear-gradient(145deg,#1d2040,#111627);
-  animation:menuAppear .25s ease-out;
+  animation:appear .25s ease-out;
 }
-
 .fortnite-menu[hidden] {display:none}
-
-@keyframes menuAppear {
+@keyframes appear {
   from {opacity:0;transform:translateY(-12px)}
   to {opacity:1;transform:translateY(0)}
 }
-
 .fortnite-menu h3 {
-  margin:0 0 8px;
   font-size:25px;
+  margin:0 0 8px;
 }
-
 .fortnite-menu > p {
-  margin:0 0 22px;
   color:var(--muted);
+  margin:0 0 22px;
 }
-
 .fortnite-options {
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:14px;
 }
-
 .fortnite-options a {
   display:flex;
   flex-direction:column;
@@ -284,22 +239,18 @@ h2 {font-size:34px;margin:0 0 12px}
   background:#171d34;
   border:1px solid #343b5c;
   border-radius:14px;
-  transition:transform .2s,border-color .2s,background .2s;
+  transition:.2s;
 }
-
 .fortnite-options a:hover {
   transform:translateY(-4px);
   border-color:var(--cyan);
   background:#25254a;
 }
-
 .option-icon {font-size:27px}
-
 .option-title {
   font-size:17px;
   font-weight:bold;
 }
-
 .option-desc {
   color:var(--muted);
   font-size:13px;
@@ -314,9 +265,7 @@ h2 {font-size:34px;margin:0 0 12px}
   font-weight:bold;
   letter-spacing:1px;
 }
-
 .news-card {padding:0;overflow:hidden}
-
 .news-card img {
   width:100%;
   height:190px;
@@ -324,119 +273,27 @@ h2 {font-size:34px;margin:0 0 12px}
   display:block;
   background:#222a43;
 }
-
 .news-content {padding:22px}
-
 .news-content h3 {
   font-size:21px;
   line-height:1.35;
   margin:12px 0;
 }
-
 .news-content p {
   display:-webkit-box;
   -webkit-line-clamp:4;
   -webkit-box-orient:vertical;
   overflow:hidden;
 }
-
 .news-link {
   display:inline-block;
   color:var(--cyan);
   font-weight:bold;
   margin-top:12px;
 }
+#news-status {color:var(--muted)}
 
-.news-link:hover {text-decoration:underline}
-
-#news-status {
-  color:var(--muted);
-  margin-bottom:24px;
-}
-
-/* ОСТАНАЛИ СЕКЦИИ */
-
-.shop-banner {
-  background:linear-gradient(125deg,#30205c,#122b51);
-  border:1px solid #7553d4;
-  border-radius:24px;
-  text-align:center;
-  padding:55px 24px;
-}
-
-.shop-banner p {
-  color:#d1cdec;
-  line-height:1.6;
-}
-
-.free-banner {
-  background:linear-gradient(125deg,#103d37,#123451,#29205d);
-  border-color:#24c7a4;
-}
-
-.free-banner h2 {color:#b6ffe7}
-
-.search-banner {
-  background:linear-gradient(125deg,#182b57,#30205c,#173c50);
-  border-color:#29e0e7;
-}
-
-.search-banner h2 {color:#bcefff}
-
-.wheel-banner {
-  position:relative;
-  overflow:hidden;
-  background:linear-gradient(125deg,#42226b,#25245d,#183b56);
-  border:2px solid #a57aff;
-  border-radius:24px;
-  text-align:center;
-  padding:65px 24px;
-  box-shadow:0 15px 50px #9560ff22;
-}
-
-.wheel-banner::before {
-  content:"🎡";
-  position:absolute;
-  font-size:200px;
-  opacity:.07;
-  right:-25px;
-  top:-35px;
-  pointer-events:none;
-}
-
-.wheel-banner h2 {
-  color:#fff;
-  font-size:clamp(27px,4vw,42px);
-}
-
-.wheel-banner p {
-  color:#ded8f6;
-  line-height:1.7;
-  max-width:700px;
-  margin:20px auto;
-  font-size:17px;
-}
-
-.wheel-features {
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:12px;
-  margin:25px 0;
-}
-
-.wheel-features span {
-  background:#ffffff12;
-  border:1px solid #ffffff30;
-  border-radius:30px;
-  padding:10px 16px;
-  font-size:14px;
-}
-
-.wheel-banner .btn-wheel {
-  font-size:20px;
-  padding:18px 35px;
-}
+/* КОНТАКТИ */
 
 .contact {
   background:#12172b;
@@ -445,9 +302,7 @@ h2 {font-size:34px;margin:0 0 12px}
   text-align:center;
   padding:55px 24px;
 }
-
 .contact p {color:var(--muted)}
-
 footer {
   text-align:center;
   color:#8389a5;
@@ -459,7 +314,6 @@ footer {
   .grid {grid-template-columns:repeat(2,minmax(0,1fr))}
   .fortnite-options {grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-
 @media(max-width:700px) {
   .grid {grid-template-columns:1fr}
   .fortnite-options {grid-template-columns:1fr}
@@ -468,9 +322,7 @@ footer {
   .logo {font-size:16px}
   .hero {min-height:450px}
   section {padding:48px 18px}
-  .wheel-banner {padding:45px 18px}
   .fortnite-menu {padding:17px}
-  .fortnite-card {min-height:210px}
 }
 </style>
 </head>
@@ -486,10 +338,10 @@ footer {
   <div class="links">
     <a href="#games">🎮 Игри</a>
     <a href="#news">📰 Новини</a>
-    <a href="shop.html" class="shop-link">🛒 Item Shop</a>
-    <a href="items.html" class="search-link">🔍 Item Search</a>
-    <a href="stats.html" class="search-link">📊 Player Stats</a>
-    <a href="wheel.html" class="wheel-link">🎡 Challenge Wheel</a>
+    <a href="shop.html">🛒 Item Shop</a>
+    <a href="items.html">🔍 Item Search</a>
+    <a href="stats.html">📊 Player Stats</a>
+    <a href="wheel.html">🎡 Challenge Wheel</a>
     <a href="rewards.html">🎁 Rewards</a>
     <a href="free-rewards.html">🎁 Free Rewards</a>
     <a href="leaks.html">🔥 Leaks</a>
@@ -553,8 +405,6 @@ footer {
 
   <div class="grid">
 
-    <!-- FORTNITE: СЪЩИЯТ РАЗМЕР КАТО ДРУГИТЕ КАРТИ -->
-
     <article class="card fortnite-card">
       <img
         src="image.png"
@@ -582,8 +432,6 @@ footer {
       </div>
     </article>
 
-    <!-- FORZA HORIZON -->
-
     <article class="card">
       <div class="emoji">🏎️</div>
       <h3>Forza Horizon</h3>
@@ -592,8 +440,6 @@ footer {
         и свободно шофиране.
       </p>
     </article>
-
-    <!-- SUBNAUTICA -->
 
     <article class="card">
       <div class="emoji">🌊</div>
@@ -606,11 +452,12 @@ footer {
 
   </div>
 
-  <!-- МЕНЮТО СЕ ПОЯВЯВА ПОД ТРИТЕ КАРТИ -->
+  <!-- FORTNITE МЕНЮ -->
 
   <div id="fortniteMenu" class="fortnite-menu" hidden>
 
     <h3>🎮 FORTNITE MENU</h3>
+
     <p>
       Избери какво искаш да разгледаш.
     </p>
@@ -629,7 +476,7 @@ footer {
         <span class="option-icon">🔍</span>
         <span class="option-title">Item Search</span>
         <span class="option-desc">
-          Търсене на Fortnite козметични предмети.
+          Търсене на Fortnite предмети.
         </span>
       </a>
 
@@ -637,7 +484,7 @@ footer {
         <span class="option-icon">📊</span>
         <span class="option-title">Player Stats</span>
         <span class="option-desc">
-          Победи, убийства, K/D и статистики по nickname.
+          Победи, убийства, K/D и статистики.
         </span>
       </a>
 
@@ -645,7 +492,7 @@ footer {
         <span class="option-icon">🎡</span>
         <span class="option-title">Challenge Wheel</span>
         <span class="option-desc">
-          Завърти колелата за Fortnite предизвикателство.
+          Завърти колелата за предизвикателство.
         </span>
       </a>
 
@@ -653,7 +500,7 @@ footer {
         <span class="option-icon">🏆</span>
         <span class="option-title">Weekly Rewards</span>
         <span class="option-desc">
-          Седмични награди и известни шансове.
+          Седмични награди и шансове.
         </span>
       </a>
 
@@ -682,136 +529,6 @@ footer {
       </a>
 
     </div>
-  </div>
-</section>
-
-<!-- CHALLENGE WHEEL -->
-
-<section id="fortnite-wheel">
-  <div class="wheel-banner">
-
-    <h2>🎡 FORTNITE CHALLENGE WHEEL</h2>
-
-    <p>
-      Готов ли си за истинско Fortnite предизвикателство?
-      Завърти трите колела и разбери с какви оръжия
-      можеш да играеш, какво лечение имаш право
-      да използваш и къде трябва да кацнеш!
-    </p>
-
-    <div class="wheel-features">
-      <span>🔫 Рядкост на оръжията</span>
-      <span>🩹 Лечение</span>
-      <span>📍 Начална локация</span>
-    </div>
-
-    <a class="btn btn-wheel" href="wheel.html">
-      🎡 ЗАВЪРТИ КОЛЕЛАТА
-    </a>
-
-  </div>
-</section>
-
-<!-- ITEM SHOP -->
-
-<section id="shop">
-  <div class="shop-banner">
-
-    <h2>🛒 FORTNITE ITEM SHOP</h2>
-
-    <p>
-      Разгледай актуалните скинове,
-      емоути, кирки и пакети
-      с цени във V-Bucks.
-    </p>
-
-    <a class="btn btn-shop" href="shop.html">
-      Виж магазина →
-    </a>
-
-  </div>
-</section>
-
-<!-- ITEM SEARCH -->
-
-<section id="fortnite-item-search">
-  <div class="shop-banner search-banner">
-
-    <h2>🔍 FORTNITE ITEM SEARCH</h2>
-
-    <p>
-      Намери любимите си Fortnite скинове,
-      кирки, емоути, раници, глайдери
-      и други козметични предмети.
-      Разгледай снимки, рядкост,
-      последна поява и налични цени.
-    </p>
-
-    <a class="btn" href="items.html">
-      🔍 Търси Fortnite предмети →
-    </a>
-
-  </div>
-</section>
-
-<!-- WEEKLY REWARDS -->
-
-<section id="fortnite-rewards">
-  <div class="shop-banner">
-
-    <h2>🎁 FORTNITE WEEKLY REWARDS</h2>
-
-    <p>
-      Разгледай седмичните награди,
-      редките скинове, автомобилите
-      и известните шансове за получаване.
-    </p>
-
-    <a class="btn" href="rewards.html">
-      🎁 Виж седмичните награди
-    </a>
-
-  </div>
-</section>
-
-<!-- FREE REWARDS -->
-
-<section id="fortnite-free-rewards">
-  <div class="shop-banner free-banner">
-
-    <h2>🎁 FORTNITE FREE REWARDS</h2>
-
-    <p>
-      Открий безплатни скинове, емоути,
-      награди от куестове и специални събития.
-      Виж как се получават и кога изтичат.
-    </p>
-
-    <a class="btn btn-free" href="free-rewards.html">
-      🎁 Виж безплатните награди →
-    </a>
-
-  </div>
-</section>
-
-<!-- LEAKS -->
-
-<section id="fortnite-leaks">
-  <div class="shop-banner">
-
-    <h2>🔥 FORTNITE LEAKS</h2>
-
-    <p>
-      Автоматично събирани слухове,
-      нови скинове, предстоящи предмети
-      и открити промени във Fortnite.
-      Част от информацията е непотвърдена.
-    </p>
-
-    <a class="btn" href="leaks.html">
-      🔥 Виж Fortnite Leaks
-    </a>
-
   </div>
 </section>
 
@@ -873,12 +590,10 @@ footer {
 <script>
 'use strict';
 
-// ГОДИНА
-
 document.getElementById('year').textContent =
   new Date().getFullYear();
 
-// РАЗГЪВАНЕ НА FORTNITE МЕНЮТО
+// FORTNITE МЕНЮ
 
 const exploreButton =
   document.getElementById('exploreFortnite');
@@ -913,10 +628,7 @@ exploreButton.addEventListener('click', () => {
 document.getElementById('contactButton')
   .addEventListener('click', function(event) {
     event.preventDefault();
-
-    alert(
-      'Скоро ще добавим Discord или имейл за контакт.'
-    );
+    alert('Скоро ще добавим Discord или имейл за контакт.');
   });
 
 // АВТОМАТИЧНИ FORTNITE НОВИНИ
@@ -932,17 +644,13 @@ async function loadNews() {
     );
 
     if (!response.ok) {
-      throw new Error(
-        'Файлът с новини не е достъпен'
-      );
+      throw new Error('Файлът с новини не е достъпен');
     }
 
     const news = await response.json();
 
     if (!Array.isArray(news)) {
-      throw new Error(
-        'Невалиден формат на новините'
-      );
+      throw new Error('Невалиден формат на новините');
     }
 
     grid.replaceChildren();
@@ -967,17 +675,14 @@ async function loadNews() {
       tag.textContent = 'FORTNITE NEWS';
 
       const title = document.createElement('h3');
-      title.textContent =
-        item.title || 'Fortnite новина';
+      title.textContent = item.title || 'Fortnite новина';
 
       const desc = document.createElement('p');
-      desc.textContent =
-        item.description || '';
+      desc.textContent = item.description || '';
 
       const link = document.createElement('a');
       link.className = 'news-link';
-      link.href =
-        item.url || 'https://www.fortnite.com/news';
+      link.href = item.url || 'https://www.fortnite.com/news';
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
       link.textContent = 'Виж източника ↗';
@@ -994,10 +699,7 @@ async function loadNews() {
   } catch (error) {
     status.textContent =
       'Новините временно не са достъпни.';
-
-    console.error(
-      'Грешка при зареждане:', error
-    );
+    console.error('Грешка при зареждане:', error);
   }
 }
 
