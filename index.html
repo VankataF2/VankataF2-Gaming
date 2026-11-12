@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="VANKATA GAMING - Fortnite новини и Item Shop.">
+<meta name="description" content="VANKATA GAMING - Fortnite новини, Item Shop, Free Rewards, Weekly Rewards и Leaks.">
 <title>VANKATA GAMING | Fortnite</title>
 <style>
 :root {
@@ -105,6 +105,9 @@ nav {
 .btn-shop {
   background:linear-gradient(120deg,#13b9d6,#3465ed);
 }
+.btn-free {
+  background:linear-gradient(120deg,#16a879,#087e9d);
+}
 section {
   max-width:1120px;
   margin:0 auto;
@@ -183,7 +186,15 @@ h2 {font-size:34px;margin:0 0 12px}
   text-align:center;
   padding:55px 24px;
 }
-.shop-banner p {color:#d1cdec;line-height:1.6}
+.shop-banner p {
+  color:#d1cdec;
+  line-height:1.6;
+}
+.free-banner {
+  background:linear-gradient(125deg,#103d37,#123451,#29205d);
+  border-color:#24c7a4;
+}
+.free-banner h2 {color:#b6ffe7}
 .contact {
   background:#12172b;
   border:1px solid #303654;
@@ -199,7 +210,9 @@ footer {
   border-top:1px solid #292e43;
 }
 @media(max-width:900px) {
-  .grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
 }
 @media(max-width:700px) {
   .grid {grid-template-columns:1fr}
@@ -214,7 +227,6 @@ footer {
 <body>
 
 <header>
-  
 <nav>
   <a href="#home" class="logo">
     ⚡ VANKATA <span>GAMING</span>
@@ -225,11 +237,11 @@ footer {
     <a href="#news">📰 Новини</a>
     <a href="shop.html" class="shop-link">🛒 Item Shop</a>
     <a href="rewards.html">🎁 Rewards</a>
+    <a href="free-rewards.html">🎁 Free Rewards</a>
     <a href="leaks.html">🔥 Leaks</a>
     <a href="#contact">📩 Контакти</a>
   </div>
 </nav>
-
 </header>
 
 <main>
@@ -240,32 +252,54 @@ footer {
     <h1>LEVEL UP<br>YOUR GAME.</h1>
     <p>
       Твоето място за Fortnite новини,
-      актуалния Item Shop и гейминг общност.
+      актуалния Item Shop, безплатни награди
+      и гейминг общност.
       Играта започва тук.
     </p>
-    <a class="btn" href="#news">📰 Fortnite новини</a>
-    <a class="btn btn-shop" href="shop.html">🛒 Отвори Item Shop</a>
+    <a class="btn" href="#news">
+      📰 Fortnite новини
+    </a>
+    <a class="btn btn-shop" href="shop.html">
+      🛒 Отвори Item Shop
+    </a>
+    <a class="btn btn-free" href="free-rewards.html">
+      🎁 Free Rewards
+    </a>
   </div>
 </div>
 
 <section id="games">
   <h2>🎮 Популярни игри</h2>
-  <p class="subtitle">Игри, които следим и обичаме.</p>
+  <p class="subtitle">
+    Игри, които следим и обичаме.
+  </p>
+
   <div class="grid">
     <article class="card">
       <div class="emoji">🏆</div>
       <h3>Fortnite</h3>
-      <p>Битки, сезони, предизвикателства и събития.</p>
+      <p>
+        Битки, сезони, предизвикателства
+        и събития.
+      </p>
     </article>
+
     <article class="card">
       <div class="emoji">🏎️</div>
       <h3>Forza Horizon</h3>
-      <p>Скорост, автомобили и свободно шофиране.</p>
+      <p>
+        Скорост, автомобили
+        и свободно шофиране.
+      </p>
     </article>
+
     <article class="card">
       <div class="emoji">🌊</div>
       <h3>Subnautica</h3>
-      <p>Подводни приключения, изследване и оцеляване.</p>
+      <p>
+        Подводни приключения,
+        изследване и оцеляване.
+      </p>
     </article>
   </div>
 </section>
@@ -274,8 +308,9 @@ footer {
   <div class="shop-banner">
     <h2>🛒 FORTNITE ITEM SHOP</h2>
     <p>
-      Разгледай актуалните скинове, емоути,
-      кирки и пакети с цени във V-Bucks.
+      Разгледай актуалните скинове,
+      емоути, кирки и пакети
+      с цени във V-Bucks.
     </p>
     <a class="btn btn-shop" href="shop.html">
       Виж магазина →
@@ -283,7 +318,6 @@ footer {
   </div>
 </section>
 
-<section id="news">
 <section id="fortnite-rewards">
   <div class="shop-banner">
     <h2>🎁 FORTNITE WEEKLY REWARDS</h2>
@@ -294,6 +328,20 @@ footer {
     </p>
     <a class="btn" href="rewards.html">
       🎁 Виж седмичните награди
+    </a>
+  </div>
+</section>
+
+<section id="fortnite-free-rewards">
+  <div class="shop-banner free-banner">
+    <h2>🎁 FORTNITE FREE REWARDS</h2>
+    <p>
+      Открий безплатни скинове, емоути,
+      награди от куестове и специални събития.
+      Виж как се получават и кога изтичат.
+    </p>
+    <a class="btn btn-free" href="free-rewards.html">
+      🎁 Виж безплатните награди →
     </a>
   </div>
 </section>
@@ -313,6 +361,7 @@ footer {
   </div>
 </section>
 
+<section id="news">
   <h2>📰 Последни Fortnite новини</h2>
   <p class="subtitle">
     Автоматично събирани Fortnite новини
@@ -363,7 +412,9 @@ document.getElementById('year').textContent =
 document.getElementById('contactButton')
   .addEventListener('click', function(event) {
     event.preventDefault();
-    alert('Скоро ще добавим Discord или имейл за контакт.');
+    alert(
+      'Скоро ще добавим Discord или имейл за контакт.'
+    );
   });
 
 async function loadNews() {
@@ -377,13 +428,17 @@ async function loadNews() {
     );
 
     if (!response.ok) {
-      throw new Error('Файлът с новини не е достъпен');
+      throw new Error(
+        'Файлът с новини не е достъпен'
+      );
     }
 
     const news = await response.json();
 
     if (!Array.isArray(news)) {
-      throw new Error('Невалиден формат на новините');
+      throw new Error(
+        'Невалиден формат на новините'
+      );
     }
 
     grid.replaceChildren();
@@ -408,19 +463,22 @@ async function loadNews() {
       tag.textContent = 'FORTNITE NEWS';
 
       const title = document.createElement('h3');
-      title.textContent = item.title || 'Fortnite новина';
+      title.textContent =
+        item.title || 'Fortnite новина';
 
       const desc = document.createElement('p');
-      desc.textContent = item.description || '';
+      desc.textContent =
+        item.description || '';
 
       const link = document.createElement('a');
       link.className = 'news-link';
-      link.href = item.url || 'https://www.fortnite.com/news';
+      link.href =
+        item.url || 'https://www.fortnite.com/news';
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
       link.textContent = 'Виж източника ↗';
 
-      content.append(tag, title, desc, link);
+      content.append(tag,title,desc,link);
       card.appendChild(content);
       grid.appendChild(card);
     });
@@ -430,8 +488,11 @@ async function loadNews() {
       : 'Все още няма публикувани новини.';
 
   } catch (error) {
-    status.textContent = 'Новините временно не са достъпни.';
-    console.error('Грешка при зареждане:', error);
+    status.textContent =
+      'Новините временно не са достъпни.';
+    console.error(
+      'Грешка при зареждане:', error
+    );
   }
 }
 
