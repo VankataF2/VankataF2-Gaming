@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-13T13:18:39.780415+00:00",
+  "updated_at": "2026-11-13T20:34:59.474366+00:00",
   "items": [
     {
       "id": "d25f273977ae0b99",
@@ -477,6 +477,16 @@
       "source": "Fortnite Datamining",
       "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
       "date": "Fri, 13 Nov 2026 11:27:00 GMT",
+      "type": "datamining",
+      "label": "Открита промяна в играта",
+      "verified": false
+    },
+    {
+      "id": "e5fb600243806ccd",
+      "title": "BR Cosmetics, Item Shop, News, AES Keys - +5 new (Speed's Coin, PIRATE D. SPEEDY, IShowFlip, Speed's Pirate Blade, Adventure Awaits!) - -1 removed",
+      "source": "Fortnite Datamining",
+      "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
+      "date": "Fri, 13 Nov 2026 18:40:00 GMT",
       "type": "datamining",
       "label": "Открита промяна в играта",
       "verified": false
