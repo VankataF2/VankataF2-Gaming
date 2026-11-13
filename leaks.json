@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-12T23:56:42.501166+00:00",
+  "updated_at": "2026-11-13T05:03:47.356793+00:00",
   "items": [
     {
       "id": "d25f273977ae0b99",
@@ -457,6 +457,16 @@
       "source": "Fortnite Datamining",
       "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
       "date": "Thu, 12 Nov 2026 23:08:00 GMT",
+      "type": "datamining",
+      "label": "Открита промяна в играта",
+      "verified": false
+    },
+    {
+      "id": "1e9a3fd5299a42cd",
+      "title": "BR Cosmetics, Item Shop, AES Keys - +54 new (PINKY UP, Kitsune Slippers, Cozy Kitsune Cuties, Grouchy Gato Slippers, Nike Air Force 1 ‘Orange/Blue’, +49 more) - -41 removed",
+      "source": "Fortnite Datamining",
+      "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
+      "date": "Fri, 13 Nov 2026 03:30:00 GMT",
       "type": "datamining",
       "label": "Открита промяна в играта",
       "verified": false
