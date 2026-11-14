@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-14T19:38:44.809096+00:00",
+  "updated_at": "2026-11-14T23:34:15.223075+00:00",
   "items": [
     {
       "id": "d25f273977ae0b99",
@@ -527,6 +527,16 @@
       "source": "Fortnite Datamining",
       "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
       "date": "Sat, 14 Nov 2026 18:55:00 GMT",
+      "type": "datamining",
+      "label": "Открита промяна в играта",
+      "verified": false
+    },
+    {
+      "id": "3008d76d18dedd9c",
+      "title": "News, Epic Content Pages - +1 new (Cursed Sprite Variants - November 14) - -1 removed",
+      "source": "Fortnite Datamining",
+      "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
+      "date": "Sat, 14 Nov 2026 22:51:00 GMT",
       "type": "datamining",
       "label": "Открита промяна в играта",
       "verified": false
