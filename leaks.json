@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-13T20:34:59.474366+00:00",
+  "updated_at": "2026-11-14T01:10:16.371713+00:00",
   "items": [
     {
       "id": "d25f273977ae0b99",
@@ -487,6 +487,16 @@
       "source": "Fortnite Datamining",
       "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
       "date": "Fri, 13 Nov 2026 18:40:00 GMT",
+      "type": "datamining",
+      "label": "Открита промяна в играта",
+      "verified": false
+    },
+    {
+      "id": "5006da2f9ab40651",
+      "title": "Item Shop, News, Epic Content Pages - +16 new (Buggy Knives, Evidence Bag, Buggy's Coat, Guerilla, IShowFlip, +11 more) - -22 removed",
+      "source": "Fortnite Datamining",
+      "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
+      "date": "Sat, 14 Nov 2026 00:07:00 GMT",
       "type": "datamining",
       "label": "Открита промяна в играта",
       "verified": false
