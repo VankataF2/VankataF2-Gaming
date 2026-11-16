@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-15T23:26:57.120353+00:00",
+  "updated_at": "2026-11-16T02:56:39.922846+00:00",
   "items": [
     {
       "id": "d25f273977ae0b99",
@@ -567,6 +567,16 @@
       "source": "Fortnite Datamining",
       "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
       "date": "Sun, 15 Nov 2026 21:26:00 GMT",
+      "type": "datamining",
+      "label": "Открита промяна в играта",
+      "verified": false
+    },
+    {
+      "id": "f4209885703c7f82",
+      "title": "Item Shop, Epic Content Pages - +73 new (Rebreather, Parrot Packer, Harley's Boogie Bat, Pack-sune Miku, Summer Snapper, +68 more) - -55 removed",
+      "source": "Fortnite Datamining",
+      "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
+      "date": "Mon, 16 Nov 2026 01:16:00 GMT",
       "type": "datamining",
       "label": "Открита промяна в играта",
       "verified": false
