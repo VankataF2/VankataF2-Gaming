@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-16T20:45:51.295145+00:00",
+  "updated_at": "2026-11-17T03:21:17.599328+00:00",
   "items": [
     {
       "id": "d25f273977ae0b99",
@@ -587,6 +587,16 @@
       "source": "Fortnite Datamining",
       "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
       "date": "Mon, 16 Nov 2026 18:45:00 GMT",
+      "type": "datamining",
+      "label": "Открита промяна в играта",
+      "verified": false
+    },
+    {
+      "id": "a4f806848b5c5bd8",
+      "title": "Item Shop, Epic Content Pages - +78 new (Surging Edge, Victoria Saint, Freezing Round Axes, Hit me!, Mind Reader, +73 more) - -40 removed",
+      "source": "Fortnite Datamining",
+      "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
+      "date": "Tue, 17 Nov 2026 02:15:00 GMT",
       "type": "datamining",
       "label": "Открита промяна в играта",
       "verified": false
