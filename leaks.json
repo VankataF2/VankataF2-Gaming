@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-17T12:14:31.620948+00:00",
+  "updated_at": "2026-11-17T21:10:33.855786+00:00",
   "items": [
     {
       "id": "d25f273977ae0b99",
@@ -597,6 +597,16 @@
       "source": "Fortnite Datamining",
       "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
       "date": "Tue, 17 Nov 2026 02:15:00 GMT",
+      "type": "datamining",
+      "label": "Открита промяна в играта",
+      "verified": false
+    },
+    {
+      "id": "90097aa3a15ef867",
+      "title": "Cars, Item Shop, News, AES Keys - +8 new (Jurassic Jeep® Wrangler, Staff Vehicle, Staff Vehicle - Blue, Tour Vehicle, Jurassic Jeep® Wrangler, +3 more) - -1 removed",
+      "source": "Fortnite Datamining",
+      "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
+      "date": "Tue, 17 Nov 2026 19:37:00 GMT",
       "type": "datamining",
       "label": "Открита промяна в играта",
       "verified": false
