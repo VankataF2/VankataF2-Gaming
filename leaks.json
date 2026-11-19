@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-19T10:34:44.564205+00:00",
+  "updated_at": "2026-11-19T19:18:09.480871+00:00",
   "items": [
     {
       "id": "d25f273977ae0b99",
@@ -647,6 +647,16 @@
       "source": "Fortnite Datamining",
       "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
       "date": "Thu, 19 Nov 2026 09:03:00 GMT",
+      "type": "datamining",
+      "label": "Открита промяна в играта",
+      "verified": false
+    },
+    {
+      "id": "05d52aa8b58aad7e",
+      "title": "BR Cosmetics, LEGO Cosmetics, Jam Tracks, Item Shop, AES Keys, Epic Content Pages - +12 new (Kiriko's Kitsune, Widow's Kiss, Kiriko, Widowmaker, Ofuda Whirlwind, +7 more)",
+      "source": "Fortnite Datamining",
+      "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
+      "date": "Thu, 19 Nov 2026 18:26:00 GMT",
       "type": "datamining",
       "label": "Открита промяна в играта",
       "verified": false
