@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-19T19:18:09.480871+00:00",
+  "updated_at": "2026-11-20T01:22:42.572264+00:00",
   "items": [
     {
       "id": "d25f273977ae0b99",
@@ -657,6 +657,16 @@
       "source": "Fortnite Datamining",
       "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
       "date": "Thu, 19 Nov 2026 18:26:00 GMT",
+      "type": "datamining",
+      "label": "Открита промяна в играта",
+      "verified": false
+    },
+    {
+      "id": "27c451b51e79ce01",
+      "title": "Item Shop, Epic Content Pages - +58 new (Love Wings, Red Tail Reaver, Hearts of Stone Bundle, Stone Gryphon, Kim's Kit, +53 more) - -21 removed",
+      "source": "Fortnite Datamining",
+      "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
+      "date": "Fri, 20 Nov 2026 00:46:00 GMT",
       "type": "datamining",
       "label": "Открита промяна в играта",
       "verified": false
