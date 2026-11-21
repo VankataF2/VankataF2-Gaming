@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-20T23:15:49.505635+00:00",
+  "updated_at": "2026-11-21T04:07:42.036136+00:00",
   "items": [
     {
       "id": "d25f273977ae0b99",
@@ -677,6 +677,16 @@
       "source": "Fortnite Datamining",
       "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
       "date": "Fri, 20 Nov 2026 22:56:00 GMT",
+      "type": "datamining",
+      "label": "Открита промяна в играта",
+      "verified": false
+    },
+    {
+      "id": "9c0e6a9b90c36e26",
+      "title": "BR Cosmetics, Item Shop, News, AES Keys - +36 new (Shake It, Grill Sergeant, Nike Dunk Hi 'Pink Prime', Hippo Stompers, Nike Air Force 1 'Galaxy', +31 more) - -125 removed",
+      "source": "Fortnite Datamining",
+      "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
+      "date": "Sat, 21 Nov 2026 03:44:00 GMT",
       "type": "datamining",
       "label": "Открита промяна в играта",
       "verified": false
