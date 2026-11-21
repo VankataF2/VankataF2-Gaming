@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-21T04:07:42.036136+00:00",
+  "updated_at": "2026-11-21T12:52:57.321318+00:00",
   "items": [
     {
       "id": "d25f273977ae0b99",
@@ -687,6 +687,16 @@
       "source": "Fortnite Datamining",
       "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
       "date": "Sat, 21 Nov 2026 03:44:00 GMT",
+      "type": "datamining",
+      "label": "Открита промяна в играта",
+      "verified": false
+    },
+    {
+      "id": "b8c40a749bdf30d4",
+      "title": "BR Cosmetics, Item Shop",
+      "source": "Fortnite Datamining",
+      "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
+      "date": "Sat, 21 Nov 2026 12:00:00 GMT",
       "type": "datamining",
       "label": "Открита промяна в играта",
       "verified": false
