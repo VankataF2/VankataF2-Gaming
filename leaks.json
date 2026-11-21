@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-21T12:52:57.321318+00:00",
+  "updated_at": "2026-11-21T19:53:38.172751+00:00",
   "items": [
     {
       "id": "d25f273977ae0b99",
@@ -697,6 +697,16 @@
       "source": "Fortnite Datamining",
       "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
       "date": "Sat, 21 Nov 2026 12:00:00 GMT",
+      "type": "datamining",
+      "label": "Открита промяна в играта",
+      "verified": false
+    },
+    {
+      "id": "4922177a8425ddf2",
+      "title": "News - +1 new (Live - NAC - FNCS Solos Reload Finals) - -1 removed",
+      "source": "Fortnite Datamining",
+      "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
+      "date": "Sat, 21 Nov 2026 19:36:00 GMT",
       "type": "datamining",
       "label": "Открита промяна в играта",
       "verified": false
