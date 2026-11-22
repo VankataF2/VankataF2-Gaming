@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-22T15:29:55.118129+00:00",
+  "updated_at": "2026-11-22T21:10:47.228732+00:00",
   "items": [
     {
       "id": "d25f273977ae0b99",
@@ -729,6 +729,16 @@
       "date": "Sun, 22 Nov 2026 14:17:10 GMT",
       "type": "news",
       "label": "Неофициална публикация",
+      "verified": false
+    },
+    {
+      "id": "76159cba03a2918f",
+      "title": "BR Cosmetics, Cars, LEGO Cosmetics, Jam Tracks, Item Shop, AES Keys - +6 new (Solid Gold High Tide and Wavecutter, Solid Gold Kasane Teto, Oscar's Wraps, Golden Llama Crew, JIDO_Character_YarnPuzzling, +1 more)",
+      "source": "Fortnite Datamining",
+      "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
+      "date": "Sun, 22 Nov 2026 15:30:00 GMT",
+      "type": "datamining",
+      "label": "Открита промяна в играта",
       "verified": false
     }
   ]
