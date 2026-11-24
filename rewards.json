@@ -1,6 +1,7 @@
+
 {
-  "updated_at": "2026-11-16",
-  "current_week": 3,
+  "updated_at": "2026-11-24",
+  "current_week": 4,
   "weeks": [
     {
       "week": 1,
@@ -11,15 +12,13 @@
           "name": "Solid Gold Rugahand",
           "category": "Скин",
           "chance": 1562500,
-          "verified": true,
-          "image": "https://fortnite-api.com/images/cosmetics/br/character_spillstrike/featured.png"
+          "verified": true
         },
         {
           "name": "Solid Gold Gauntlets",
           "category": "Кирка",
           "chance": 568,
-          "verified": true,
-          "image": "https://fortnite-api.com/images/cosmetics/br/pickaxe_spillstrikereward/featured.png"
+          "verified": true
         },
         {
           "name": "Mercedes-AMG G 63",
@@ -43,8 +42,7 @@
           "name": "Plunder in Paradise",
           "category": "Loading Screen",
           "chance": 272,
-          "verified": true,
-          "image": "https://fortnite-api.com/images/cosmetics/br/loadingscreen_delilahthw/featured.png"
+          "verified": true
         },
         {
           "name": "Pirate Shop Access 2026",
@@ -169,14 +167,13 @@
     {
       "week": 3,
       "name": "Седмица 3",
-      "status": "current",
+      "status": "archive",
       "rewards": [
         {
           "name": "Solid Gold Miku",
           "category": "Скин",
           "chance": 1562500,
-          "verified": true,
-          "image": "https://fortnite-api.com/images/cosmetics/br/character_fledgravel/featured.png"
+          "verified": true
         },
         {
           "name": "Pirate Shop Access",
@@ -212,8 +209,86 @@
           "name": "May Fortune Find You",
           "category": "Loading Screen",
           "chance": 272,
-          "verified": true,
-          "image": "https://fortnite-api.com/images/cosmetics/br/loadingscreen_delilahthw3/featured.png"
+          "verified": true
+        },
+        {
+          "name": "Extraction Accelerator",
+          "category": "Gizmo",
+          "chance": 127,
+          "verified": true
+        },
+        {
+          "name": "Portable Extractor",
+          "category": "Gizmo",
+          "chance": 127,
+          "verified": true
+        },
+        {
+          "name": "Golden Firework",
+          "category": "Gizmo",
+          "chance": 127,
+          "verified": true
+        },
+        {
+          "name": "Sprite Locator",
+          "category": "Gizmo",
+          "chance": 127,
+          "verified": true
+        },
+        {
+          "name": "Lucky Locator",
+          "category": "Gizmo",
+          "chance": 127,
+          "verified": true
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "name": "Седмица 4",
+      "status": "current",
+      "rewards": [
+        {
+          "name": "Solid Gold Kasane Teto",
+          "category": "Скин",
+          "chance": 1562500,
+          "verified": true
+        },
+        {
+          "name": "Pirate Shop Access",
+          "category": "Специална награда",
+          "chance": 137500,
+          "verified": true
+        },
+        {
+          "name": "Gold Lamborghini Urus SE",
+          "category": "Автомобил",
+          "chance": 7813,
+          "verified": true
+        },
+        {
+          "name": "Gold Lamborghini Urus SE Wheels",
+          "category": "Джанти",
+          "chance": 7813,
+          "verified": true
+        },
+        {
+          "name": "Rogue Wave and Tidewalker",
+          "category": "Back Bling",
+          "chance": 568,
+          "verified": false
+        },
+        {
+          "name": "Sea Shanty / Wellerman",
+          "category": "Jam Track",
+          "chance": 391,
+          "verified": false
+        },
+        {
+          "name": "Oscar's Wraps",
+          "category": "Loading Screen",
+          "chance": 272,
+          "verified": true
         },
         {
           "name": "Extraction Accelerator",
