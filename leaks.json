@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-25T21:18:10.928519+00:00",
+  "updated_at": "2026-11-26T03:41:03.729593+00:00",
   "items": [
     {
       "id": "d25f273977ae0b99",
@@ -829,6 +829,16 @@
       "date": "Wed, 25 Nov 2026 15:31:58 GMT",
       "type": "news",
       "label": "Неофициална публикация",
+      "verified": false
+    },
+    {
+      "id": "2cc850871af54d9f",
+      "title": "BR Cosmetics, LEGO Cosmetics, Item Shop, AES Keys, Epic Content Pages - +8 new (Bounty in Boots, Death (Puss in Boots), Puss in Boots, Stalking Death, Puss in Boots, +3 more)",
+      "source": "Fortnite Datamining",
+      "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
+      "date": "Wed, 25 Nov 2026 21:53:00 GMT",
+      "type": "datamining",
+      "label": "Открита промяна в играта",
       "verified": false
     }
   ]
