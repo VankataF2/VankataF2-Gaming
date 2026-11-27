@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-26T22:29:37.332585+00:00",
+  "updated_at": "2026-11-27T04:27:44.210946+00:00",
   "items": [
     {
       "id": "d25f273977ae0b99",
@@ -857,6 +857,16 @@
       "source": "Fortnite Datamining",
       "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
       "date": "Thu, 26 Nov 2026 13:29:00 GMT",
+      "type": "datamining",
+      "label": "Открита промяна в играта",
+      "verified": false
+    },
+    {
+      "id": "4131764b69284105",
+      "title": "Build update: ++Fortnite+Release-43.11-CL-60803671",
+      "source": "Fortnite Datamining",
+      "url": "https://github.com/Fortnite-Datamining/Fortnite-Datamining/commits/main",
+      "date": "Thu, 26 Nov 2026 22:31:00 GMT",
       "type": "datamining",
       "label": "Открита промяна в играта",
       "verified": false
